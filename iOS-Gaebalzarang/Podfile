@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'iOS-Gaebalzarang' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for iOS-Gaebalzarang
+  # SwiftLint
+  pod 'SwiftLint'
+
+  # RxSwift
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
+
+end
