@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
     private lazy var idTextField: CustomTextField = {
         let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         let textField = CustomTextField()
+        textField.layer.borderColor = UIColor(red: 237 / 255, green: 237 / 255, blue: 237 / 255, alpha: 1.0).cgColor
+        textField.textColor = UIColor(red: 172 / 255, green: 172 / 255, blue: 172 / 255, alpha: 1.0)
         textField.setCornerRound(value: textFieldRound)
         textField.placeholder = "ID"
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +38,8 @@ class LoginViewController: UIViewController {
     private lazy var pswTextField: CustomTextField = {
         let pswFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         let pswField = CustomTextField()
+        pswField.layer.borderColor = UIColor(red: 237 / 255, green: 237 / 255, blue: 237 / 255, alpha: 1.0).cgColor
+        pswField.textColor = UIColor(red: 172 / 255, green: 172 / 255, blue: 172 / 255, alpha: 1.0)
         pswField.setCornerRound(value: pswFieldRound)
         pswField.placeholder = "PW"
         pswField.translatesAutoresizingMaskIntoConstraints = false
@@ -43,17 +47,12 @@ class LoginViewController: UIViewController {
         return pswField
     }()
 
-    private lazy var loginButton: UIButton = {
+    private lazy var loginButton: CustomButton = {
         let loginButtonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
-        let button = UIButton()
-        button.backgroundColor = .gray
-        button.setTitle("로그인", for: .normal)
-        button.titleLabel?.textAlignment = .center
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        button.titleLabel?.textColor = .white
+        let button = CustomButton()
         button.backgroundColor = UIColor(red: 0, green: 188 / 255, blue: 120 / 255, alpha: 1.0)
-        button.clipsToBounds = true
-        button.layer.cornerRadius = loginButtonRound
+        button.setTitle("로그인", for: .normal)
+        button.setCornerRound(value: loginButtonRound)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button

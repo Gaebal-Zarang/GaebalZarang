@@ -19,6 +19,7 @@
 		D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */; };
 		D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */; };
 		D20D2E8928A0FF3C0001B2D3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */; };
+		D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField +.swift"; sourceTree = "<group>"; };
 		D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSearchSignView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */,
 				D20D2E6628A027DD0001B2D3 /* ViewController.swift */,
 				D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */,
+				D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */,
 				D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */,
 				D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */,
 				D20D2E6B28A027DD0001B2D3 /* Assets.xcassets */,
@@ -245,6 +248,7 @@
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E8928A0FF3C0001B2D3 /* CustomButton.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
+				D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
 			);
