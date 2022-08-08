@@ -23,17 +23,10 @@ class LoginViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var idTextField: UITextField = {
+    private lazy var idTextField: CustomTextField = {
         let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
-        let textField = UITextField()
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.borderWidth = 0.5
-        textField.font = .systemFont(ofSize: 18, weight: .regular)
-        textField.textColor = .gray
-        textField.addLeftPadding()
-        textField.placeholder = "ID"
-        textField.clipsToBounds = true
-        textField.layer.cornerRadius = textFieldRound
+        let textField = CustomTextField()
+        textField.setCornerRound(value: textFieldRound)
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
