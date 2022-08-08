@@ -15,6 +15,8 @@
 		D20D2E6F28A027DD0001B2D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E6D28A027DD0001B2D3 /* LaunchScreen.storyboard */; };
 		D20D2E7828A029C40001B2D3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E7728A029C40001B2D3 /* .swiftlint.yml */; };
 		D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */; };
+		D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8228A0F0740001B2D3 /* UIView +.swift */; };
+		D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		D20D2E7028A027DD0001B2D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D20D2E7728A029C40001B2D3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D20D2E8228A0F0740001B2D3 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
+		D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField +.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 		D20D2E6128A027DC0001B2D3 /* iOS-Gaebalzarang */ = {
 			isa = PBXGroup;
 			children = (
+				D20D2E8228A0F0740001B2D3 /* UIView +.swift */,
+				D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */,
 				D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */,
 				D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */,
 				D20D2E6628A027DD0001B2D3 /* ViewController.swift */,
@@ -229,8 +235,10 @@
 			files = (
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
 				D20D2E6728A027DD0001B2D3 /* ViewController.swift in Sources */,
+				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
+				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
