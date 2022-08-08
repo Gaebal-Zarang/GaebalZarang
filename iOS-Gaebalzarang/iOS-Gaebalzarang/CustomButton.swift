@@ -31,6 +31,6 @@ private extension CustomButton {
     func configureBasicSetting() {
         titleLabel?.textAlignment = .center
         titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        titleLabel?.textColor = .white
+        setTitleColor(.white, for: .normal)
     }
 }
