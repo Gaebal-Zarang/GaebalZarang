@@ -71,28 +71,8 @@ private extension LoginSearchSignView {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
         ])
-//        addSubviews(searchIDButton, slashLabel, signUPButton)
-//
-//        NSLayoutConstraint.activate([
-//            searchIDButton.topAnchor.constraint(equalTo: topAnchor),
-//            searchIDButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            searchIDButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-//        ])
-//
-//        NSLayoutConstraint.activate([
-//            slashLabel.topAnchor.constraint(equalTo: topAnchor),
-//            slashLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            slashLabel.leadingAnchor.constraint(equalTo: searchIDButton.trailingAnchor, constant: 5)
-//        ])
-//
-//        NSLayoutConstraint.activate([
-//            signUPButton.topAnchor.constraint(equalTo: topAnchor),
-//            signUPButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            signUPButton.leadingAnchor.constraint(equalTo: slashLabel.trailingAnchor, constant: 5),
-//            signUPButton.trailingAnchor.constraint(equalTo: trailingAnchor)
-//        ])
     }
 }
