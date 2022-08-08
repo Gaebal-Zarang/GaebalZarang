@@ -14,6 +14,7 @@
 		D20D2E6C28A027DD0001B2D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E6B28A027DD0001B2D3 /* Assets.xcassets */; };
 		D20D2E6F28A027DD0001B2D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E6D28A027DD0001B2D3 /* LaunchScreen.storyboard */; };
 		D20D2E7828A029C40001B2D3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E7728A029C40001B2D3 /* .swiftlint.yml */; };
+		D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D20D2E6E28A027DD0001B2D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D20D2E7028A027DD0001B2D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D20D2E7728A029C40001B2D3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */,
 				D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */,
 				D20D2E6628A027DD0001B2D3 /* ViewController.swift */,
+				D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */,
 				D20D2E6B28A027DD0001B2D3 /* Assets.xcassets */,
 				D20D2E6D28A027DD0001B2D3 /* LaunchScreen.storyboard */,
 				D20D2E7028A027DD0001B2D3 /* Info.plist */,
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
 				D20D2E6728A027DD0001B2D3 /* ViewController.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
