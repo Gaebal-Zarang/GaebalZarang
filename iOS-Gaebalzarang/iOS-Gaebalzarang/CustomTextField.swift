@@ -24,16 +24,19 @@ final class CustomTextField: UITextField {
         clipsToBounds = true
         layer.cornerRadius = value
     }
+
+    func setPlaceHolder(text: String) {
+        placeholder = text
+    }
 }
 
 private extension CustomTextField {
 
     func configureBasicSetting() {
-        layer.borderColor = UIColor.gray.cgColor
-        layer.borderWidth = 0.5
-        font = .systemFont(ofSize: 18, weight: .regular)
-        textColor = .gray
+        layer.borderColor = UIColor(red: 237 / 255, green: 237 / 255, blue: 237 / 255, alpha: 1.0).cgColor
+        layer.borderWidth = 1.0
+        font = .systemFont(ofSize: 16, weight: .regular)
+        textColor = UIColor(red: 172 / 255, green: 172 / 255, blue: 172 / 255, alpha: 1.0)
         addLeftPadding()
-        placeholder = "ID"
     }
 }

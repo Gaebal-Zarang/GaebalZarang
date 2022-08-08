@@ -27,9 +27,36 @@ class LoginViewController: UIViewController {
         let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         let textField = CustomTextField()
         textField.setCornerRound(value: textFieldRound)
+        textField.placeholder = "ID"
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
+    }()
+
+    private lazy var pswTextField: CustomTextField = {
+        let pswFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let pswField = CustomTextField()
+        pswField.setCornerRound(value: pswFieldRound)
+        pswField.placeholder = "PW"
+        pswField.translatesAutoresizingMaskIntoConstraints = false
+
+        return pswField
+    }()
+
+    private lazy var loginButton: UIButton = {
+        let loginButtonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let button = UIButton()
+        button.backgroundColor = .gray
+        button.setTitle("로그인", for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.textColor = .white
+        button.backgroundColor = UIColor(red: 0, green: 188 / 255, blue: 120 / 255, alpha: 1.0)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = loginButtonRound
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        return button
     }()
 
     override func viewDidLoad() {
@@ -43,7 +70,7 @@ class LoginViewController: UIViewController {
 private extension LoginViewController {
 
     func configureLayouts() {
-        view.addSubviews(logoView, idTextField)
+        view.addSubviews(logoView, idTextField, pswTextField, loginButton)
 
         let logoViewWidth = (140 / designExampleWidth) * view.frame.width
         let logoViewTopConstant = (45 / designExampleHeight) * view.frame.height
@@ -63,6 +90,24 @@ private extension LoginViewController {
             idTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             idTextField.widthAnchor.constraint(equalToConstant: idTextWidth),
             idTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+        ])
+
+        let pswTextTopConstant = (12 / designExampleHeight) * view.frame.height
+
+        NSLayoutConstraint.activate([
+            pswTextField.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: pswTextTopConstant),
+            pswTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pswTextField.widthAnchor.constraint(equalToConstant: idTextWidth),
+            pswTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+        ])
+
+        let loginBtnTopConstant = (179 / designExampleHeight) * view.frame.height
+
+        NSLayoutConstraint.activate([
+            loginButton.topAnchor.constraint(equalTo: pswTextField.bottomAnchor, constant: loginBtnTopConstant),
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.widthAnchor.constraint(equalToConstant: idTextWidth),
+            loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
     }
 }
