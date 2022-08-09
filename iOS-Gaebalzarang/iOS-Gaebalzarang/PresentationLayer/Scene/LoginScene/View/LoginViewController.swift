@@ -11,9 +11,6 @@ import RxCocoa
 
 class LoginViewController: UIViewController {
 
-    let designExampleWidth: CGFloat = 375
-    let designExampleHeight: CGFloat = 667
-
     private lazy var logoView: UIImageView = {
         let imageViewRound = DesignGuide.estimateCornerRadius(origin: 140, frame: view.frame)
         let imageView = UIImageView()

@@ -9,9 +9,6 @@ import UIKit
 
 final class IntroduceViewController: UIViewController {
 
-    let designExampleWidth: CGFloat = 375
-    let designExampleHeight: CGFloat = 667
-
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "안녕하세요:)\n간단한 자기소개 부탁드려요."
