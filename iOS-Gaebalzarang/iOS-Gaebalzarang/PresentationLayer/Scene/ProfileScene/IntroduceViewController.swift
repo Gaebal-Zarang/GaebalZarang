@@ -51,7 +51,7 @@ final class IntroduceViewController: UIViewController {
         textView.text = "간단한 자기소개"
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.sizeToFit()
-        textView.textContainerInset = .init(top: 15, left: 20, bottom: 15, right: 25)
+        textView.textContainerInset = .init(top: 20, left: 20, bottom: 20, right: 25)
         textView.isScrollEnabled = false
         return textView
     }()
@@ -90,15 +90,18 @@ private extension IntroduceViewController {
 
     func configureLayout() {
 
+        let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
+
         let titleTopConstraint = DesignGuide.estimateYAxisLength(origin: 17, frame: view.frame)
         let titleWidthConstraint = DesignGuide.estimateXAxisLength(origin: 267, frame: view.frame)
+        let titleHeightConstraint = DesignGuide.estimateYAxisLength(origin: 64, frame: view.frame)
 
         NSLayoutConstraint.activate([
 
             titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: titleTopConstraint),
             titleLabel.widthAnchor.constraint(equalToConstant: titleWidthConstraint),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 64)
+            titleLabel.heightAnchor.constraint(equalToConstant: titleHeightConstraint)
         ])
 
         let optionTopConstraint = DesignGuide.estimateYAxisLength(origin: 5, frame: view.frame)
@@ -114,7 +117,7 @@ private extension IntroduceViewController {
         NSLayoutConstraint.activate([
             nickNameTextField.topAnchor.constraint(equalTo: optionLabel.bottomAnchor, constant: nickNameTopConstraint),
             nickNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nickNameTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
+            nickNameTextField.heightAnchor.constraint(equalToConstant: defaultHeight),
             nickNameTextField.widthAnchor.constraint(equalToConstant: nickNameWidthConstraint)
         ])
 

@@ -84,7 +84,10 @@ class LoginViewController: UIViewController {
 private extension LoginViewController {
 
     func configureLayouts() {
+
         view.addSubviews(logoView, idTextField, pswTextField, showButton, searchSignView, loginButton)
+
+        let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
 
         let logoViewWidth = DesignGuide.estimateXAxisLength(origin: 140, frame: view.frame)
         let logoViewTopConstant = DesignGuide.estimateYAxisLength(origin: 45, frame: view.frame)
@@ -103,7 +106,7 @@ private extension LoginViewController {
             idTextField.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: idTextTopConstant),
             idTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             idTextField.widthAnchor.constraint(equalToConstant: idTextWidth),
-            idTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            idTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
 
         let pswTextTopConstant = DesignGuide.estimateYAxisLength(origin: 12, frame: view.frame)
@@ -112,7 +115,7 @@ private extension LoginViewController {
             pswTextField.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: pswTextTopConstant),
             pswTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pswTextField.widthAnchor.constraint(equalToConstant: idTextWidth),
-            pswTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            pswTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
 
         let showBtnWidth = DesignGuide.estimateXAxisLength(origin: 40, frame: view.frame)
@@ -142,7 +145,7 @@ private extension LoginViewController {
             loginButton.topAnchor.constraint(equalTo: searchSignView.bottomAnchor, constant: loginBtnTopConstant),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.widthAnchor.constraint(equalToConstant: idTextWidth),
-            loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
     }
 }

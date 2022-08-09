@@ -31,7 +31,6 @@ private extension CustomTextField {
     func configureBasicSetting() {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.gzGray1?.cgColor
-        font = .systemFont(ofSize: 16, weight: .regular)
         textColor = .gzChacoal
         addLeftPadding()
     }
