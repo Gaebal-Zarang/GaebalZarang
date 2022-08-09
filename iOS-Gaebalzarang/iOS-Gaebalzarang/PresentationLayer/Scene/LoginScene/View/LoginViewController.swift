@@ -11,11 +11,8 @@ import RxCocoa
 
 class LoginViewController: UIViewController {
 
-    let designExampleWidth: CGFloat = 375
-    let designExampleHeight: CGFloat = 667
-
     private lazy var logoView: UIImageView = {
-        let imageViewRound = ((140 / designExampleWidth) * view.frame.width) / 2
+        let imageViewRound = DesignGuide.estimateCornerRadius(origin: 140, frame: view.frame)
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true
@@ -26,9 +23,8 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var idTextField: CustomTextField = {
-        let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         let textField = CustomTextField()
-        textField.isNowEditing = false
         textField.setCornerRound(value: textFieldRound)
         textField.placeholder = "ID"
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -37,9 +33,8 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var pswTextField: CustomTextField = {
-        let pswFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let pswFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         let pswField = CustomTextField()
-        pswField.isNowEditing = false
         pswField.setCornerRound(value: pswFieldRound)
         pswField.placeholder = "PW"
         pswField.translatesAutoresizingMaskIntoConstraints = false
@@ -51,14 +46,14 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Show", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        button.setTitleColor(UIColor(red: 0, green: 188 / 255, blue: 120 / 255, alpha: 1.0), for: .normal)
+        button.setTitleColor(.gzGreen, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
     }()
 
     private lazy var loginButton: CustomButton = {
-        let loginButtonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let loginButtonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         let button = CustomButton()
         button.setTitle("로그인", for: .normal)
         button.setCornerRound(value: loginButtonRound)
@@ -86,10 +81,13 @@ class LoginViewController: UIViewController {
 private extension LoginViewController {
 
     func configureLayouts() {
+
         view.addSubviews(logoView, idTextField, pswTextField, showButton, searchSignView, loginButton)
 
-        let logoViewWidth = (140 / designExampleWidth) * view.frame.width
-        let logoViewTopConstant = (45 / designExampleHeight) * view.frame.height
+        let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
+
+        let logoViewWidth = DesignGuide.estimateXAxisLength(origin: 140, frame: view.frame)
+        let logoViewTopConstant = DesignGuide.estimateYAxisLength(origin: 45, frame: view.frame)
 
         NSLayoutConstraint.activate([
             logoView.widthAnchor.constraint(equalToConstant: logoViewWidth),
@@ -98,28 +96,28 @@ private extension LoginViewController {
             logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: logoViewTopConstant)
         ])
 
-        let idTextTopConstant = (68 / designExampleHeight) * view.frame.height
-        let idTextWidth = (322 / designExampleWidth) * view.frame.width
+        let idTextTopConstant = DesignGuide.estimateYAxisLength(origin: 68, frame: view.frame)
+        let idTextWidth = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
 
         NSLayoutConstraint.activate([
             idTextField.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: idTextTopConstant),
             idTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             idTextField.widthAnchor.constraint(equalToConstant: idTextWidth),
-            idTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            idTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
 
-        let pswTextTopConstant = (12 / designExampleHeight) * view.frame.height
+        let pswTextTopConstant = DesignGuide.estimateYAxisLength(origin: 12, frame: view.frame)
 
         NSLayoutConstraint.activate([
             pswTextField.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: pswTextTopConstant),
             pswTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pswTextField.widthAnchor.constraint(equalToConstant: idTextWidth),
-            pswTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            pswTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
 
-        let showBtnWidth = (40 / designExampleWidth) * view.frame.width
-        let showBtnHeight = (25 / designExampleHeight) * view.frame.height
-        let showBtnTrailingConstant = -((56 / designExampleWidth) * view.frame.width)
+        let showBtnWidth = DesignGuide.estimateXAxisLength(origin: 40, frame: view.frame)
+        let showBtnHeight = DesignGuide.estimateYAxisLength(origin: 25, frame: view.frame)
+        let showBtnTrailingConstant = -(DesignGuide.estimateXAxisLength(origin: 56, frame: view.frame))
 
         NSLayoutConstraint.activate([
             showButton.centerYAnchor.constraint(equalTo: pswTextField.centerYAnchor),
@@ -128,8 +126,8 @@ private extension LoginViewController {
             showButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: showBtnTrailingConstant)
         ])
 
-        let searchSignWidth = (235 / designExampleWidth) * view.frame.width
-        let searchSignHeight = (19 / designExampleHeight) * view.frame.height
+        let searchSignWidth = DesignGuide.estimateXAxisLength(origin: 235, frame: view.frame)
+        let searchSignHeight = DesignGuide.estimateYAxisLength(origin: 19, frame: view.frame)
 
         NSLayoutConstraint.activate([
             searchSignView.topAnchor.constraint(equalTo: pswTextField.bottomAnchor, constant: pswTextTopConstant),
@@ -138,17 +136,13 @@ private extension LoginViewController {
             searchSignView.heightAnchor.constraint(equalToConstant: searchSignHeight)
         ])
 
-        let loginBtnTopConstant = (148 / designExampleHeight) * view.frame.height
+        let loginBtnTopConstant = DesignGuide.estimateYAxisLength(origin: 148, frame: view.frame)
 
         NSLayoutConstraint.activate([
             loginButton.topAnchor.constraint(equalTo: searchSignView.bottomAnchor, constant: loginBtnTopConstant),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.widthAnchor.constraint(equalToConstant: idTextWidth),
-            loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
-    }
-
-    func configureInnerActive() {
-
     }
 }

@@ -9,9 +9,6 @@ import UIKit
 
 final class IntroduceViewController: UIViewController {
 
-    let designExampleWidth: CGFloat = 375
-    let designExampleHeight: CGFloat = 667
-
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "안녕하세요:)\n간단한 자기소개 부탁드려요."
@@ -30,23 +27,18 @@ final class IntroduceViewController: UIViewController {
         return label
     }()
 
-    private lazy var nickNameTextField: UITextField = {
-        let textField = UITextField()
-        let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
-        textField.addLeftPadding()
-        textField.layer.cornerRadius = textFieldRound
+    private lazy var nickNameTextField: CustomTextField = {
+        let textField = CustomTextField()
+        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        textField.setCornerRound(value: textFieldRound)
         textField.placeholder = "별명설정"
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.clipsToBounds = true
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
-        textField.sizeToFit()
         return textField
     }()
 
     private lazy var introTextView: UITextView = {
         let textView = UITextView()
-        let textViewRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let textViewRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.clipsToBounds = true
         textView.layer.cornerRadius = textViewRound
@@ -56,14 +48,14 @@ final class IntroduceViewController: UIViewController {
         textView.text = "간단한 자기소개"
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.sizeToFit()
-        textView.textContainerInset = .init(top: 15, left: 20, bottom: 15, right: 25)
+        textView.textContainerInset = .init(top: 20, left: 20, bottom: 20, right: 25)
         textView.isScrollEnabled = false
         return textView
     }()
 
-    private lazy var nextButton: CustomNextButton = {
-        let button = CustomNextButton()
-        let buttonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+    private lazy var nextButton: CustomButton = {
+        let button = CustomButton()
+        let buttonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
         button.setCornerRound(value: buttonRound)
@@ -95,35 +87,38 @@ private extension IntroduceViewController {
 
     func configureLayout() {
 
-        let titleTopConstraint = (17 / designExampleHeight) * view.frame.height
-        let titleWidthConstraint = (267 / designExampleWidth) * view.frame.width
+        let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
+
+        let titleTopConstraint = DesignGuide.estimateYAxisLength(origin: 17, frame: view.frame)
+        let titleWidthConstraint = DesignGuide.estimateXAxisLength(origin: 267, frame: view.frame)
+        let titleHeightConstraint = DesignGuide.estimateYAxisLength(origin: 64, frame: view.frame)
 
         NSLayoutConstraint.activate([
 
             titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: titleTopConstraint),
             titleLabel.widthAnchor.constraint(equalToConstant: titleWidthConstraint),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 64)
+            titleLabel.heightAnchor.constraint(equalToConstant: titleHeightConstraint)
         ])
 
-        let optionTopConstraint = (5 / designExampleHeight) * view.frame.height
+        let optionTopConstraint = DesignGuide.estimateYAxisLength(origin: 5, frame: view.frame)
 
         NSLayoutConstraint.activate([
             optionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: optionTopConstraint),
             optionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
         ])
 
-        let nickNameTopConstraint = (30 / designExampleHeight) * view.frame.height
-        let nickNameWidthConstraint = (322 / designExampleWidth) * view.frame.width
+        let nickNameTopConstraint = DesignGuide.estimateYAxisLength(origin: 30, frame: view.frame)
+        let nickNameWidthConstraint = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
 
         NSLayoutConstraint.activate([
             nickNameTextField.topAnchor.constraint(equalTo: optionLabel.bottomAnchor, constant: nickNameTopConstraint),
             nickNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nickNameTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
+            nickNameTextField.heightAnchor.constraint(equalToConstant: defaultHeight),
             nickNameTextField.widthAnchor.constraint(equalToConstant: nickNameWidthConstraint)
         ])
 
-        let introTopConstraint = (14 / designExampleHeight) * view.frame.height
+        let introTopConstraint = DesignGuide.estimateYAxisLength(origin: 14, frame: view.frame)
 
         NSLayoutConstraint.activate([
             introTextView.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: introTopConstraint),
@@ -132,7 +127,7 @@ private extension IntroduceViewController {
 
         ])
 
-        let nextBtnBottomConstraint = -((24 / designExampleHeight) * view.frame.height)
+        let nextBtnBottomConstraint = -(DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame))
 
         NSLayoutConstraint.activate([
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: nextBtnBottomConstraint),

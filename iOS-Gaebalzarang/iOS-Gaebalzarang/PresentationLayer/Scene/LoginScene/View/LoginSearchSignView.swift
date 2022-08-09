@@ -23,7 +23,7 @@ final class LoginSearchSignView: UIView {
         button.setTitle("아이디 비밀번호 찾기", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
-        button.setTitleColor(UIColor(red: 173 / 255, green: 173 / 255, blue: 173 / 255, alpha: 1.0), for: .normal)
+        button.setTitleColor(.gzGray3, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -34,7 +34,7 @@ final class LoginSearchSignView: UIView {
         button.setTitle("회원가입", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
-        button.setTitleColor(UIColor(red: 173 / 255, green: 173 / 255, blue: 173 / 255, alpha: 1.0), for: .normal)
+        button.setTitleColor(.gzGray3, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -44,7 +44,7 @@ final class LoginSearchSignView: UIView {
         let label = UILabel()
         label.text = "/"
         label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor(red: 173 / 255, green: 173 / 255, blue: 173 / 255, alpha: 1.0)
+        label.textColor = .gzGray3
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label

@@ -1,13 +1,14 @@
 //
-//  CustomNextButton.swift
+//  CustomTextField.swift
 //  iOS-Gaebalzarang
 //
-//  Created by 최예주 on 2022/08/08.
+//  Created by juntaek.oh on 2022/08/08.
 //
 
 import UIKit
 
-final class CustomNextButton: UIButton {
+final class CustomTextField: UITextField {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -25,11 +26,12 @@ final class CustomNextButton: UIButton {
     }
 }
 
-private extension CustomNextButton {
+private extension CustomTextField {
 
     func configureBasicSetting() {
-            titleLabel?.textAlignment = .center
-            titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-            setTitleColor(.white, for: .normal)
-        }
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.gzGray1?.cgColor
+        textColor = .gzChacoal
+        addLeftPadding()
+    }
 }

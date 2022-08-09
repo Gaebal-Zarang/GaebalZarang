@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		5630B9725B295D37A8793F6D /* Pods_iOS_Gaebalzarang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */; };
 		B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */; };
-		B3A95F9228A0F90700B6E48C /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F9128A0F90700B6E48C /* TextFieldExtension.swift */; };
-		B3A95F9428A14CCF00B6E48C /* CustomNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F9328A14CCF00B6E48C /* CustomNextButton.swift */; };
+		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
 		D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */; };
 		D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */; };
-		D20D2E6728A027DD0001B2D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E6628A027DD0001B2D3 /* ViewController.swift */; };
 		D20D2E6C28A027DD0001B2D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E6B28A027DD0001B2D3 /* Assets.xcassets */; };
 		D20D2E6F28A027DD0001B2D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E6D28A027DD0001B2D3 /* LaunchScreen.storyboard */; };
 		D20D2E7828A029C40001B2D3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E7728A029C40001B2D3 /* .swiftlint.yml */; };
@@ -24,6 +22,7 @@
 		D20D2E8928A0FF3C0001B2D3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */; };
 		D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */; };
 		D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8C28A108260001B2D3 /* StackView +.swift */; };
+		D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8C28A2567200CEBB80 /* UIColor +.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +30,10 @@
 		90BFA412332FBA27DA240888 /* Pods-iOS-Gaebalzarang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Gaebalzarang.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Gaebalzarang/Pods-iOS-Gaebalzarang.debug.xcconfig"; sourceTree = "<group>"; };
 		941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Gaebalzarang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
-		B3A95F9128A0F90700B6E48C /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
-		B3A95F9328A14CCF00B6E48C /* CustomNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNextButton.swift; sourceTree = "<group>"; };
+		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
 		D20D2E5F28A027DC0001B2D3 /* iOS-Gaebalzarang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Gaebalzarang.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D20D2E6628A027DD0001B2D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D20D2E6B28A027DD0001B2D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20D2E6E28A027DD0001B2D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D20D2E7028A027DD0001B2D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +45,7 @@
 		D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSearchSignView.swift; sourceTree = "<group>"; };
 		D20D2E8C28A108260001B2D3 /* StackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView +.swift"; sourceTree = "<group>"; };
+		D2360C8C28A2567200CEBB80 /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +77,87 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B3F571A728A24F090092B4D0 /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				B3F571A828A24F140092B4D0 /* View */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		B3F571A828A24F140092B4D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */,
+				D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3F571A928A24F610092B4D0 /* SignUpScene */ = {
+			isa = PBXGroup;
+			children = (
+				B3F571AA28A24F6B0092B4D0 /* View */,
+			);
+			path = SignUpScene;
+			sourceTree = "<group>";
+		};
+		B3F571AA28A24F6B0092B4D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B3F571AB28A24F830092B4D0 /* ProfileScene */ = {
+			isa = PBXGroup;
+			children = (
+				B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */,
+			);
+			path = ProfileScene;
+			sourceTree = "<group>";
+		};
+		B3F571AC28A24F940092B4D0 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B3F571AE28A250310092B4D0 /* Extension + */,
+				B3F571AD28A250010092B4D0 /* Components */,
+				B3F571AF28A250840092B4D0 /* Scene */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		B3F571AD28A250010092B4D0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */,
+				D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B3F571AE28A250310092B4D0 /* Extension + */ = {
+			isa = PBXGroup;
+			children = (
+				D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */,
+				D20D2E8C28A108260001B2D3 /* StackView +.swift */,
+				D20D2E8228A0F0740001B2D3 /* UIView +.swift */,
+				D2360C8C28A2567200CEBB80 /* UIColor +.swift */,
+				B3CE847F28A2685800F57038 /* DesignGuide.swift */,
+			);
+			path = "Extension +";
+			sourceTree = "<group>";
+		};
+		B3F571AF28A250840092B4D0 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				B3F571A728A24F090092B4D0 /* LoginScene */,
+				B3F571A928A24F610092B4D0 /* SignUpScene */,
+				B3F571AB28A24F830092B4D0 /* ProfileScene */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		D20D2E5628A027DC0001B2D3 = {
 			isa = PBXGroup;
 			children = (
@@ -101,22 +180,12 @@
 		D20D2E6128A027DC0001B2D3 /* iOS-Gaebalzarang */ = {
 			isa = PBXGroup;
 			children = (
-				D20D2E8228A0F0740001B2D3 /* UIView +.swift */,
-				D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */,
-				D20D2E8C28A108260001B2D3 /* StackView +.swift */,
+				B3F571AC28A24F940092B4D0 /* PresentationLayer */,
 				D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */,
 				D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */,
-				D20D2E6628A027DD0001B2D3 /* ViewController.swift */,
-				D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */,
-				D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */,
-				D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */,
-				D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */,
 				D20D2E6B28A027DD0001B2D3 /* Assets.xcassets */,
 				D20D2E6D28A027DD0001B2D3 /* LaunchScreen.storyboard */,
 				D20D2E7028A027DD0001B2D3 /* Info.plist */,
-				B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */,
-				B3A95F9128A0F90700B6E48C /* TextFieldExtension.swift */,
-				B3A95F9328A14CCF00B6E48C /* CustomNextButton.swift */,
 			);
 			path = "iOS-Gaebalzarang";
 			sourceTree = "<group>";
@@ -254,21 +323,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
 				D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */,
-
-				D20D2E6728A027DD0001B2D3 /* ViewController.swift in Sources */,
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E8928A0FF3C0001B2D3 /* CustomButton.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
-
-				B3A95F9228A0F90700B6E48C /* TextFieldExtension.swift in Sources */,
-				B3A95F9428A14CCF00B6E48C /* CustomNextButton.swift in Sources */,
-
 				D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */,
+				B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */,
+				D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
 			);
