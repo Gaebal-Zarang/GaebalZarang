@@ -36,17 +36,16 @@ private extension CustomTextField {
 
     func configureBasicSetting() {
         layer.borderWidth = 1.0
+        layer.borderColor = UIColor(red: 217 / 255, green: 217 / 255, blue: 217 / 255, alpha: 1.0).cgColor
         font = .systemFont(ofSize: 16, weight: .regular)
         addLeftPadding()
     }
 
     func configureNotEditingSetting() {
-        layer.borderColor = UIColor(red: 217 / 255, green: 217 / 255, blue: 217 / 255, alpha: 1.0).cgColor
         textColor = UIColor(red: 172 / 255, green: 172 / 255, blue: 172 / 255, alpha: 1.0)
     }
 
     func configureNowEditingSetting() {
-        layer.borderColor = UIColor(red: 237 / 255, green: 237 / 255, blue: 237 / 255, alpha: 1.0).cgColor
         textColor = UIColor(red: 82 / 255, green: 82 / 255, blue: 82 / 255, alpha: 1.0)
     }
 }

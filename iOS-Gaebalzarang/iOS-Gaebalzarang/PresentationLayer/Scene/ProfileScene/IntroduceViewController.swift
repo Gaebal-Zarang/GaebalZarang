@@ -30,17 +30,12 @@ final class IntroduceViewController: UIViewController {
         return label
     }()
 
-    private lazy var nickNameTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var nickNameTextField: CustomTextField = {
+        let textField = CustomTextField()
         let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
-        textField.addLeftPadding()
-        textField.layer.cornerRadius = textFieldRound
+        textField.setCornerRound(value: textFieldRound)
         textField.placeholder = "별명설정"
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.clipsToBounds = true
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
-        textField.sizeToFit()
         return textField
     }()
 
@@ -61,8 +56,8 @@ final class IntroduceViewController: UIViewController {
         return textView
     }()
 
-    private lazy var nextButton: CustomNextButton = {
-        let button = CustomNextButton()
+    private lazy var nextButton: CustomButton = {
+        let button = CustomButton()
         let buttonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
