@@ -30,24 +30,26 @@ final class IntroduceViewController: UIViewController {
         return label
     }()
 
-    private var nickNameTextField: UITextField = {
+    private lazy var nickNameTextField: UITextField = {
         let textField = UITextField()
+        let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         textField.addLeftPadding()
+        textField.layer.cornerRadius = textFieldRound
         textField.placeholder = "별명설정"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clipsToBounds = true
-        textField.layer.cornerRadius = 30
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
         textField.sizeToFit()
         return textField
     }()
 
-    private var introTextView: UITextView = {
+    private lazy var introTextView: UITextView = {
         let textView = UITextView()
+        let textViewRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.clipsToBounds = true
-        textView.layer.cornerRadius = 30
+        textView.layer.cornerRadius = textViewRound
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
         textView.textColor = UIColor.placeholderText
@@ -59,11 +61,12 @@ final class IntroduceViewController: UIViewController {
         return textView
     }()
 
-    private var nextButton: CustomNextButton = {
+    private lazy var nextButton: CustomNextButton = {
         let button = CustomNextButton()
+        let buttonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
-        button.setCornerRound(value: 30)
+        button.setCornerRound(value: buttonRound)
         button.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
         button.setTitle("다음", for: .disabled)
         button.setTitleColor(UIColor.placeholderText, for: .disabled)
@@ -93,38 +96,51 @@ private extension IntroduceViewController {
     func configureLayout() {
 
         let titleTopConstraint = (17 / designExampleHeight) * view.frame.height
+        let titleWidthConstraint = (267 / designExampleWidth) * view.frame.width
+
         NSLayoutConstraint.activate([
-            
+
             titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: titleTopConstraint),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            titleLabel.widthAnchor.constraint(equalToConstant: titleWidthConstraint),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 64)
         ])
 
+        let optionTopConstraint = (5 / designExampleHeight) * view.frame.height
+
         NSLayoutConstraint.activate([
-            optionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            optionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: optionTopConstraint),
             optionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
         ])
 
-        NSLayoutConstraint.activate([
-            nickNameTextField.topAnchor.constraint(equalTo: optionLabel.bottomAnchor, constant: 30),
-            nickNameTextField.leadingAnchor.constraint(equalTo: optionLabel.leadingAnchor),
-            nickNameTextField.heightAnchor.constraint(equalToConstant: 50),
-            nickNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28)
-        ])
+        let nickNameTopConstraint = (30 / designExampleHeight) * view.frame.height
+        let nickNameWidthConstraint = (322 / designExampleWidth) * view.frame.width
 
         NSLayoutConstraint.activate([
-            introTextView.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: 30),
-            introTextView.leadingAnchor.constraint(equalTo: optionLabel.leadingAnchor),
-            introTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28)
+            nickNameTextField.topAnchor.constraint(equalTo: optionLabel.bottomAnchor, constant: nickNameTopConstraint),
+            nickNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nickNameTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
+            nickNameTextField.widthAnchor.constraint(equalToConstant: nickNameWidthConstraint)
         ])
 
+        let introTopConstraint = (14 / designExampleHeight) * view.frame.height
+
         NSLayoutConstraint.activate([
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            nextButton.heightAnchor.constraint(equalToConstant: 50),
-            nextButton.topAnchor.constraint(greaterThanOrEqualTo: introTextView.bottomAnchor, constant: 100)
+            introTextView.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: introTopConstraint),
+            introTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            introTextView.widthAnchor.constraint(equalTo: nickNameTextField.widthAnchor)
+
+        ])
+
+        let nextBtnBottomConstraint = -((24 / designExampleHeight) * view.frame.height)
+
+        NSLayoutConstraint.activate([
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: nextBtnBottomConstraint),
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.widthAnchor.constraint(equalTo: introTextView.widthAnchor),
+            nextButton.heightAnchor.constraint(equalTo: nickNameTextField.heightAnchor),
+
+            nextButton.topAnchor.constraint(greaterThanOrEqualTo: introTextView.bottomAnchor, constant: 50)
         ])
 
     }
