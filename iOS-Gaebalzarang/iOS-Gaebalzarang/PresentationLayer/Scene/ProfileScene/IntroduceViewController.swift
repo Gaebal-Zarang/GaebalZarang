@@ -90,8 +90,8 @@ private extension IntroduceViewController {
 
     func configureLayout() {
 
-        let titleTopConstraint = (17 / designExampleHeight) * view.frame.height
-        let titleWidthConstraint = (267 / designExampleWidth) * view.frame.width
+        let titleTopConstraint = DesignGuide.estimateYAxisLength(origin: 17, frame: view.frame)
+        let titleWidthConstraint = DesignGuide.estimateXAxisLength(origin: 267, frame: view.frame)
 
         NSLayoutConstraint.activate([
 
@@ -101,15 +101,15 @@ private extension IntroduceViewController {
             titleLabel.heightAnchor.constraint(equalToConstant: 64)
         ])
 
-        let optionTopConstraint = (5 / designExampleHeight) * view.frame.height
+        let optionTopConstraint = DesignGuide.estimateYAxisLength(origin: 5, frame: view.frame)
 
         NSLayoutConstraint.activate([
             optionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: optionTopConstraint),
             optionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
         ])
 
-        let nickNameTopConstraint = (30 / designExampleHeight) * view.frame.height
-        let nickNameWidthConstraint = (322 / designExampleWidth) * view.frame.width
+        let nickNameTopConstraint = DesignGuide.estimateYAxisLength(origin: 30, frame: view.frame)
+        let nickNameWidthConstraint = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
 
         NSLayoutConstraint.activate([
             nickNameTextField.topAnchor.constraint(equalTo: optionLabel.bottomAnchor, constant: nickNameTopConstraint),
@@ -118,7 +118,7 @@ private extension IntroduceViewController {
             nickNameTextField.widthAnchor.constraint(equalToConstant: nickNameWidthConstraint)
         ])
 
-        let introTopConstraint = (14 / designExampleHeight) * view.frame.height
+        let introTopConstraint = DesignGuide.estimateYAxisLength(origin: 14, frame: view.frame)
 
         NSLayoutConstraint.activate([
             introTextView.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: introTopConstraint),
@@ -127,7 +127,7 @@ private extension IntroduceViewController {
 
         ])
 
-        let nextBtnBottomConstraint = -((24 / designExampleHeight) * view.frame.height)
+        let nextBtnBottomConstraint = -(DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame))
 
         NSLayoutConstraint.activate([
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: nextBtnBottomConstraint),

@@ -86,8 +86,8 @@ private extension LoginViewController {
     func configureLayouts() {
         view.addSubviews(logoView, idTextField, pswTextField, showButton, searchSignView, loginButton)
 
-        let logoViewWidth = (140 / designExampleWidth) * view.frame.width
-        let logoViewTopConstant = (45 / designExampleHeight) * view.frame.height
+        let logoViewWidth = DesignGuide.estimateXAxisLength(origin: 140, frame: view.frame)
+        let logoViewTopConstant = DesignGuide.estimateYAxisLength(origin: 45, frame: view.frame)
 
         NSLayoutConstraint.activate([
             logoView.widthAnchor.constraint(equalToConstant: logoViewWidth),
@@ -96,8 +96,8 @@ private extension LoginViewController {
             logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: logoViewTopConstant)
         ])
 
-        let idTextTopConstant = (68 / designExampleHeight) * view.frame.height
-        let idTextWidth = (322 / designExampleWidth) * view.frame.width
+        let idTextTopConstant = DesignGuide.estimateYAxisLength(origin: 68, frame: view.frame)
+        let idTextWidth = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
 
         NSLayoutConstraint.activate([
             idTextField.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: idTextTopConstant),
@@ -106,7 +106,7 @@ private extension LoginViewController {
             idTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
 
-        let pswTextTopConstant = (12 / designExampleHeight) * view.frame.height
+        let pswTextTopConstant = DesignGuide.estimateYAxisLength(origin: 12, frame: view.frame)
 
         NSLayoutConstraint.activate([
             pswTextField.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: pswTextTopConstant),
@@ -115,9 +115,9 @@ private extension LoginViewController {
             pswTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
 
-        let showBtnWidth = (40 / designExampleWidth) * view.frame.width
-        let showBtnHeight = (25 / designExampleHeight) * view.frame.height
-        let showBtnTrailingConstant = -((56 / designExampleWidth) * view.frame.width)
+        let showBtnWidth = DesignGuide.estimateXAxisLength(origin: 40, frame: view.frame)
+        let showBtnHeight = DesignGuide.estimateYAxisLength(origin: 25, frame: view.frame)
+        let showBtnTrailingConstant = -(DesignGuide.estimateXAxisLength(origin: 56, frame: view.frame))
 
         NSLayoutConstraint.activate([
             showButton.centerYAnchor.constraint(equalTo: pswTextField.centerYAnchor),
@@ -126,8 +126,8 @@ private extension LoginViewController {
             showButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: showBtnTrailingConstant)
         ])
 
-        let searchSignWidth = (235 / designExampleWidth) * view.frame.width
-        let searchSignHeight = (19 / designExampleHeight) * view.frame.height
+        let searchSignWidth = DesignGuide.estimateXAxisLength(origin: 235, frame: view.frame)
+        let searchSignHeight = DesignGuide.estimateYAxisLength(origin: 19, frame: view.frame)
 
         NSLayoutConstraint.activate([
             searchSignView.topAnchor.constraint(equalTo: pswTextField.bottomAnchor, constant: pswTextTopConstant),
@@ -136,7 +136,7 @@ private extension LoginViewController {
             searchSignView.heightAnchor.constraint(equalToConstant: searchSignHeight)
         ])
 
-        let loginBtnTopConstant = (148 / designExampleHeight) * view.frame.height
+        let loginBtnTopConstant = DesignGuide.estimateYAxisLength(origin: 148, frame: view.frame)
 
         NSLayoutConstraint.activate([
             loginButton.topAnchor.constraint(equalTo: searchSignView.bottomAnchor, constant: loginBtnTopConstant),
