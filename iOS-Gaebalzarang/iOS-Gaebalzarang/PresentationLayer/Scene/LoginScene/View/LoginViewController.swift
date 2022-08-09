@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     let designExampleHeight: CGFloat = 667
 
     private lazy var logoView: UIImageView = {
-        let imageViewRound = ((140 / designExampleWidth) * view.frame.width) / 2
+        let imageViewRound = DesignGuide.estimateCornerRadius(origin: 140, frame: view.frame)
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true
@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var idTextField: CustomTextField = {
-        let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         let textField = CustomTextField()
         textField.setCornerRound(value: textFieldRound)
         textField.placeholder = "ID"
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var pswTextField: CustomTextField = {
-        let pswFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let pswFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         let pswField = CustomTextField()
         pswField.setCornerRound(value: pswFieldRound)
         pswField.placeholder = "PW"
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var loginButton: CustomButton = {
-        let loginButtonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let loginButtonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         let button = CustomButton()
         button.setTitle("로그인", for: .normal)
         button.setCornerRound(value: loginButtonRound)

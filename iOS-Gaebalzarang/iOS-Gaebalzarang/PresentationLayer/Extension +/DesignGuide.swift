@@ -19,4 +19,8 @@ struct DesignGuide {
     static func estimateYAxisLength(origin: CGFloat, frame: CGRect) -> CGFloat {
         return (origin / sampleDeviceHeight) * frame.height
     }
+
+    static func estimateCornerRadius(origin: CGFloat, frame: CGRect) -> CGFloat {
+        return ((origin / sampleDeviceHeight) * frame.height) / 2.5
+    }
 }

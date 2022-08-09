@@ -32,7 +32,7 @@ final class IntroduceViewController: UIViewController {
 
     private lazy var nickNameTextField: CustomTextField = {
         let textField = CustomTextField()
-        let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         textField.setCornerRound(value: textFieldRound)
         textField.placeholder = "별명설정"
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ final class IntroduceViewController: UIViewController {
 
     private lazy var introTextView: UITextView = {
         let textView = UITextView()
-        let textViewRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let textViewRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.clipsToBounds = true
         textView.layer.cornerRadius = textViewRound
@@ -58,7 +58,7 @@ final class IntroduceViewController: UIViewController {
 
     private lazy var nextButton: CustomButton = {
         let button = CustomButton()
-        let buttonRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
+        let buttonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
         button.setCornerRound(value: buttonRound)
