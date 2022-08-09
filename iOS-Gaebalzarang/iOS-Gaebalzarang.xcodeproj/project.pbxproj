@@ -21,6 +21,7 @@
 		D20D2E8928A0FF3C0001B2D3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */; };
 		D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */; };
 		D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8C28A108260001B2D3 /* StackView +.swift */; };
+		D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8C28A2567200CEBB80 /* UIColor +.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D20D2E8828A0FF3C0001B2D3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSearchSignView.swift; sourceTree = "<group>"; };
 		D20D2E8C28A108260001B2D3 /* StackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView +.swift"; sourceTree = "<group>"; };
+		D2360C8C28A2567200CEBB80 /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */,
+				D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -100,7 +103,6 @@
 		B3F571AA28A24F6B0092B4D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,9 +118,9 @@
 		B3F571AC28A24F940092B4D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				B3F571AF28A250840092B4D0 /* Scene */,
 				B3F571AE28A250310092B4D0 /* Extension + */,
 				B3F571AD28A250010092B4D0 /* Components */,
+				B3F571AF28A250840092B4D0 /* Scene */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -138,6 +140,7 @@
 				D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */,
 				D20D2E8C28A108260001B2D3 /* StackView +.swift */,
 				D20D2E8228A0F0740001B2D3 /* UIView +.swift */,
+				D2360C8C28A2567200CEBB80 /* UIColor +.swift */,
 			);
 			path = "Extension +";
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				D20D2E8928A0FF3C0001B2D3 /* CustomButton.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
 				D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */,
+				D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
 			);

@@ -28,7 +28,6 @@ class LoginViewController: UIViewController {
     private lazy var idTextField: CustomTextField = {
         let textFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         let textField = CustomTextField()
-        textField.isNowEditing = false
         textField.setCornerRound(value: textFieldRound)
         textField.placeholder = "ID"
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +38,6 @@ class LoginViewController: UIViewController {
     private lazy var pswTextField: CustomTextField = {
         let pswFieldRound = ((50 / designExampleHeight) * view.frame.height) / 2.5
         let pswField = CustomTextField()
-        pswField.isNowEditing = false
         pswField.setCornerRound(value: pswFieldRound)
         pswField.placeholder = "PW"
         pswField.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +49,7 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Show", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        button.setTitleColor(UIColor(red: 0, green: 188 / 255, blue: 120 / 255, alpha: 1.0), for: .normal)
+        button.setTitleColor(.gzGreen, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -146,9 +144,5 @@ private extension LoginViewController {
             loginButton.widthAnchor.constraint(equalToConstant: idTextWidth),
             loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
-    }
-
-    func configureInnerActive() {
-
     }
 }

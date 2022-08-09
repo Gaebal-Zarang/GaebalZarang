@@ -9,12 +9,6 @@ import UIKit
 
 final class CustomTextField: UITextField {
 
-    var isNowEditing: Bool = false {
-        willSet(newVal) {
-            newVal ? configureNowEditingSetting() : configureNotEditingSetting()
-        }
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -36,16 +30,9 @@ private extension CustomTextField {
 
     func configureBasicSetting() {
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor(red: 217 / 255, green: 217 / 255, blue: 217 / 255, alpha: 1.0).cgColor
+        layer.borderColor = UIColor.gzGray1?.cgColor
         font = .systemFont(ofSize: 16, weight: .regular)
+        textColor = .gzChacoal
         addLeftPadding()
-    }
-
-    func configureNotEditingSetting() {
-        textColor = UIColor(red: 172 / 255, green: 172 / 255, blue: 172 / 255, alpha: 1.0)
-    }
-
-    func configureNowEditingSetting() {
-        textColor = UIColor(red: 82 / 255, green: 82 / 255, blue: 82 / 255, alpha: 1.0)
     }
 }
