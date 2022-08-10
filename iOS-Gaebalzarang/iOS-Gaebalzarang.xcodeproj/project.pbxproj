@@ -24,6 +24,7 @@
 		D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8C28A108260001B2D3 /* StackView +.swift */; };
 		D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8C28A2567200CEBB80 /* UIColor +.swift */; };
 		D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */; };
+		D2F66C3D28A354F6003AA52C /* SignUpNameIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F66C3C28A354F6003AA52C /* SignUpNameIDView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D20D2E8C28A108260001B2D3 /* StackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView +.swift"; sourceTree = "<group>"; };
 		D2360C8C28A2567200CEBB80 /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
 		D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D2F66C3C28A354F6003AA52C /* SignUpNameIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameIDView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */,
+				D2F66C3C28A354F6003AA52C /* SignUpNameIDView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F66C3D28A354F6003AA52C /* SignUpNameIDView.swift in Sources */,
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
