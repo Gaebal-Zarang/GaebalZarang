@@ -121,12 +121,11 @@ private extension SignUpNameIDView {
     }
 
     func configureCornerRadius() {
-        let nameTextFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: viewControllerFrame)
-        let idTextFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: viewControllerFrame)
+        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: viewControllerFrame)
         let buttonRound = DesignGuide.estimateCornerRadius(origin: 26, frame: viewControllerFrame)
 
-        nameTextField.setCornerRound(value: nameTextFieldRound)
-        idTextField.setCornerRound(value: idTextFieldRound)
+        nameTextField.setCornerRound(value: textFieldRound)
+        idTextField.setCornerRound(value: textFieldRound)
         overlapCheckButton.clipsToBounds = true
         overlapCheckButton.layer.cornerRadius = buttonRound
     }
