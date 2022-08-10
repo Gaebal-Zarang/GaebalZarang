@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class CompleteViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
 
     private lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
@@ -55,6 +59,7 @@ final class CompleteViewController: UIViewController {
         view.backgroundColor = .white
         configureNavigationItem()
         configureLayouts()
+        configureInnerActionBinding()
     }
 }
 
@@ -105,5 +110,14 @@ private extension CompleteViewController {
             confirmButton.widthAnchor.constraint(equalToConstant: buttonWidth),
             confirmButton.heightAnchor.constraint(equalToConstant: buttonHeight)
         ])
+    }
+
+    func configureInnerActionBinding() {
+        confirmButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
