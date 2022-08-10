@@ -11,6 +11,8 @@ import RxCocoa
 
 class LoginViewController: UIViewController {
 
+    let disposeBag = DisposeBag()
+
     private lazy var logoView: UIImageView = {
         let imageViewRound = DesignGuide.estimateCornerRadius(origin: 140, frame: view.frame)
         let imageView = UIImageView()
@@ -74,6 +76,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureLayouts()
+        configureInnerActionBinding()
     }
 }
 
@@ -143,5 +146,16 @@ private extension LoginViewController {
             loginButton.widthAnchor.constraint(equalToConstant: idTextWidth),
             loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
+    }
+
+    func configureInnerActionBinding() {
+        searchSignView.setSignUpAction()
+            .drive { [weak self] _ in
+                let nextVC = SignUpViewController()
+                let naviVC = UINavigationController(rootViewController: nextVC)
+                naviVC.modalPresentationStyle = .overFullScreen
+                self?.present(naviVC, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }

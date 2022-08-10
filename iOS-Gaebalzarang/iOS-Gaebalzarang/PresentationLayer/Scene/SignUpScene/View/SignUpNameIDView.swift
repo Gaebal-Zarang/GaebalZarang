@@ -70,8 +70,8 @@ final class SignUpNameIDView: UIView {
         isValid ? configureValidText() : configureInvalidText()
     }
 
-    func setOverlapButtonAction() -> Observable<Void> {
-        return overlapCheckButton.rx.tap.asObservable()
+    func setOverlapButtonAction() -> Driver<Void> {
+        return overlapCheckButton.rx.tap.asDriver()
     }
 }
 

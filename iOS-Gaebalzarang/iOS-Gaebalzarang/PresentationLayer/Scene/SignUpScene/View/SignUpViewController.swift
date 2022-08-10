@@ -21,7 +21,8 @@ final class SignUpViewController: UIViewController {
         let button = CustomButton()
         button.setTitle("다음", for: .normal)
         button.setCornerRound(value: nextButtonRound)
-        button.isEnabled = false
+        // TODO: 유효성 검사 구현 시, isEnabled false로 변경
+        button.isEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -30,12 +31,25 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configureNavigationItem()
         configureLayouts()
         configureInnerActionBinding()
     }
 }
 
 private extension SignUpViewController {
+
+    func configureNavigationItem() {
+        let label = UILabel()
+        label.text = "회원가입"
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .gzGreen
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        navigationController?.navigationBar.topItem?.title = "회원가입"
+        navigationItem.backButtonTitle = ""
+    }
 
     func configureLayouts() {
         view.addSubviews(nameIDView, passwordView, nextButton)
@@ -73,10 +87,17 @@ private extension SignUpViewController {
 
     func configureInnerActionBinding() {
         nameIDView.setOverlapButtonAction()
-            .bind { [weak self] _ in
+            .drive { [weak self] _ in
                 self?.nameIDView.validCheck(with: true)
             }
             .disposed(by: disposeBag)
 
+        nextButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                let nextVC = AuthenticationViewController()
+                self?.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
