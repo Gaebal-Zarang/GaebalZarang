@@ -10,7 +10,7 @@ import UIKit
 final class IntroduceViewController: UIViewController {
 
     private var inputTitleView: InputTitleView = {
-        let view = InputTitleView(frame: .init(), text: "안녕하세요:) \n간단한 자기소개 부탁드려요", isRequire: true)
+        let view = InputTitleView(text: "안녕하세요:) \n간단한 자기소개 부탁드려요", isRequire: true)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -69,7 +69,7 @@ private extension IntroduceViewController {
 
         self.view.addSubviews(inputTitleView, nickNameTextField, introTextView, nextButton)
         let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
-        
+
         // MARK: inputTitleView Constraints
         let inputTitleTopConstraint = DesignGuide.estimateYAxisLength(origin: 17, frame: view.frame)
         let inputTitleLeadingConstraint = DesignGuide.estimateXAxisLength(origin: 35, frame: view.frame)

@@ -42,8 +42,8 @@ class InputTitleView: UIView {
         configureLayout()
     }
 
-    init(frame: CGRect, text: String, isRequire: Bool = false) {
-        super.init(frame: frame)
+    init(text: String, isRequire: Bool = false) {
+        super.init(frame: .zero)
         stackView.addArrangedSubviews(titleLabel, optionLabel)
         self.addSubview(stackView)
         configureLayout()
