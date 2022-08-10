@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
+// TODO: 인증 번호, 확인 버튼 isEnable false로 바꾸고 값 입력시 true로 변경
 final class AuthenticationViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
 
     private lazy var phoneNumberTextField: CustomTextField = {
         let textField = CustomTextField()
@@ -73,6 +78,7 @@ final class AuthenticationViewController: UIViewController {
         view.backgroundColor = .white
         configureLayouts()
         configureCornerRadius()
+        configureInnerActionBinding()
     }
 }
 
@@ -148,6 +154,22 @@ private extension AuthenticationViewController {
         authenticCodeTextField.setCornerRound(value: textFieldRound)
         receiveCodeButton.layer.cornerRadius = buttonRound
         checkCodeButton.layer.cornerRadius = buttonRound
+    }
+
+    func configureInnerActionBinding() {
+        receiveCodeButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.tappedReceiveCodeButton()
+            }
+            .disposed(by: disposeBag)
+
+        checkCodeButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+
+            }
+            .disposed(by: disposeBag)
     }
 
     func tappedReceiveCodeButton() {
