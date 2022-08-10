@@ -23,6 +23,7 @@
 		D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */; };
 		D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8C28A108260001B2D3 /* StackView +.swift */; };
 		D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8C28A2567200CEBB80 /* UIColor +.swift */; };
+		D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSearchSignView.swift; sourceTree = "<group>"; };
 		D20D2E8C28A108260001B2D3 /* StackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView +.swift"; sourceTree = "<group>"; };
 		D2360C8C28A2567200CEBB80 /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
+		D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		B3F571AA28A24F6B0092B4D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */,
 				D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
+				D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

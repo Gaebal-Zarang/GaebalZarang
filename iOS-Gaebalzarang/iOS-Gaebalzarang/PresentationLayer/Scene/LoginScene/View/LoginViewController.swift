@@ -75,7 +75,6 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         configureLayouts()
     }
-
 }
 
 private extension LoginViewController {
