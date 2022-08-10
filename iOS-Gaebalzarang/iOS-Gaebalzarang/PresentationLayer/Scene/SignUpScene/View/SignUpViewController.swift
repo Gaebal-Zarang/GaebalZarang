@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SignUpViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
 
     private lazy var nameIDView = SignUpNameIDView(with: view.frame)
 
@@ -15,6 +19,7 @@ final class SignUpViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureLayouts()
+        configureInnerActionBinding()
     }
 }
 
@@ -33,5 +38,13 @@ private extension SignUpViewController {
             nameIDView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: nameIDTopConstant),
             nameIDView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+    }
+
+    func configureInnerActionBinding() {
+        nameIDView.setOverlapButtonAction()
+            .bind { [weak self] _ in
+                self?.nameIDView.validCheck(with: true)
+            }
+            .disposed(by: disposeBag)
     }
 }

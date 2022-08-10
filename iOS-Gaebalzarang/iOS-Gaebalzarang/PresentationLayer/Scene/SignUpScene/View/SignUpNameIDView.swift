@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SignUpNameIDView: UIView {
 
@@ -66,6 +68,10 @@ final class SignUpNameIDView: UIView {
 
     func validCheck(with isValid: Bool) {
         isValid ? configureValidText() : configureInvalidText()
+    }
+
+    func setOverlapButtonAction() -> Observable<Void> {
+        return overlapCheckButton.rx.tap.asObservable()
     }
 }
 
