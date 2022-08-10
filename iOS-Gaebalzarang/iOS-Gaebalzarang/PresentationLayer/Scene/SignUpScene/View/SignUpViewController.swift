@@ -45,7 +45,6 @@ private extension SignUpViewController {
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .gzGreen
         label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints = false
 
         navigationController?.navigationBar.topItem?.title = "회원가입"
         navigationItem.backButtonTitle = ""

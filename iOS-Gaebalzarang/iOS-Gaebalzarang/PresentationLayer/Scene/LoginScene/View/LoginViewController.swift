@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// TODO: 텍스트 필드를 가진 모든 VC에서 키보드 올라오면 뷰도 같이 올라가고, 바깥을 터치하면 키보드 해제되는 기능 구현 필요
 class LoginViewController: UIViewController {
 
     let disposeBag = DisposeBag()
