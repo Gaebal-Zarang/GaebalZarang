@@ -23,7 +23,6 @@ class InputTitleView: UIView {
         label.text = ""
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.numberOfLines = 0
-//        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -32,7 +31,6 @@ class InputTitleView: UIView {
         label.text = ""
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor(red: 0.496, green: 0.496, blue: 0.496, alpha: 1)
-//        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 

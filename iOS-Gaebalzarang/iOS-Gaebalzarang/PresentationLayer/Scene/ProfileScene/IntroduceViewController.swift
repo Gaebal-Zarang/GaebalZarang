@@ -45,12 +45,11 @@ final class IntroduceViewController: UIViewController {
         let button = CustomButton()
         let buttonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.borderWidth = 1
         button.setCornerRound(value: buttonRound)
-        button.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
-        button.setTitle("다음", for: .disabled)
-        button.setTitleColor(UIColor.placeholderText, for: .disabled)
-        button.isEnabled = false
+        button.setTitle("다음", for: .normal)
+        // TODO: false로 변경해주어야 함
+        button.isEnabled = true
+        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
         return button
     }()
 
@@ -111,7 +110,11 @@ private extension IntroduceViewController {
             nextButton.trailingAnchor.constraint(equalTo: introTextView.trailingAnchor),
             nextButton.topAnchor.constraint(greaterThanOrEqualTo: introTextView.bottomAnchor, constant: 50)
         ])
+    }
 
+    @objc
+    func touchedNextButton() {
+        self.navigationController?.pushViewController(ProfileLocationViewController(), animated: true)
     }
 }
 
