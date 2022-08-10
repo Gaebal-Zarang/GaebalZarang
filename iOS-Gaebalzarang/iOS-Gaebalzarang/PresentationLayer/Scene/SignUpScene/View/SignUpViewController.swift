@@ -16,6 +16,17 @@ final class SignUpViewController: UIViewController {
     private lazy var nameIDView = SignUpNameIDView(with: view.frame)
     private lazy var passwordView = SignUpPasswordView(with: view.frame)
 
+    private lazy var nextButton: CustomButton = {
+        let nextButtonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let button = CustomButton()
+        button.setTitle("다음", for: .normal)
+        button.setCornerRound(value: nextButtonRound)
+        button.isEnabled = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -27,7 +38,7 @@ final class SignUpViewController: UIViewController {
 private extension SignUpViewController {
 
     func configureLayouts() {
-        view.addSubviews(nameIDView, passwordView)
+        view.addSubviews(nameIDView, passwordView, nextButton)
 
         let viewWidth = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
         let viewHeight = DesignGuide.estimateYAxisLength(origin: 146, frame: view.frame)
@@ -48,6 +59,16 @@ private extension SignUpViewController {
             passwordView.topAnchor.constraint(equalTo: nameIDView.bottomAnchor, constant: passwordTopConstant),
             passwordView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+
+        let buttonHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
+        let buttonTopConstant = DesignGuide.estimateYAxisLength(origin: 179, frame: view.frame)
+
+        NSLayoutConstraint.activate([
+            nextButton.topAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: buttonTopConstant),
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.widthAnchor.constraint(equalToConstant: viewWidth),
+            nextButton.heightAnchor.constraint(equalToConstant: buttonHeight)
+        ])
     }
 
     func configureInnerActionBinding() {
@@ -56,5 +77,6 @@ private extension SignUpViewController {
                 self?.nameIDView.validCheck(with: true)
             }
             .disposed(by: disposeBag)
+
     }
 }
