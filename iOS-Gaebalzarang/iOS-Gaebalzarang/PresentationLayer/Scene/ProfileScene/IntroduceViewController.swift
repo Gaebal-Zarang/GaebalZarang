@@ -123,6 +123,7 @@ private extension IntroduceViewController {
         NSLayoutConstraint.activate([
             introTextView.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: introTopConstraint),
             introTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            introTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight),
             introTextView.widthAnchor.constraint(equalTo: nickNameTextField.widthAnchor)
 
         ])
