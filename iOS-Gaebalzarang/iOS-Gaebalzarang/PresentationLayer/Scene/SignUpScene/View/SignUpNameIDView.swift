@@ -112,7 +112,7 @@ private extension SignUpNameIDView {
 
         let labelHeight = DesignGuide.estimateYAxisLength(origin: 25, frame: viewControllerFrame)
         let labelTopConstant = DesignGuide.estimateYAxisLength(origin: 7, frame: viewControllerFrame)
-        let labelLeadingConstant = DesignGuide.estimateXAxisLength(origin: 43, frame: viewControllerFrame)
+        let labelLeadingConstant = DesignGuide.estimateXAxisLength(origin: 18, frame: viewControllerFrame)
 
         NSLayoutConstraint.activate([
             validCheckLabel.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: labelTopConstant),
