@@ -34,7 +34,6 @@ final class SignUpNameIDView: UIView {
         button.setTitle("중복 확인", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .gzGray2
-        button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -67,8 +66,12 @@ final class SignUpNameIDView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func validCheck(with isValid: Bool) {
+    func checkValid(with isValid: Bool) {
         isValid ? configureValidText() : configureInvalidText()
+    }
+
+    func resetVaildCheck() {
+        validCheckLabel.text = ""
     }
 
     func setOverlapButtonAction() -> Driver<Void> {
@@ -127,6 +130,7 @@ private extension SignUpNameIDView {
 
         nameTextField.setCornerRound(value: textFieldRound)
         idTextField.setCornerRound(value: textFieldRound)
+        overlapCheckButton.clipsToBounds = true
         overlapCheckButton.layer.cornerRadius = buttonRound
     }
 

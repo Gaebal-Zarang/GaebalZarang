@@ -31,12 +31,23 @@ final class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configureNavigationItem()
         configureLayouts()
         configureInnerActionBinding()
     }
 }
 
 private extension AuthenticationViewController {
+
+    func configureNavigationItem() {
+        let label = UILabel()
+        label.text = "회원가입"
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .gzGreen
+        label.sizeToFit()
+
+        navigationController?.navigationBar.topItem?.title = "회원가입"
+    }
 
     func configureLayouts() {
         view.addSubviews(contentView, nextButton)
@@ -73,6 +84,14 @@ private extension AuthenticationViewController {
         contentView.setCheckCodeButtonAction()
             .drive { [weak self] _ in
 
+            }
+            .disposed(by: disposeBag)
+
+        nextButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                let nextVC = CompleteViewController()
+                self?.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)
     }

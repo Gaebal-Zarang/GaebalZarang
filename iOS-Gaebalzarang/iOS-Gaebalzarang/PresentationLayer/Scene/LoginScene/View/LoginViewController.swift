@@ -58,9 +58,9 @@ class LoginViewController: UIViewController {
     private lazy var loginButton: CustomButton = {
         let loginButtonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         let button = CustomButton()
+        button.isEnabled = true
         button.setTitle("로그인", for: .normal)
         button.setCornerRound(value: loginButtonRound)
-        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button

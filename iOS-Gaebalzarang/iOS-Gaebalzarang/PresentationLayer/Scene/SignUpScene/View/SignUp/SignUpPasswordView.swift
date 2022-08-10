@@ -54,8 +54,12 @@ final class SignUpPasswordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func validCheck(with isValid: Bool) {
+    func checkValid(with isValid: Bool) {
         isValid ? configureValidText() : configureInvalidText()
+    }
+
+    func resetVaildCheck() {
+        validCheckLabel.text = ""
     }
 }
 
@@ -84,7 +88,7 @@ private extension SignUpPasswordView {
 
         let labelHeight = DesignGuide.estimateYAxisLength(origin: 25, frame: viewControllerFrame)
         let labelTopConstant = DesignGuide.estimateYAxisLength(origin: 7, frame: viewControllerFrame)
-        let labelLeadingConstant = DesignGuide.estimateXAxisLength(origin: 43, frame: viewControllerFrame)
+        let labelLeadingConstant = DesignGuide.estimateXAxisLength(origin: 18, frame: viewControllerFrame)
 
         NSLayoutConstraint.activate([
             validCheckLabel.topAnchor.constraint(equalTo: checkPasswordTextField.bottomAnchor, constant: labelTopConstant),

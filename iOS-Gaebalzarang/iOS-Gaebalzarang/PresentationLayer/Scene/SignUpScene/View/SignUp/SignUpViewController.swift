@@ -35,6 +35,12 @@ final class SignUpViewController: UIViewController {
         configureLayouts()
         configureInnerActionBinding()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        nameIDView.resetVaildCheck()
+        passwordView.resetVaildCheck()
+    }
 }
 
 private extension SignUpViewController {
@@ -87,7 +93,7 @@ private extension SignUpViewController {
     func configureInnerActionBinding() {
         nameIDView.setOverlapButtonAction()
             .drive { [weak self] _ in
-                self?.nameIDView.validCheck(with: true)
+                self?.nameIDView.checkValid(with: true)
             }
             .disposed(by: disposeBag)
 
