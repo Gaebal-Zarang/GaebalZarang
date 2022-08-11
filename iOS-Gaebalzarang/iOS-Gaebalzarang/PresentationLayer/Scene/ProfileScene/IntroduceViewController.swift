@@ -45,12 +45,11 @@ final class IntroduceViewController: UIViewController {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let button = CustomButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setCornerRound(value: buttonRound)
+        button.setCornerRound(value: btnRound)
         button.setTitle("다음", for: .normal)
         // TODO: false로 변경해주어야 함
         button.isEnabled = true
         button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
-        button.isEnabled = false
 
         return button
     }()

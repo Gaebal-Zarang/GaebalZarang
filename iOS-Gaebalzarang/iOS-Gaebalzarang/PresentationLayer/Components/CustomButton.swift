@@ -43,6 +43,7 @@ private extension CustomButton {
     func configureDisabledSetting() {
         backgroundColor = .white
         layer.borderWidth = 1
+        layer.borderColor = UIColor.gzGreen?.cgColor
         setTitleColor(.gzGreen, for: .normal)
     }
 }

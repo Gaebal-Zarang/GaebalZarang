@@ -61,11 +61,11 @@ class ProfilePositionViewController: UIViewController {
 
     private lazy var nextButton: CustomButton = {
         let button = CustomButton()
-        let cornerRadius = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let cornerRadius = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         button.setCornerRound(value: cornerRadius)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음", for: .normal)
-        button.isEnabled = true
+        button.isEnabled = false
         return button
     }()
 
@@ -78,7 +78,7 @@ class ProfilePositionViewController: UIViewController {
             .bind(to: mainCategoryCollectionView.rx
                 .items(cellIdentifier: PositionCell.reuseIdentifier, cellType: PositionCell.self)) { [weak self] _, title, cell in
                     cell.set(text: title)
-                    let radius = DesignGuide.estimateCornerRadius(origin: 50, frame: self?.view.frame ?? CGRect.zero)
+                    let radius = DesignGuide.estimateWideViewCornerRadius(frame: self?.view.frame ?? CGRect.zero)
                     cell.layer.cornerRadius = radius
                 }
                 .disposed(by: disposebag)
@@ -103,7 +103,7 @@ class ProfilePositionViewController: UIViewController {
             .bind(to: subCategoryCollectionView.rx
                 .items(cellIdentifier: PositionCell.reuseIdentifier, cellType: PositionCell.self)) { [weak self] _, title, cell in
                     cell.set(text: title)
-                    let radius = DesignGuide.estimateCornerRadius(origin: 50, frame: self?.view.frame ?? CGRect.zero)
+                    let radius = DesignGuide.estimateWideViewCornerRadius(frame: self?.view.frame ?? CGRect.zero)
                     cell.layer.cornerRadius = radius
                 }
                 .disposed(by: disposebag)

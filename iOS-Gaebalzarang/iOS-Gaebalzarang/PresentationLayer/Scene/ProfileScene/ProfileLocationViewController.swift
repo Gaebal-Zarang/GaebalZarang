@@ -17,7 +17,7 @@ class ProfileLocationViewController: UIViewController {
 
     private lazy var locationTextField: CustomTextField = {
         let textField = CustomTextField()
-        let cornerRadius = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let cornerRadius = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         textField.setCornerRound(value: cornerRadius)
         textField.placeholder = "지역검색"
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +28,7 @@ class ProfileLocationViewController: UIViewController {
 
     private lazy var nextButton: CustomButton = {
         let button = CustomButton()
-        let cornerRadius = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let cornerRadius = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         button.setCornerRound(value: cornerRadius)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음", for: .normal)
