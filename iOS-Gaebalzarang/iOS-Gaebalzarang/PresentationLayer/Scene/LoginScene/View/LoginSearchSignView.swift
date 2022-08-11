@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class LoginSearchSignView: UIView {
 
@@ -59,6 +61,10 @@ final class LoginSearchSignView: UIView {
     @available (*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setSignUpAction() -> Driver<Void> {
+        return signUPButton.rx.tap.asDriver()
     }
 }
 

@@ -9,10 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// TODO: 텍스트 필드를 가진 모든 VC에서 키보드 올라오면 뷰도 같이 올라가고, 바깥을 터치하면 키보드 해제되는 기능 구현 필요
 class LoginViewController: UIViewController {
 
+    let disposeBag = DisposeBag()
+
     private lazy var logoView: UIImageView = {
-        let imageViewRound = DesignGuide.estimateCornerRadius(origin: 140, frame: view.frame)
+        let imageViewRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true
@@ -23,9 +26,9 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var idTextField: CustomTextField = {
-        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let textRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let textField = CustomTextField()
-        textField.setCornerRound(value: textFieldRound)
+        textField.setCornerRound(value: textRound)
         textField.placeholder = "ID"
         textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -33,9 +36,9 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var pswTextField: CustomTextField = {
-        let pswFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let textRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let pswField = CustomTextField()
-        pswField.setCornerRound(value: pswFieldRound)
+        pswField.setCornerRound(value: textRound)
         pswField.placeholder = "PW"
         pswField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -53,11 +56,11 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var loginButton: CustomButton = {
-        let loginButtonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let button = CustomButton()
+        button.isEnabled = true
         button.setTitle("로그인", for: .normal)
-        button.setCornerRound(value: loginButtonRound)
-        button.isEnabled = false
+        button.setCornerRound(value: btnRound)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -74,8 +77,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureLayouts()
+        configureInnerActionBinding()
     }
-
 }
 
 private extension LoginViewController {
@@ -136,13 +139,24 @@ private extension LoginViewController {
             searchSignView.heightAnchor.constraint(equalToConstant: searchSignHeight)
         ])
 
-        let loginBtnTopConstant = DesignGuide.estimateYAxisLength(origin: 148, frame: view.frame)
+        let buttonBottomConstant = DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame)
 
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: searchSignView.bottomAnchor, constant: loginBtnTopConstant),
+            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(buttonBottomConstant)),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.widthAnchor.constraint(equalToConstant: idTextWidth),
             loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
+    }
+
+    func configureInnerActionBinding() {
+        searchSignView.setSignUpAction()
+            .drive { [weak self] _ in
+                let nextVC = SignUpViewController()
+                let naviVC = UINavigationController(rootViewController: nextVC)
+                naviVC.modalPresentationStyle = .overFullScreen
+                self?.present(naviVC, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }

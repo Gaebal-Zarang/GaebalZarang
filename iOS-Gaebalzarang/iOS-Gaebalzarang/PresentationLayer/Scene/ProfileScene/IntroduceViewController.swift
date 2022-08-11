@@ -28,20 +28,20 @@ final class IntroduceViewController: UIViewController {
     }()
 
     private lazy var nickNameTextField: CustomTextField = {
+        let textRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let textField = CustomTextField()
-        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
-        textField.setCornerRound(value: textFieldRound)
+        textField.setCornerRound(value: textRound)
         textField.placeholder = "별명설정"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private lazy var introTextView: UITextView = {
+        let textRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let textView = UITextView()
-        let textViewRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.clipsToBounds = true
-        textView.layer.cornerRadius = textViewRound
+        textView.layer.cornerRadius = textRound
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
         textView.textColor = UIColor.placeholderText
@@ -54,11 +54,11 @@ final class IntroduceViewController: UIViewController {
     }()
 
     private lazy var nextButton: CustomButton = {
+        let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let button = CustomButton()
-        let buttonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
-        button.setCornerRound(value: buttonRound)
+        button.setCornerRound(value: btnRound)
         button.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
         button.setTitle("다음", for: .disabled)
         button.setTitleColor(UIColor.placeholderText, for: .disabled)
