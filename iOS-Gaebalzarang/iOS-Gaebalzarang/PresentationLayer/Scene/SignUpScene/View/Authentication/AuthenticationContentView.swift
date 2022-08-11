@@ -131,13 +131,12 @@ private extension AuthenticationContentView {
     }
 
     func configureCornerRadius() {
-        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: viewControllerFrame)
-        let buttonRound = DesignGuide.estimateCornerRadius(origin: 26, frame: viewControllerFrame)
+        let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: viewControllerFrame)
 
-        phoneNumberTextField.setCornerRound(value: textFieldRound)
-        authenticCodeTextField.setCornerRound(value: textFieldRound)
-        receiveCodeButton.layer.cornerRadius = buttonRound
-        checkCodeButton.layer.cornerRadius = buttonRound
+        phoneNumberTextField.setCornerRound(value: viewRound)
+        authenticCodeTextField.setCornerRound(value: viewRound)
+        receiveCodeButton.layer.cornerRadius = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
+        checkCodeButton.layer.cornerRadius = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
     }
 
     func configureExtraLayout() {

@@ -24,6 +24,7 @@ final class CompleteViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "가입되셨습니다."
+        label.textAlignment = .center
         label.textColor = .black
         label.numberOfLines = 1
         label.sizeToFit()
@@ -35,6 +36,7 @@ final class CompleteViewController: UIViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "가입해주셔서 감사합니다.\n로그인 후 서비스를 이용 해주시면 됩니다."
+        label.textAlignment = .center
         label.textColor = .gzChacoal
         label.numberOfLines = 2
         label.sizeToFit()
@@ -44,11 +46,11 @@ final class CompleteViewController: UIViewController {
     }()
 
     private lazy var confirmButton: CustomButton = {
-        let nextButtonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let button = CustomButton()
         button.isEnabled = true
         button.setTitle("확인", for: .normal)
-        button.setCornerRound(value: nextButtonRound)
+        button.setCornerRound(value: btnRound)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -57,6 +59,7 @@ final class CompleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden =  true
         configureNavigationItem()
         configureLayouts()
         configureInnerActionBinding()
@@ -100,12 +103,12 @@ private extension CompleteViewController {
             descriptionLabel.heightAnchor.constraint(equalToConstant: descriptionLabelHeight)
         ])
 
-        let buttonTopConstant = DesignGuide.estimateYAxisLength(origin: 161, frame: view.frame)
+        let buttonBottomConstant = DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame)
         let buttonWidth = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
         let buttonHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
 
         NSLayoutConstraint.activate([
-            confirmButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: buttonTopConstant),
+            confirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(buttonBottomConstant)),
             confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             confirmButton.widthAnchor.constraint(equalToConstant: buttonWidth),
             confirmButton.heightAnchor.constraint(equalToConstant: buttonHeight)

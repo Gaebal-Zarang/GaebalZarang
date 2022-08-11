@@ -98,10 +98,10 @@ private extension SignUpPasswordView {
     }
 
     func configureCornerRadius() {
-        let textFieldRound = DesignGuide.estimateCornerRadius(origin: 50, frame: viewControllerFrame)
+        let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: viewControllerFrame)
 
-        passwordTextField.setCornerRound(value: textFieldRound)
-        checkPasswordTextField.setCornerRound(value: textFieldRound)
+        passwordTextField.setCornerRound(value: viewRound)
+        checkPasswordTextField.setCornerRound(value: viewRound)
     }
 
     func configureValidText() {

@@ -17,10 +17,10 @@ final class SignUpViewController: UIViewController {
     private lazy var passwordView = SignUpPasswordView(with: view.frame)
 
     private lazy var nextButton: CustomButton = {
-        let nextButtonRound = DesignGuide.estimateCornerRadius(origin: 50, frame: view.frame)
+        let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let button = CustomButton()
         button.setTitle("다음", for: .normal)
-        button.setCornerRound(value: nextButtonRound)
+        button.setCornerRound(value: btnRound)
         // TODO: 유효성 검사 구현 시, isEnabled false로 변경
         button.isEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +52,7 @@ private extension SignUpViewController {
         label.textColor = .gzGreen
         label.sizeToFit()
 
-        navigationController?.navigationBar.topItem?.title = "회원가입"
+        navigationItem.titleView = label
         navigationItem.backButtonTitle = ""
     }
 
@@ -80,10 +80,10 @@ private extension SignUpViewController {
         ])
 
         let buttonHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
-        let buttonTopConstant = DesignGuide.estimateYAxisLength(origin: 179, frame: view.frame)
+        let buttonBottomConstant = DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame)
 
         NSLayoutConstraint.activate([
-            nextButton.topAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: buttonTopConstant),
+            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(buttonBottomConstant)),
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.widthAnchor.constraint(equalToConstant: viewWidth),
             nextButton.heightAnchor.constraint(equalToConstant: buttonHeight)
