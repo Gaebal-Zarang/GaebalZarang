@@ -9,22 +9,10 @@ import UIKit
 
 final class IntroduceViewController: UIViewController {
 
-    private var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "안녕하세요:)\n간단한 자기소개 부탁드려요."
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private var optionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "*필수"
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = UIColor(red: 0.496, green: 0.496, blue: 0.496, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private var inputTitleView: InputTitleView = {
+        let view = InputTitleView(text: "안녕하세요:) \n간단한 자기소개 부탁드려요", isRequire: true)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private lazy var nickNameTextField: CustomTextField = {
@@ -48,7 +36,7 @@ final class IntroduceViewController: UIViewController {
         textView.text = "간단한 자기소개"
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.sizeToFit()
-        textView.textContainerInset = .init(top: 20, left: 20, bottom: 20, right: 25)
+        textView.textContainerInset = .init(top: 15, left: 20, bottom: 15, right: 25)
         textView.isScrollEnabled = false
         return textView
     }()
@@ -57,12 +45,13 @@ final class IntroduceViewController: UIViewController {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let button = CustomButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.borderWidth = 1
-        button.setCornerRound(value: btnRound)
-        button.layer.borderColor = UIColor(red: 0.851, green: 0.851, blue: 0.851, alpha: 1).cgColor
-        button.setTitle("다음", for: .disabled)
-        button.setTitleColor(UIColor.placeholderText, for: .disabled)
+        button.setCornerRound(value: buttonRound)
+        button.setTitle("다음", for: .normal)
+        // TODO: false로 변경해주어야 함
+        button.isEnabled = true
+        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
         button.isEnabled = false
+
         return button
     }()
 
@@ -71,73 +60,63 @@ final class IntroduceViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         introTextView.delegate = self
-        addsubViews()
         configureLayout()
     }
 }
 
 private extension IntroduceViewController {
-    func addsubViews() {
-        view.addSubview(titleLabel)
-        view.addSubview(optionLabel)
-        view.addSubview(nickNameTextField)
-        view.addSubview(introTextView)
-        view.addSubview(nextButton)
-    }
 
     func configureLayout() {
 
+        self.view.addSubviews(inputTitleView, nickNameTextField, introTextView, nextButton)
         let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
 
-        let titleTopConstraint = DesignGuide.estimateYAxisLength(origin: 17, frame: view.frame)
-        let titleWidthConstraint = DesignGuide.estimateXAxisLength(origin: 267, frame: view.frame)
-        let titleHeightConstraint = DesignGuide.estimateYAxisLength(origin: 64, frame: view.frame)
+        // MARK: inputTitleView Constraints
+        let inputTitleTopConstraint = DesignGuide.estimateYAxisLength(origin: 17, frame: view.frame)
+        let inputTitleLeadingConstraint = DesignGuide.estimateXAxisLength(origin: 35, frame: view.frame)
 
         NSLayoutConstraint.activate([
-
-            titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: titleTopConstraint),
-            titleLabel.widthAnchor.constraint(equalToConstant: titleWidthConstraint),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: titleHeightConstraint)
+            inputTitleView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: inputTitleTopConstraint),
+            inputTitleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: inputTitleLeadingConstraint)
         ])
 
-        let optionTopConstraint = DesignGuide.estimateYAxisLength(origin: 5, frame: view.frame)
-
-        NSLayoutConstraint.activate([
-            optionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: optionTopConstraint),
-            optionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor)
-        ])
-
+        // MARK: nickNameTextField Constraints
         let nickNameTopConstraint = DesignGuide.estimateYAxisLength(origin: 30, frame: view.frame)
-        let nickNameWidthConstraint = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
+        let nickNameleadingConstraint = DesignGuide.estimateXAxisLength(origin: 25, frame: view.frame)
 
         NSLayoutConstraint.activate([
-            nickNameTextField.topAnchor.constraint(equalTo: optionLabel.bottomAnchor, constant: nickNameTopConstraint),
-            nickNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nickNameTextField.topAnchor.constraint(equalTo: inputTitleView.bottomAnchor, constant: nickNameTopConstraint),
             nickNameTextField.heightAnchor.constraint(equalToConstant: defaultHeight),
-            nickNameTextField.widthAnchor.constraint(equalToConstant: nickNameWidthConstraint)
+            nickNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: nickNameleadingConstraint),
+            nickNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -nickNameleadingConstraint)
         ])
 
+        // MARK: introTextView Constraints
         let introTopConstraint = DesignGuide.estimateYAxisLength(origin: 14, frame: view.frame)
 
         NSLayoutConstraint.activate([
             introTextView.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: introTopConstraint),
-            introTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            introTextView.widthAnchor.constraint(equalTo: nickNameTextField.widthAnchor)
+            introTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight),
+            introTextView.leadingAnchor.constraint(equalTo: nickNameTextField.leadingAnchor),
+            introTextView.trailingAnchor.constraint(equalTo: nickNameTextField.trailingAnchor)
 
         ])
 
+        // MARK: nextButton Constraints
         let nextBtnBottomConstraint = -(DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame))
 
         NSLayoutConstraint.activate([
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: nextBtnBottomConstraint),
-            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nextButton.widthAnchor.constraint(equalTo: introTextView.widthAnchor),
             nextButton.heightAnchor.constraint(equalTo: nickNameTextField.heightAnchor),
-
+            nextButton.leadingAnchor.constraint(equalTo: introTextView.leadingAnchor),
+            nextButton.trailingAnchor.constraint(equalTo: introTextView.trailingAnchor),
             nextButton.topAnchor.constraint(greaterThanOrEqualTo: introTextView.bottomAnchor, constant: 50)
         ])
+    }
 
+    @objc
+    func touchedNextButton() {
+        self.navigationController?.pushViewController(ProfileLocationViewController(), animated: true)
     }
 }
 
