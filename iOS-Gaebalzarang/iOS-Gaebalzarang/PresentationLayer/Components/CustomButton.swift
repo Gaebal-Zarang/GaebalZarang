@@ -18,7 +18,7 @@ final class CustomButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        configureBasicSetting()
+        isEnabled = false
     }
 
     @available (*, unavailable)
@@ -33,12 +33,6 @@ final class CustomButton: UIButton {
 }
 
 private extension CustomButton {
-
-    func configureBasicSetting() {
-        titleLabel?.textAlignment = .center
-        titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        layer.borderColor = UIColor.gzGreen?.cgColor
-    }
 
     func configureEnabledSetting() {
         backgroundColor = .gzGreen
