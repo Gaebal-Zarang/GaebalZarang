@@ -9,6 +9,12 @@ import UIKit
 
 class PositionCell: UICollectionViewCell {
 
+    override var isSelected: Bool {
+            didSet {
+                isSelected ? configureEnabledSetting() : configureDisabledSetting()
+            }
+    }
+
     static let reuseIdentifier = "PositionCell"
 
     private var label: UILabel = {
@@ -16,7 +22,6 @@ class PositionCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.gzGray2
         label.font = UIFont.systemFont(ofSize: 14)
-        label.backgroundColor = .clear
         label.textAlignment = .center
         return label
     }()
@@ -24,9 +29,10 @@ class PositionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureLayout()
+        self.prepareForReuse()
         self.clipsToBounds = true
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.gzGray1?.cgColor
+        self.layer.borderColor = UIColor.gzGreen?.cgColor
     }
 
     @available (*, unavailable)
@@ -49,5 +55,17 @@ private extension PositionCell {
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
 
+    }
+
+    func configureEnabledSetting() {
+        backgroundColor = .gzGreen
+        layer.borderWidth = 0
+        self.label.textColor = .white
+    }
+
+    func configureDisabledSetting() {
+        backgroundColor = .white
+        layer.borderWidth = 1
+        self.label.textColor = UIColor.gzGreen
     }
 }
