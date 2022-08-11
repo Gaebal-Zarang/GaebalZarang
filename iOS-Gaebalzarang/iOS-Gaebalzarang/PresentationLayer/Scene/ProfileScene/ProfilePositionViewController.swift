@@ -39,6 +39,14 @@ class ProfilePositionViewController: UIViewController {
         return collectionView
     }()
 
+    private var dividingLineView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.gzGray1
+        view.isHidden = true
+        return view
+    }()
+
     private var subCategoryCollectionView: UICollectionView = {
         let flowLayout = LeftAlignedCollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -79,6 +87,7 @@ class ProfilePositionViewController: UIViewController {
         mainCategoryCollectionView.rx.modelSelected(String.self)
             .bind { [weak self] title in
                 self?.subCategoryCollectionView.isHidden = false
+                self?.dividingLineView.isHidden = false
                 guard let data = self?.sampleDict[title] else { return }
                 self?.subPositionObservable.onNext(data)
                 self?.isSelectMainPosition = true
@@ -110,7 +119,7 @@ class ProfilePositionViewController: UIViewController {
 private extension ProfilePositionViewController {
 
     func configureLayout() {
-        view.addSubviews(inputTitleView, mainCategoryCollectionView, subCategoryCollectionView, nextButton)
+        view.addSubviews(inputTitleView, mainCategoryCollectionView, dividingLineView, subCategoryCollectionView, nextButton)
 
         let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
 
@@ -134,6 +143,15 @@ private extension ProfilePositionViewController {
             mainCategoryCollectionView.heightAnchor.constraint(equalToConstant: defaultHeight)
         ])
 
+        let divideViewTopConstaint = DesignGuide.estimateYAxisLength(origin: 22, frame: view.frame)
+
+        NSLayoutConstraint.activate([
+            dividingLineView.topAnchor.constraint(equalTo: mainCategoryCollectionView.bottomAnchor, constant: divideViewTopConstaint),
+            dividingLineView.leadingAnchor.constraint(equalTo: mainCategoryCollectionView.leadingAnchor),
+            dividingLineView.trailingAnchor.constraint(equalTo: mainCategoryCollectionView.trailingAnchor),
+            dividingLineView.heightAnchor.constraint(equalToConstant: 1)
+        ])
+
         // MARK: nextButton Constraints
         let nextBtnBottomConstraint = -(DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame))
 
@@ -145,10 +163,10 @@ private extension ProfilePositionViewController {
         ])
 
         // MARK: subCategory CollectionView Constraints
-        let subCategoryTopConstraint = DesignGuide.estimateYAxisLength(origin: 45, frame: view.frame)
+        let subCategoryTopConstraint = DesignGuide.estimateYAxisLength(origin: 22, frame: view.frame)
 
         NSLayoutConstraint.activate([
-            subCategoryCollectionView.topAnchor.constraint(equalTo: mainCategoryCollectionView.bottomAnchor, constant: subCategoryTopConstraint),
+            subCategoryCollectionView.topAnchor.constraint(equalTo: dividingLineView.bottomAnchor, constant: subCategoryTopConstraint),
             subCategoryCollectionView.leadingAnchor.constraint(equalTo: mainCategoryCollectionView.leadingAnchor),
             subCategoryCollectionView.trailingAnchor.constraint(equalTo: mainCategoryCollectionView.trailingAnchor),
             subCategoryCollectionView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -10)
