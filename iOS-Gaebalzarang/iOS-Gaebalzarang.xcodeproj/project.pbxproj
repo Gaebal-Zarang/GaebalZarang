@@ -12,6 +12,8 @@
 		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
 		B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */; };
 		B3CE848428A355A400F57038 /* InputTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848328A355A400F57038 /* InputTitleView.swift */; };
+		B3CE848628A394D500F57038 /* ProfilePositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848528A394D500F57038 /* ProfilePositionViewController.swift */; };
+		B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848928A3A02F00F57038 /* PositionCell.swift */; };
 		D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */; };
 		D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */; };
 		D20D2E6C28A027DD0001B2D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20D2E6B28A027DD0001B2D3 /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
 		B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocationViewController.swift; sourceTree = "<group>"; };
 		B3CE848328A355A400F57038 /* InputTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTitleView.swift; sourceTree = "<group>"; };
+		B3CE848528A394D500F57038 /* ProfilePositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePositionViewController.swift; sourceTree = "<group>"; };
+		B3CE848928A3A02F00F57038 /* PositionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCell.swift; sourceTree = "<group>"; };
 		D20D2E5F28A027DC0001B2D3 /* iOS-Gaebalzarang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Gaebalzarang.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20D2E6428A027DD0001B2D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 			children = (
 				B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */,
 				B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */,
+				B3CE848528A394D500F57038 /* ProfilePositionViewController.swift */,
+				B3CE848928A3A02F00F57038 /* PositionCell.swift */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -331,11 +337,13 @@
 			files = (
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
+				B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */,
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
 				D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */,
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E8928A0FF3C0001B2D3 /* CustomButton.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
+				B3CE848628A394D500F57038 /* ProfilePositionViewController.swift in Sources */,
 				B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */,
 				D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */,
 				B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */,

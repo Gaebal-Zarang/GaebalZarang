@@ -10,7 +10,7 @@ import UIKit
 struct DesignGuide {
 
     static let sampleDeviceWidth: CGFloat = 375
-    static let sampleDeviceHeight: CGFloat = 667
+    static let sampleDeviceHeight: CGFloat = 623
 
     static func estimateXAxisLength(origin: CGFloat, frame: CGRect) -> CGFloat {
         return (origin / sampleDeviceWidth) * frame.width

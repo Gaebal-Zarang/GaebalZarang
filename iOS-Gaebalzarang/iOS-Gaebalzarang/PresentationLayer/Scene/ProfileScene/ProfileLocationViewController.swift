@@ -33,6 +33,7 @@ class ProfileLocationViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음", for: .normal)
         button.isEnabled = true
+        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
         return button
     }()
 
@@ -79,5 +80,10 @@ private extension ProfileLocationViewController {
             nextButton.leadingAnchor.constraint(equalTo: locationTextField.leadingAnchor),
             nextButton.trailingAnchor.constraint(equalTo: locationTextField.trailingAnchor)
         ])
+    }
+
+    @objc
+    func touchedNextButton() {
+        self.navigationController?.pushViewController(ProfilePositionViewController(), animated: true)
     }
 }
