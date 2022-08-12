@@ -77,12 +77,7 @@ private extension AuthenticationViewController {
         contentView.setReceiveCodeButtonAction()
             .drive { [weak self] _ in
                 self?.contentView.tappedReceiveCodeButton()
-            }
-            .disposed(by: disposeBag)
-
-        contentView.setCheckCodeButtonAction()
-            .drive { [weak self] _ in
-
+                self?.contentView.setCodeValidCheckToTrue()
             }
             .disposed(by: disposeBag)
 
