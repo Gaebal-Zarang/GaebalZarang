@@ -47,8 +47,7 @@ final class CompleteViewController: UIViewController {
 
     private lazy var confirmButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomWideButton()
-        button.isEnabled = true
+        let button = CustomWideButton(isEnabled: true)
         button.setTitle("확인", for: .normal)
         button.setCornerRound(value: btnRound)
         button.translatesAutoresizingMaskIntoConstraints = false

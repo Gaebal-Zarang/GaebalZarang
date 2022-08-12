@@ -18,11 +18,10 @@ final class SignUpViewController: UIViewController {
 
     private lazy var nextButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomWideButton()
+        let button = CustomWideButton(isEnabled: true)
         button.setTitle("다음", for: .normal)
         button.setCornerRound(value: btnRound)
         // TODO: 유효성 검사 구현 시, isEnabled false로 변경
-        button.isEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
