@@ -18,7 +18,11 @@ final class CustomWideButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        isEnabled = false
+    }
+
+    convenience init(isEnabled: Bool) {
+        self.init()
+        self.isEnabled = isEnabled
     }
 
     @available (*, unavailable)

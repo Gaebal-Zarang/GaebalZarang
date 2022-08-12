@@ -15,20 +15,15 @@ class LoginViewController: UIViewController {
     let disposeBag = DisposeBag()
 
     private lazy var logoView: UIImageView = {
-        let imageViewRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = imageViewRound
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         return imageView
     }()
 
     private lazy var idTextField: CustomTextField = {
-        let textRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let textField = CustomTextField()
-        textField.setCornerRound(value: textRound)
         textField.placeholder = "ID"
         textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -36,9 +31,7 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var pswTextField: CustomTextField = {
-        let textRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         let pswField = CustomTextField()
-        pswField.setCornerRound(value: textRound)
         pswField.placeholder = "PW"
         pswField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -56,11 +49,8 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var loginButton: CustomWideButton = {
-        let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomWideButton()
-        button.isEnabled = true
+        let button = CustomWideButton(isEnabled: true)
         button.setTitle("로그인", for: .normal)
-        button.setCornerRound(value: btnRound)
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -77,6 +67,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureLayouts()
+        configureCornerRound()
         configureInnerActionBinding()
     }
 }
@@ -147,6 +138,16 @@ private extension LoginViewController {
             loginButton.widthAnchor.constraint(equalToConstant: idTextWidth),
             loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: defaultHeight)
         ])
+    }
+
+    func configureCornerRound() {
+        let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
+
+        logoView.clipsToBounds = true
+        logoView.layer.cornerRadius = viewRound
+        idTextField.setCornerRound(value: viewRound)
+        pswTextField.setCornerRound(value: viewRound)
+        loginButton.setCornerRound(value: viewRound)
     }
 
     func configureInnerActionBinding() {
