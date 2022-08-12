@@ -21,12 +21,9 @@ final class AuthenticationContentView: UIView {
         return textField
     }()
 
-    private lazy var receiveCodeButton: UIButton = {
-        let button = UIButton()
+    private lazy var receiveCodeButton: CustomNarrowButton = {
+        let button = CustomNarrowButton(isEnabled: true)
         button.setTitle("인증 번호", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .gzGray2
-        button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -132,10 +129,11 @@ private extension AuthenticationContentView {
 
     func configureCornerRadius() {
         let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: viewControllerFrame)
+        let btnRound = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
 
         phoneNumberTextField.setCornerRound(value: viewRound)
         authenticCodeTextField.setCornerRound(value: viewRound)
-        receiveCodeButton.layer.cornerRadius = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
+        receiveCodeButton.setCornerRound(value: btnRound)
         checkCodeButton.layer.cornerRadius = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
     }
 

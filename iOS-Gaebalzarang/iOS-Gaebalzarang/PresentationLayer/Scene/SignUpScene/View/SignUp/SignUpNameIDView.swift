@@ -29,11 +29,9 @@ final class SignUpNameIDView: UIView {
         return textField
     }()
 
-    private lazy var overlapCheckButton: UIButton = {
-        let button = UIButton()
+    private lazy var overlapCheckButton: CustomNarrowButton = {
+        let button = CustomNarrowButton(isEnabled: true)
         button.setTitle("중복 확인", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .gzGray2
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -126,11 +124,11 @@ private extension SignUpNameIDView {
 
     func configureCornerRadius() {
         let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: viewControllerFrame)
+        let btnRound = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
 
         nameTextField.setCornerRound(value: viewRound)
         idTextField.setCornerRound(value: viewRound)
-        overlapCheckButton.clipsToBounds = true
-        overlapCheckButton.layer.cornerRadius = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
+        overlapCheckButton.setCornerRound(value: btnRound)
     }
 
     func configureValidText() {

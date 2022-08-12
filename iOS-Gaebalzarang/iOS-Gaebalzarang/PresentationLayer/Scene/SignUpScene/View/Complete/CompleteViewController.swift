@@ -45,9 +45,9 @@ final class CompleteViewController: UIViewController {
         return label
     }()
 
-    private lazy var confirmButton: CustomButton = {
+    private lazy var confirmButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomButton()
+        let button = CustomWideButton()
         button.isEnabled = true
         button.setTitle("확인", for: .normal)
         button.setCornerRound(value: btnRound)

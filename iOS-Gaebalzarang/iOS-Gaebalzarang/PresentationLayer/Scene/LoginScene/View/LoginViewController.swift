@@ -55,9 +55,9 @@ class LoginViewController: UIViewController {
         return button
     }()
 
-    private lazy var loginButton: CustomButton = {
+    private lazy var loginButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomButton()
+        let button = CustomWideButton()
         button.isEnabled = true
         button.setTitle("로그인", for: .normal)
         button.setCornerRound(value: btnRound)

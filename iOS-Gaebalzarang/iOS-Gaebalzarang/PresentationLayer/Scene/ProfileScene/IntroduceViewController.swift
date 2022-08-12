@@ -41,9 +41,9 @@ final class IntroduceViewController: UIViewController {
         return textView
     }()
 
-    private lazy var nextButton: CustomButton = {
+    private lazy var nextButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomButton()
+        let button = CustomWideButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setCornerRound(value: btnRound)
         button.setTitle("다음", for: .normal)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomButton: UIButton {
+final class CustomWideButton: UIButton {
 
     override var isEnabled: Bool {
         willSet(newVal) {
@@ -32,7 +32,7 @@ final class CustomButton: UIButton {
     }
 }
 
-private extension CustomButton {
+private extension CustomWideButton {
 
     func configureEnabledSetting() {
         backgroundColor = .gzGreen

@@ -16,9 +16,9 @@ final class SignUpViewController: UIViewController {
     private lazy var nameIDView = SignUpNameIDView(with: view.frame)
     private lazy var passwordView = SignUpPasswordView(with: view.frame)
 
-    private lazy var nextButton: CustomButton = {
+    private lazy var nextButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomButton()
+        let button = CustomWideButton()
         button.setTitle("다음", for: .normal)
         button.setCornerRound(value: btnRound)
         // TODO: 유효성 검사 구현 시, isEnabled false로 변경
