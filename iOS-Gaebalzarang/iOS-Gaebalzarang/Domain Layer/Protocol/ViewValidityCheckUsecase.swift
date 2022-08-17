@@ -9,5 +9,5 @@ import Foundation
 
 protocol ViewValidityCheckUsecase {
     
-    func execute(with text: String) -> Bool
+    func execute(with text: String, about section: ValidationSectionCase) -> ValidationCheckCase?
 }

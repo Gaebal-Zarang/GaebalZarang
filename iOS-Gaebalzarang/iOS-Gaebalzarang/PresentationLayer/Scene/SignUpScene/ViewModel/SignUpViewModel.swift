@@ -10,5 +10,15 @@ import RxSwift
 
 final class SignUpViewModel {
     
+    struct Input {
+        
+    }
     
+    struct Output {
+        
+    }
+    
+    func enquireValidationCheck(with text: String) {
+        
+    }
 }

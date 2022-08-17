@@ -32,6 +32,8 @@
 		D298818828ACCCF200F53FBF /* ViewIdValidityCheckUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818728ACCCF200F53FBF /* ViewIdValidityCheckUsecase.swift */; };
 		D298818E28ACD2AA00F53FBF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */; };
 		D298819028ACD35900F53FBF /* ViewValidityCheckUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818F28ACD35900F53FBF /* ViewValidityCheckUsecase.swift */; };
+		D298819328ACD53100F53FBF /* ValidationCheckCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819228ACD53100F53FBF /* ValidationCheckCase.swift */; };
+		D298819528ACD54F00F53FBF /* ValidationSectionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819428ACD54F00F53FBF /* ValidationSectionCase.swift */; };
 		D2BDB97028A377BE00754B5A /* SignUpPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB96F28A377BE00754B5A /* SignUpPasswordView.swift */; };
 		D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */; };
 		D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */; };
@@ -70,6 +72,8 @@
 		D298818728ACCCF200F53FBF /* ViewIdValidityCheckUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewIdValidityCheckUsecase.swift; sourceTree = "<group>"; };
 		D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D298818F28ACD35900F53FBF /* ViewValidityCheckUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValidityCheckUsecase.swift; sourceTree = "<group>"; };
+		D298819228ACD53100F53FBF /* ValidationCheckCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationCheckCase.swift; sourceTree = "<group>"; };
+		D298819428ACD54F00F53FBF /* ValidationSectionCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationSectionCase.swift; sourceTree = "<group>"; };
 		D2BDB96F28A377BE00754B5A /* SignUpPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordView.swift; sourceTree = "<group>"; };
 		D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationContentView.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 		D20D2E6128A027DC0001B2D3 /* iOS-Gaebalzarang */ = {
 			isa = PBXGroup;
 			children = (
+				D298819128ACD50F00F53FBF /* Discriminator */,
 				B3F571AC28A24F940092B4D0 /* PresentationLayer */,
 				D298818428ACCBA500F53FBF /* Domain Layer */,
 				D20D2E6228A027DD0001B2D3 /* AppDelegate.swift */,
@@ -262,6 +267,15 @@
 				D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D298819128ACD50F00F53FBF /* Discriminator */ = {
+			isa = PBXGroup;
+			children = (
+				D298819428ACD54F00F53FBF /* ValidationSectionCase.swift */,
+				D298819228ACD53100F53FBF /* ValidationCheckCase.swift */,
+			);
+			path = Discriminator;
 			sourceTree = "<group>";
 		};
 		D2BDB97528A3A67800754B5A /* SignUp */ = {
@@ -445,12 +459,14 @@
 				B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */,
 				D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
+				D298819328ACD53100F53FBF /* ValidationCheckCase.swift in Sources */,
 				B3CE848428A355A400F57038 /* InputTitleView.swift in Sources */,
 				D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */,
 				D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */,
 				D2BDB97028A377BE00754B5A /* SignUpPasswordView.swift in Sources */,
 				D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
+				D298819528ACD54F00F53FBF /* ValidationSectionCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
