@@ -16,13 +16,12 @@ final class AuthenticationViewController: UIViewController {
 
     private lazy var contentView = AuthenticationContentView(with: view.frame)
 
-    private lazy var nextButton: CustomButton = {
+    private lazy var nextButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomButton()
+        let button = CustomWideButton(isEnabled: true)
         button.setTitle("다음", for: .normal)
         button.setCornerRound(value: btnRound)
         // TODO: 유효성 검사 구현 시, isEnabled false로 변경
-        button.isEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -78,12 +77,7 @@ private extension AuthenticationViewController {
         contentView.setReceiveCodeButtonAction()
             .drive { [weak self] _ in
                 self?.contentView.tappedReceiveCodeButton()
-            }
-            .disposed(by: disposeBag)
-
-        contentView.setCheckCodeButtonAction()
-            .drive { [weak self] _ in
-
+                self?.contentView.setCodeValidCheckToTrue()
             }
             .disposed(by: disposeBag)
 

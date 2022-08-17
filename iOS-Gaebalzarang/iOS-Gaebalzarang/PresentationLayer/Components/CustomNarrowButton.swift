@@ -1,13 +1,13 @@
 //
-//  CustomButton.swift
+//  CustomNarrowButton.swift
 //  iOS-Gaebalzarang
 //
-//  Created by juntaek.oh on 2022/08/08.
+//  Created by juntaek.oh on 2022/08/12.
 //
 
 import UIKit
 
-final class CustomButton: UIButton {
+final class CustomNarrowButton: UIButton {
 
     override var isEnabled: Bool {
         willSet(newVal) {
@@ -17,8 +17,13 @@ final class CustomButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        setTitleColor(.white, for: .normal)
         isEnabled = false
+    }
+
+    convenience init(isEnabled: Bool) {
+        self.init()
+        self.isEnabled = isEnabled
     }
 
     @available (*, unavailable)
@@ -32,18 +37,13 @@ final class CustomButton: UIButton {
     }
 }
 
-private extension CustomButton {
+private extension CustomNarrowButton {
 
     func configureEnabledSetting() {
         backgroundColor = .gzGreen
-        layer.borderWidth = 0
-        setTitleColor(.white, for: .normal)
     }
 
     func configureDisabledSetting() {
-        backgroundColor = .white
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.gzGreen?.cgColor
-        setTitleColor(.gzGreen, for: .normal)
+        backgroundColor = .gzGray2
     }
 }

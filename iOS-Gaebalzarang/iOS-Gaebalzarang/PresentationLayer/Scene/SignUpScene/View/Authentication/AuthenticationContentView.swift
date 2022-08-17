@@ -12,6 +12,14 @@ import RxCocoa
 final class AuthenticationContentView: UIView {
 
     private var viewControllerFrame: CGRect = CGRect()
+    private var isCodeMatched: Bool = false {
+        willSet(newValue) {
+            if newValue {
+                let image = UIImage(systemName: "checkmark")?.withRenderingMode(.alwaysTemplate)
+                self.checkCodeImageView.image = image
+            }
+        }
+    }
 
     private lazy var phoneNumberTextField: CustomTextField = {
         let textField = CustomTextField()
@@ -21,12 +29,9 @@ final class AuthenticationContentView: UIView {
         return textField
     }()
 
-    private lazy var receiveCodeButton: UIButton = {
-        let button = UIButton()
+    private lazy var receiveCodeButton: CustomNarrowButton = {
+        let button = CustomNarrowButton(isEnabled: true)
         button.setTitle("인증 번호", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .gzGray2
-        button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
@@ -49,15 +54,13 @@ final class AuthenticationContentView: UIView {
         return textField
     }()
 
-    private lazy var checkCodeButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("인증 확인", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .gzGray2
-        button.clipsToBounds = true
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var checkCodeImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.tintColor = .gzGreen
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
 
-        return button
+        return imageView
     }()
 
     override init(frame: CGRect) {
@@ -82,14 +85,14 @@ final class AuthenticationContentView: UIView {
         return receiveCodeButton.rx.tap.asDriver()
     }
 
-    func setCheckCodeButtonAction() -> Driver<Void> {
-        return checkCodeButton.rx.tap.asDriver()
-    }
-
     func tappedReceiveCodeButton() {
         confirmMessageLabel.text = "인증번호가 발송됐습니다. (유효시간 1분)"
         confirmMessageLabel.textColor = .gzChacoal
-        configureExtraLayout()
+        configureExtraViewLayout()
+    }
+
+    func setCodeValidCheckToTrue() {
+        isCodeMatched = true
     }
 }
 
@@ -132,15 +135,15 @@ private extension AuthenticationContentView {
 
     func configureCornerRadius() {
         let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: viewControllerFrame)
+        let btnRound = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
 
         phoneNumberTextField.setCornerRound(value: viewRound)
         authenticCodeTextField.setCornerRound(value: viewRound)
-        receiveCodeButton.layer.cornerRadius = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
-        checkCodeButton.layer.cornerRadius = DesignGuide.estimateNarrowViewCornerRadius(frame: viewControllerFrame)
+        receiveCodeButton.setCornerRound(value: btnRound)
     }
 
-    func configureExtraLayout() {
-        addSubviews(authenticCodeTextField, checkCodeButton)
+    func configureExtraViewLayout() {
+        addSubviews(authenticCodeTextField, checkCodeImageView)
 
         let authenticTopConstant = DesignGuide.estimateYAxisLength(origin: 20, frame: viewControllerFrame)
         let textFieldHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: viewControllerFrame)
@@ -152,15 +155,15 @@ private extension AuthenticationContentView {
             authenticCodeTextField.heightAnchor.constraint(equalToConstant: textFieldHeight)
         ])
 
-        let buttonWidth = DesignGuide.estimateXAxisLength(origin: 83, frame: viewControllerFrame)
-        let buttonHeight = DesignGuide.estimateYAxisLength(origin: 26, frame: viewControllerFrame)
-        let buttonTrailingConstant = DesignGuide.estimateXAxisLength(origin: 14, frame: viewControllerFrame)
+        let imageViewWidth = DesignGuide.estimateXAxisLength(origin: 19, frame: viewControllerFrame)
+        let imageViewHeight = DesignGuide.estimateYAxisLength(origin: 22, frame: viewControllerFrame)
+        let imageViewTrailingConstant = DesignGuide.estimateXAxisLength(origin: 19, frame: viewControllerFrame)
 
         NSLayoutConstraint.activate([
-            checkCodeButton.trailingAnchor.constraint(equalTo: authenticCodeTextField.trailingAnchor, constant: -(buttonTrailingConstant)),
-            checkCodeButton.centerYAnchor.constraint(equalTo: authenticCodeTextField.centerYAnchor),
-            checkCodeButton.widthAnchor.constraint(equalToConstant: buttonWidth),
-            checkCodeButton.heightAnchor.constraint(equalToConstant: buttonHeight)
+            checkCodeImageView.trailingAnchor.constraint(equalTo: authenticCodeTextField.trailingAnchor, constant: -(imageViewTrailingConstant)),
+            checkCodeImageView.centerYAnchor.constraint(equalTo: authenticCodeTextField.centerYAnchor),
+            checkCodeImageView.widthAnchor.constraint(equalToConstant: imageViewWidth),
+            checkCodeImageView.heightAnchor.constraint(equalToConstant: imageViewHeight)
         ])
     }
 }

@@ -59,8 +59,8 @@ class ProfilePositionViewController: UIViewController {
         return collectionView
     }()
 
-    private lazy var nextButton: CustomButton = {
-        let button = CustomButton()
+    private lazy var nextButton: CustomWideButton = {
+        let button = CustomWideButton()
         let cornerRadius = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
         button.setCornerRound(value: cornerRadius)
         button.translatesAutoresizingMaskIntoConstraints = false
