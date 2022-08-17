@@ -8,11 +8,13 @@
 import Foundation
 import RxSwift
 import RxRelay
+import RxCocoa
 
 final class SignUpViewModel {
 
     struct Input {
-        let validationCheckEvent: Observable<String?>
+        let idValidationCheckEvent: Driver<String?>
+        let idUseableCheckEvent: Driver<Void>
     }
 
     struct Output {
@@ -20,6 +22,9 @@ final class SignUpViewModel {
     }
 
     let idCheckUsecase: CheckValidityUsecase
+
+    private var inputID = ""
+    private var inputPSW = ""
 
     init(idUsecase: CheckValidityUsecase) {
         self.idCheckUsecase = idUsecase
@@ -32,13 +37,20 @@ final class SignUpViewModel {
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
 
-        input.validationCheckEvent
-            .subscribe { [weak self] text in
+        input.idValidationCheckEvent
+            .drive { [weak self] text in
                 guard let validText = text, validText != "", let validation = self?.idCheckUsecase.executeValidation(with: validText) else { return }
+                self?.inputID = validText
                 output.validationSubject.accept(validation)
+            }
+            .disposed(by: disposeBag)
 
-            } onError: { _ in
-                return
+        input.idUseableCheckEvent
+            .drive { [weak self] _ in
+                // MARK: ID 중복 네트워크 서비스
+                guard let self = self else { return }
+                let useable = self.idCheckUsecase.executeConfirm(with: self.inputID)
+                output.validationSubject.accept(useable)
             }
             .disposed(by: disposeBag)
 

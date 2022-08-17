@@ -92,7 +92,7 @@ private extension SignUpViewController {
     }
 
     func configureVMBinding() {
-        let input = SignUpViewModel.Input(validationCheckEvent: nameIDView.setCheckingIDValid())
+        let input = SignUpViewModel.Input(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction())
         let output = signUpViewModel.transform(input: input, disposeBag: disposeBag)
 
         output.validationSubject
@@ -104,9 +104,9 @@ private extension SignUpViewController {
                 case .inValid:
                     self?.nameIDView.checkValid(with: false)
                 case .idOverraped:
-                    break
+                    self?.nameIDView.checkUseable(with: false)
                 case .idUseable:
-                    break
+                    self?.nameIDView.checkUseable(with: true)
                 default:
                     break
                 }
@@ -115,12 +115,6 @@ private extension SignUpViewController {
     }
 
     func configureInnerActionBinding() {
-        nameIDView.setOverlapButtonAction()
-            .drive { [weak self] _ in
-                self?.nameIDView.checkOverrapped(with: true)
-            }
-            .disposed(by: disposeBag)
-
         nextButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
