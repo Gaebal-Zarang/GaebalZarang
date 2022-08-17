@@ -8,7 +8,7 @@
 import Foundation
 
 enum ValidationCheckCase {
-    
+
     case valid
     case inValid
     case idOverraped

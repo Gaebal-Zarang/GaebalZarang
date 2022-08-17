@@ -9,16 +9,26 @@ import Foundation
 import RxSwift
 
 final class SignUpViewModel {
-    
+
     struct Input {
-        
+        let validationCheckEvent: Observable<String>
     }
-    
+
     struct Output {
-        
+
     }
     
-    func enquireValidationCheck(with text: String) {
-        
+    let idCheckUsecase: CheckValidityUsecase
+
+    init(idUsecase: CheckValidityUsecase) {
+        self.idCheckUsecase = idUsecase
+    }
+
+    convenience init() {
+        self.init(idUsecase: CheckUserIdValidityUsecase())
+    }
+
+    func enquireValidationCheck(with text: String, about section: ValidationSectionCase) {
+
     }
 }
