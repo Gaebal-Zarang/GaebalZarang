@@ -11,6 +11,7 @@ import RxCocoa
 
 final class SignUpViewController: UIViewController {
 
+    let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
 
     private lazy var nameIDView = SignUpNameIDView(with: view.frame)
@@ -32,6 +33,7 @@ final class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         configureNavigationItem()
         configureLayouts()
+        configureVMBinding()
         configureInnerActionBinding()
     }
 
@@ -89,10 +91,33 @@ private extension SignUpViewController {
         ])
     }
 
+    func configureVMBinding() {
+        let input = SignUpViewModel.Input(validationCheckEvent: nameIDView.setCheckingIDValid())
+        let output = signUpViewModel.transform(input: input, disposeBag: disposeBag)
+
+        output.validationSubject
+            .asDriver(onErrorJustReturn: .onError)
+            .drive { [weak self] validation in
+                switch validation.self {
+                case .valid:
+                    self?.nameIDView.checkValid(with: true)
+                case .inValid:
+                    self?.nameIDView.checkValid(with: false)
+                case .idOverraped:
+                    break
+                case .idUseable:
+                    break
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+
     func configureInnerActionBinding() {
         nameIDView.setOverlapButtonAction()
             .drive { [weak self] _ in
-                self?.nameIDView.checkValid(with: true)
+                self?.nameIDView.checkOverrapped(with: true)
             }
             .disposed(by: disposeBag)
 

@@ -12,7 +12,7 @@ import RxRelay
 final class SignUpViewModel {
 
     struct Input {
-        let validationCheckEvent: Observable<String>
+        let validationCheckEvent: Observable<String?>
     }
 
     struct Output {
@@ -34,7 +34,7 @@ final class SignUpViewModel {
 
         input.validationCheckEvent
             .subscribe { [weak self] text in
-                guard let validation = self?.idCheckUsecase.executeValidation(with: text) else { return }
+                guard let validText = text, validText != "", let validation = self?.idCheckUsecase.executeValidation(with: validText) else { return }
                 output.validationSubject.accept(validation)
 
             } onError: { _ in

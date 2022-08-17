@@ -64,16 +64,27 @@ final class SignUpNameIDView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func checkValid(with isValid: Bool) {
-        isValid ? configureValidText() : configureInvalidText()
-    }
-
-    func resetVaildCheck() {
-        validCheckLabel.text = ""
+    func setCheckingIDValid() -> Observable<String?> {
+        return idTextField.rx.text.asObservable()
     }
 
     func setOverlapButtonAction() -> Driver<Void> {
         return overlapCheckButton.rx.tap.asDriver()
+    }
+}
+
+extension SignUpNameIDView {
+
+    func checkValid(with isValid: Bool) {
+        idTextField.layer.borderColor = isValid ? UIColor.red.cgColor : UIColor.gzGreen?.cgColor
+    }
+
+    func checkOverrapped(with isOverrapped: Bool) {
+        isOverrapped ? configureValidText() : configureInvalidText()
+    }
+
+    func resetVaildCheck() {
+        validCheckLabel.text = ""
     }
 }
 

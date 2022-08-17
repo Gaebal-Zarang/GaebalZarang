@@ -15,4 +15,5 @@ enum ValidationCheckCase {
     case idUseable
     case pswNonEqual
     case pswEqual
+    case onError
 }
