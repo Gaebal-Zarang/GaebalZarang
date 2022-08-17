@@ -1,5 +1,5 @@
 //
-//  ViewSignUpValidityCheckUsecase.swift
+//  CheckUserPswValidityUsecase.swift
 //  iOS-Gaebalzarang
 //
 //  Created by juntaek.oh on 2022/08/17.
@@ -7,21 +7,23 @@
 
 import Foundation
 
-final class CheckUserIdValidityUsecase: CheckValidityUsecase {
+final class CheckUserPswValidityUsecase: CheckValidityUsecase {
 
     func executeValidation(with text: String) -> ValidationCheckCase {
         return checkValidation(of: text)
     }
 
     func executeConfirm(with text: String, compare: String?) -> ValidationCheckCase {
-        return checkOverrapped(of: text)
+        guard let compare = compare else { return .onError }
+
+        return text == compare ? .pswEqual : .pswNonEqual
     }
 }
 
-private extension CheckUserIdValidityUsecase {
+private extension CheckUserPswValidityUsecase {
 
     func checkValidation(of text: String) -> ValidationCheckCase {
-        let pattern: String = "^[0-9a-z_-]{5,20}$"
+        let pattern: String = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%])(?=.*[0-9]).{8,16}$"
         let regex = try? NSRegularExpression(pattern: pattern)
 
         guard let _ = regex?.firstMatch(in: text, range: NSRange(location: 0, length: text.count)) else {
@@ -29,10 +31,5 @@ private extension CheckUserIdValidityUsecase {
         }
 
         return .valid
-    }
-
-    func checkOverrapped(of text: String) -> ValidationCheckCase {
-        // MARK: API 구현 시, 중복 ID 호출
-        return .idUseable
     }
 }

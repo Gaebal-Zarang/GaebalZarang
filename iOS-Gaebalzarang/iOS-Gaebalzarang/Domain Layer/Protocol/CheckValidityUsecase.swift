@@ -10,5 +10,5 @@ import Foundation
 protocol CheckValidityUsecase {
 
     func executeValidation(with text: String) -> ValidationCheckCase
-    func executeConfirm(with text: String) -> ValidationCheckCase
+    func executeConfirm(with text: String, compare: String?) -> ValidationCheckCase
 }

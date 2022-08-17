@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class SignUpPasswordView: UIView {
 
@@ -54,8 +55,23 @@ final class SignUpPasswordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func setCheckingPswValid() -> Driver<String?> {
+        return passwordTextField.rx.text.asDriver(onErrorJustReturn: nil)
+    }
+
+    func setCheckingPswEqual() -> Driver<String?> {
+        return checkPasswordTextField.rx.text.asDriver(onErrorJustReturn: nil)
+    }
+}
+
+extension SignUpPasswordView {
+
     func checkValid(with isValid: Bool) {
-        isValid ? configureValidText() : configureInvalidText()
+        passwordTextField.layer.borderColor = isValid ? UIColor.gzGreen?.cgColor : UIColor.red.cgColor
+    }
+
+    func checkEqual(with isEqual: Bool) {
+        isEqual ? configureValidText() : configureInvalidText()
     }
 
     func resetVaildCheck() {

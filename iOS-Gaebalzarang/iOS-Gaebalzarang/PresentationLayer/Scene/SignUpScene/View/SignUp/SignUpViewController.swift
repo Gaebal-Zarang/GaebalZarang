@@ -92,10 +92,10 @@ private extension SignUpViewController {
     }
 
     func configureVMBinding() {
-        let input = SignUpViewModel.Input(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction())
+        let input = SignUpViewModel.Input(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
         let output = signUpViewModel.transform(input: input, disposeBag: disposeBag)
 
-        output.validationSubject
+        output.idValidationSubject
             .asDriver(onErrorJustReturn: .onError)
             .drive { [weak self] validation in
                 switch validation.self {
@@ -107,6 +107,24 @@ private extension SignUpViewController {
                     self?.nameIDView.checkUseable(with: false)
                 case .idUseable:
                     self?.nameIDView.checkUseable(with: true)
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+
+        output.pswValidationSubject
+            .asDriver(onErrorJustReturn: .onError)
+            .drive { [weak self] validation in
+                switch validation.self {
+                case .valid:
+                    self?.passwordView.checkValid(with: true)
+                case .inValid:
+                    self?.passwordView.checkValid(with: false)
+                case .pswEqual:
+                    self?.passwordView.checkEqual(with: true)
+                case .pswNonEqual:
+                    self?.passwordView.checkEqual(with: false)
                 default:
                     break
                 }
