@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 final class SignUpViewModel {
 
@@ -15,9 +16,9 @@ final class SignUpViewModel {
     }
 
     struct Output {
-
+        let validationSubject = PublishRelay<ValidationCheckCase>()
     }
-    
+
     let idCheckUsecase: CheckValidityUsecase
 
     init(idUsecase: CheckValidityUsecase) {
@@ -28,7 +29,19 @@ final class SignUpViewModel {
         self.init(idUsecase: CheckUserIdValidityUsecase())
     }
 
-    func enquireValidationCheck(with text: String, about section: ValidationSectionCase) {
+    func transform(input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
 
+        input.validationCheckEvent
+            .subscribe { [weak self] text in
+                guard let validation = self?.idCheckUsecase.executeValidation(with: text) else { return }
+                output.validationSubject.accept(validation)
+
+            } onError: { _ in
+                return
+            }
+            .disposed(by: disposeBag)
+
+        return output
     }
 }

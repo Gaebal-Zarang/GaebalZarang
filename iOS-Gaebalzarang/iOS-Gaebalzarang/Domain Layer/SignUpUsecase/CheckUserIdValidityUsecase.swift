@@ -12,7 +12,7 @@ final class CheckUserIdValidityUsecase: CheckValidityUsecase {
     func executeValidation(with text: String) -> ValidationCheckCase {
         return checkValidation(of: text)
     }
-    
+
     func executeConfirm(with text: String) -> ValidationCheckCase {
         return checkOverrapped(of: text)
     }
@@ -30,7 +30,7 @@ private extension CheckUserIdValidityUsecase {
 
         return .valid
     }
-    
+
     func checkOverrapped(of text: String) -> ValidationCheckCase {
         // MARK: API 구현 시, 중복 ID 호출
         return .idUseable
