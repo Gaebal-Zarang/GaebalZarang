@@ -56,11 +56,11 @@ final class SignUpPasswordView: UIView {
     }
 
     func setCheckingPswValid() -> Driver<String?> {
-        return passwordTextField.rx.text.asDriver(onErrorJustReturn: nil)
+        return passwordTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
 
     func setCheckingPswEqual() -> Driver<String?> {
-        return checkPasswordTextField.rx.text.asDriver(onErrorJustReturn: nil)
+        return checkPasswordTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
 }
 
@@ -74,8 +74,18 @@ extension SignUpPasswordView {
         isEqual ? configureValidText() : configureInvalidText()
     }
 
-    func resetVaildCheck() {
+    func reset() {
+        passwordTextField.text = ""
+        checkPasswordTextField.text = ""
         validCheckLabel.text = ""
+        passwordTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+
+        self.subviews.forEach {
+            guard !$0.isFirstResponder else {
+                $0.resignFirstResponder()
+                return
+            }
+        }
     }
 }
 

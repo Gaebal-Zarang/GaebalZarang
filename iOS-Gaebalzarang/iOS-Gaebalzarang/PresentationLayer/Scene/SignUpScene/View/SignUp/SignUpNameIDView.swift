@@ -65,7 +65,7 @@ final class SignUpNameIDView: UIView {
     }
 
     func setCheckingIDValid() -> Driver<String?> {
-        return idTextField.rx.text.asDriver(onErrorJustReturn: nil)
+        return idTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
 
     func setOverlapButtonAction() -> Driver<Void> {
@@ -83,8 +83,18 @@ extension SignUpNameIDView {
         isUseable ? configureValidText() : configureInvalidText()
     }
 
-    func resetVaildCheck() {
+    func reset() {
+        nameTextField.text = ""
+        idTextField.text = ""
         validCheckLabel.text = ""
+        idTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+
+        self.subviews.forEach {
+            guard !$0.isFirstResponder else {
+                $0.resignFirstResponder()
+                return
+            }
+        }
     }
 }
 

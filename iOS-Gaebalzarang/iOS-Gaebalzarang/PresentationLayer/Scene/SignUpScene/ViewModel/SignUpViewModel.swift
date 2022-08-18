@@ -68,6 +68,7 @@ final class SignUpViewModel {
             }
             .disposed(by: disposeBag)
 
+        // MARK: TextField 포인터 살아있을 때, next 버튼으로 VC 이동하면 여기 액션이 한 번 더 호출되
         input.pswEqualCheckEvent
             .drive { [weak self] text in
                 guard let validText = text, validText != "", let validation = self?.pswCheckUsecase.executeConfirm(with: validText, compare: self?.inputPSW) else { return }

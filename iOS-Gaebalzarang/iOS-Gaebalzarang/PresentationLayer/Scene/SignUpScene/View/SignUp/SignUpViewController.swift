@@ -39,8 +39,8 @@ final class SignUpViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        nameIDView.resetVaildCheck()
-        passwordView.resetVaildCheck()
+        nameIDView.reset()
+        passwordView.reset()
     }
 }
 
