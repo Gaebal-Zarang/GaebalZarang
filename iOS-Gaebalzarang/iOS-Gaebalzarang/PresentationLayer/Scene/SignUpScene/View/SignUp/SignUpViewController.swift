@@ -11,15 +11,30 @@ import RxCocoa
 
 final class SignUpViewController: UIViewController {
 
+    enum ValidConfirm {
+        case idValid
+        case idUseable
+        case pswValid
+        case pswEqual
+    }
+
     let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
+
+    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
+        willSet(newDictionary) {
+            let trueValues = newDictionary.filter { $0.value == true }
+            guard trueValues.count == 4 else { return }
+            nextButton.isEnabled = true
+        }
+    }
 
     private lazy var nameIDView = SignUpNameIDView(with: view.frame)
     private lazy var passwordView = SignUpPasswordView(with: view.frame)
 
     private lazy var nextButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomWideButton(isEnabled: true)
+        let button = CustomWideButton(isEnabled: false)
         button.setTitle("다음", for: .normal)
         button.setCornerRound(value: btnRound)
         // TODO: 유효성 검사 구현 시, isEnabled false로 변경
@@ -37,8 +52,12 @@ final class SignUpViewController: UIViewController {
         configureInnerActionBinding()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        isNextButtonEnabled.keys.forEach {
+            isNextButtonEnabled[$0] = false
+        }
+        nextButton.isEnabled = false
         nameIDView.reset()
         passwordView.reset()
     }
@@ -100,12 +119,16 @@ private extension SignUpViewController {
             .drive { [weak self] validation in
                 switch validation.self {
                 case .valid:
+                    self?.isNextButtonEnabled[.idValid] = true
                     self?.nameIDView.checkValid(with: true)
                 case .inValid:
+                    self?.isNextButtonEnabled[.idValid] = false
                     self?.nameIDView.checkValid(with: false)
                 case .idOverraped:
+                    self?.isNextButtonEnabled[.idUseable] = false
                     self?.nameIDView.checkUseable(with: false)
                 case .idUseable:
+                    self?.isNextButtonEnabled[.idUseable] = true
                     self?.nameIDView.checkUseable(with: true)
                 default:
                     break
@@ -118,12 +141,16 @@ private extension SignUpViewController {
             .drive { [weak self] validation in
                 switch validation.self {
                 case .valid:
+                    self?.isNextButtonEnabled[.pswValid] = true
                     self?.passwordView.checkValid(with: true)
                 case .inValid:
+                    self?.isNextButtonEnabled[.pswValid] = false
                     self?.passwordView.checkValid(with: false)
                 case .pswEqual:
+                    self?.isNextButtonEnabled[.pswEqual] = true
                     self?.passwordView.checkEqual(with: true)
                 case .pswNonEqual:
+                    self?.isNextButtonEnabled[.pswEqual] = false
                     self?.passwordView.checkEqual(with: false)
                 default:
                     break
@@ -140,5 +167,6 @@ private extension SignUpViewController {
                 self?.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)
+
     }
 }

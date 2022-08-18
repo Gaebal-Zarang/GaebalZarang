@@ -15,6 +15,8 @@ final class SignUpPasswordView: UIView {
     private lazy var passwordTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "PW"
+        textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -23,6 +25,8 @@ final class SignUpPasswordView: UIView {
     private lazy var checkPasswordTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "PW 재확인"
+        textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField

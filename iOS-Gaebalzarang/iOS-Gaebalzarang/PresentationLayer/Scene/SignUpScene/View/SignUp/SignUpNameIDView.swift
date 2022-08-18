@@ -24,6 +24,7 @@ final class SignUpNameIDView: UIView {
     private lazy var idTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "ID"
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
