@@ -86,7 +86,7 @@ private extension AuthenticationViewController {
     }
 
     func configureVMBinding() {
-        let input = SignUpViewModel.AuthenticInput(phoneNumberCheckEvent: contentView.setPhoneNumberTexting())
+        let input = SignUpViewModel.AuthenticInput(phoneNumberCheckEvent: contentView.setPhoneNumberTexting(), authenticCodeCheckEvent: contentView.setAuthenticCode())
         let output = authenticViewModel?.transform(input: input, disposeBag: disposeBag)
 
         output?.phoneNumberSubject
@@ -95,13 +95,21 @@ private extension AuthenticationViewController {
                 self?.contentView.changeAuthenticButton(isEnabled: bool)
             }
             .disposed(by: disposeBag)
+
+        output?.authenticCodeValidationSubject
+            .asDriver(onErrorJustReturn: false)
+            .drive { [weak self] bool in
+                self?.contentView.changeAutenticCode(isValid: bool)
+                self?.nextButton.isEnabled = bool
+            }
+            .disposed(by: disposeBag)
     }
 
     func configureInnerActionBinding() {
         contentView.setReceiveCodeButtonAction()
             .drive { [weak self] _ in
                 self?.contentView.tappedReceiveCodeButton()
-                self?.contentView.setCodeValidCheckToTrue()
+                // TODO: Usecase - Repository 인증번호 요청 API 호출
             }
             .disposed(by: disposeBag)
 

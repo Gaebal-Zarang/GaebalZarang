@@ -88,6 +88,10 @@ final class AuthenticationContentView: UIView {
     func setPhoneNumberTexting() -> Driver<String?> {
         return phoneNumberTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
+
+    func setAuthenticCode() -> Driver<String?> {
+        return authenticCodeTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
+    }
 }
 
 extension AuthenticationContentView {
@@ -96,14 +100,14 @@ extension AuthenticationContentView {
         receiveCodeButton.isEnabled = isEnabled
     }
 
+    func changeAutenticCode(isValid: Bool) {
+        isCodeMatched = isValid
+    }
+
     func tappedReceiveCodeButton() {
         confirmMessageLabel.text = "인증번호가 발송됐습니다. (유효시간 1분)"
         confirmMessageLabel.textColor = .gzGreen
         configureExtraViewLayout()
-    }
-
-    func setCodeValidCheckToTrue() {
-        isCodeMatched = true
     }
 }
 

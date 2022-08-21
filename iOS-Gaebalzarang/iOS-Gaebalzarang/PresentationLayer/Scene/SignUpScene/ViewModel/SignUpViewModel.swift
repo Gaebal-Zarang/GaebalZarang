@@ -27,10 +27,12 @@ final class SignUpViewModel {
 
     struct AuthenticInput {
         let phoneNumberCheckEvent: Driver<String?>
+        let authenticCodeCheckEvent: Driver<String?>
     }
 
     struct AuthenticOutput {
         let phoneNumberSubject = PublishRelay<Bool>()
+        let authenticCodeValidationSubject = PublishRelay<Bool>()
     }
 
     let idCheckUsecase: CheckValidityUsecase
@@ -39,6 +41,7 @@ final class SignUpViewModel {
 
     private var inputID = ""
     private var inputPSW = ""
+    private var authenticCode = ""
 
     init(idUsecase: CheckValidityUsecase, pswUsecase: CheckValidityUsecase, autenticUsecase: CheckValidityUsecase) {
         self.idCheckUsecase = idUsecase
@@ -92,6 +95,7 @@ final class SignUpViewModel {
     func transform(input: AuthenticInput, disposeBag: DisposeBag) -> AuthenticOutput {
         let output = AuthenticOutput()
 
+        // TODO: 인증번호 요청 API 호출 및 요청받은 번호 저장 관련 input 생성 및 Repository 구현 필요 (데이터 authenticCode 프로퍼티에 저장)
         input.phoneNumberCheckEvent
             .drive { [weak self] numberString in
                 guard let numberString = numberString, let validation = self?.authenticUsecase.executeValidation(with: numberString) else { return }
@@ -100,6 +104,18 @@ final class SignUpViewModel {
                     output.phoneNumberSubject.accept(true)
                 default:
                     output.phoneNumberSubject.accept(false)
+                }
+            }
+            .disposed(by: disposeBag)
+
+        input.authenticCodeCheckEvent
+            .drive { [weak self] codeString in
+                guard let codeString = codeString, let validation = self?.authenticUsecase.executeConfirm(with: codeString, compare: self?.authenticCode) else { return }
+                switch validation {
+                case .valid:
+                    output.authenticCodeValidationSubject.accept(true)
+                default:
+                    output.authenticCodeValidationSubject.accept(false)
                 }
             }
             .disposed(by: disposeBag)

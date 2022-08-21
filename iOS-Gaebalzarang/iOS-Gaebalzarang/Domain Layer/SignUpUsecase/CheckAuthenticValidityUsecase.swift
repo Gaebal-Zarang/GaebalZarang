@@ -14,9 +14,10 @@ final class CheckAuthenticValidityUsecase: CheckValidityUsecase {
     }
 
     func executeConfirm(with text: String, compare: String?) -> ValidationCheckCase {
-        // TODO: 인증번호 체크 API와 연동 구문 구현 예정
+        // TODO: 인증번호 체크 구현 예정
+        guard checkAuthenticCodeValidation(of: text) else { return .inValid }
 
-        return .onError
+        return .valid
     }
 }
 
@@ -31,5 +32,10 @@ private extension CheckAuthenticValidityUsecase {
         }
 
         return .valid
+    }
+
+    func checkAuthenticCodeValidation(of text: String) -> Bool {
+        guard text.count == 4 else { return false }
+        return true
     }
 }
