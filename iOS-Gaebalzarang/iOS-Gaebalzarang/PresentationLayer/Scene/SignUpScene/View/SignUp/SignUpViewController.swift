@@ -111,7 +111,7 @@ private extension SignUpViewController {
     }
 
     func configureVMBinding() {
-        let input = SignUpViewModel.Input(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
+        let input = SignUpViewModel.SignUpInput(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
         let output = signUpViewModel.transform(input: input, disposeBag: disposeBag)
 
         output.idValidationSubject
@@ -163,8 +163,9 @@ private extension SignUpViewController {
         nextButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
-                let nextVC = AuthenticationViewController()
-                self?.navigationController?.pushViewController(nextVC, animated: true)
+                guard let self = self else { return }
+                let nextVC = AuthenticationViewController(viewModel: self.signUpViewModel)
+                self.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)
 

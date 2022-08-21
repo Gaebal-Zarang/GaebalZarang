@@ -30,7 +30,7 @@ final class AuthenticationContentView: UIView {
     }()
 
     private lazy var receiveCodeButton: CustomNarrowButton = {
-        let button = CustomNarrowButton(isEnabled: true)
+        let button = CustomNarrowButton(isEnabled: false)
         button.setTitle("인증 번호", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -85,9 +85,20 @@ final class AuthenticationContentView: UIView {
         return receiveCodeButton.rx.tap.asDriver()
     }
 
+    func setPhoneNumberTexting() -> Driver<String?> {
+        return phoneNumberTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
+    }
+}
+
+extension AuthenticationContentView {
+
+    func changeAuthenticButton(isEnabled: Bool) {
+        receiveCodeButton.isEnabled = isEnabled
+    }
+
     func tappedReceiveCodeButton() {
         confirmMessageLabel.text = "인증번호가 발송됐습니다. (유효시간 1분)"
-        confirmMessageLabel.textColor = .gzChacoal
+        confirmMessageLabel.textColor = .gzGreen
         configureExtraViewLayout()
     }
 
