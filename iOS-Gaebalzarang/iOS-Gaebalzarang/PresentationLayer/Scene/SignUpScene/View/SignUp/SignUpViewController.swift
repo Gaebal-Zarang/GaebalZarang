@@ -12,6 +12,7 @@ import RxCocoa
 final class SignUpViewController: UIViewController {
 
     enum ValidConfirm {
+        case nameValid
         case idValid
         case idUseable
         case pswValid
@@ -21,11 +22,11 @@ final class SignUpViewController: UIViewController {
     let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
 
-    //TODO: ID 중복확인, 이름 부분 추가 필요
-    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
+    // TODO: ID 중복확인, 이름 부분 추가 필요
+    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.nameValid: false, .idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
         willSet(newDictionary) {
             let trueValues = newDictionary.filter { $0.value == true }
-            guard trueValues.count == 4 else { return }
+            guard trueValues.count == 5 else { return }
             nextButton.isEnabled = true
         }
     }
@@ -112,8 +113,20 @@ private extension SignUpViewController {
     }
 
     func configureVMBinding() {
-        let input = SignUpViewModel.SignUpInput(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
+        let input = SignUpViewModel.SignUpInput(nameValidationCheckEvent: nameIDView.setNameValid(), idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
         let output = signUpViewModel.transform(input: input, disposeBag: disposeBag)
+
+        output.nameValidationSubject
+            .asDriver(onErrorJustReturn: .onError)
+            .drive { [weak self] validation in
+                switch validation.self {
+                case .valid:
+                    self?.isNextButtonEnabled[.nameValid] = true
+                default:
+                    self?.isNextButtonEnabled[.nameValid] = false
+                }
+            }
+            .disposed(by: disposeBag)
 
         output.idValidationSubject
             .asDriver(onErrorJustReturn: .onError)

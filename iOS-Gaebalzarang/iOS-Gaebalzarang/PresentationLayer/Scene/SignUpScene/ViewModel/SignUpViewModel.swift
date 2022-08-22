@@ -13,6 +13,7 @@ import RxCocoa
 final class SignUpViewModel {
 
     struct SignUpInput {
+        let nameValidationCheckEvent: Driver<String?>
         let idValidationCheckEvent: Driver<String?>
         let idUseableCheckEvent: Driver<Void>
 
@@ -21,6 +22,7 @@ final class SignUpViewModel {
     }
 
     struct SignUpOutput {
+        let nameValidationSubject = PublishRelay<ValidationCheckCase>()
         let idValidationSubject = PublishRelay<ValidationCheckCase>()
         let pswValidationSubject = PublishRelay<ValidationCheckCase>()
     }
@@ -55,6 +57,16 @@ final class SignUpViewModel {
 
     func transform(input: SignUpInput, disposeBag: DisposeBag) -> SignUpOutput {
         let output = SignUpOutput()
+
+        input.nameValidationCheckEvent
+            .drive { text in
+                guard let name = text, name.count > 1, name.count < 11 else {
+                    output.nameValidationSubject.accept(.inValid)
+                    return
+                }
+                output.nameValidationSubject.accept(.valid)
+            }
+            .disposed(by: disposeBag)
 
         input.idValidationCheckEvent
             .drive { [weak self] text in

@@ -66,6 +66,10 @@ final class SignUpNameIDView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func setNameValid() -> Driver<String?> {
+        return nameTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
+    }
+
     func setCheckingIDValid() -> Driver<String?> {
         return idTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
