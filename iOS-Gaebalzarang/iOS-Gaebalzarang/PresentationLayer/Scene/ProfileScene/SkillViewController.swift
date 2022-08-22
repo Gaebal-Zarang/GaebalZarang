@@ -81,7 +81,7 @@ private extension SkillViewController {
             .asDriver()
             .drive { [weak self] _ in
                 guard let self = self else { return }
-                self.navigationController?.pushViewController(UIViewController(), animated: true)
+                self.navigationController?.pushViewController(MessengerViewController(), animated: true)
             }
             .disposed(by: disposeBag)
     }
