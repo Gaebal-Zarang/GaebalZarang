@@ -65,7 +65,8 @@ class ProfilePositionViewController: UIViewController {
         button.setCornerRound(value: cornerRadius)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음", for: .normal)
-        button.isEnabled = false
+        button.isEnabled = true
+        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
         return button
     }()
 
@@ -116,6 +117,15 @@ class ProfilePositionViewController: UIViewController {
     }
 }
 
+private extension ProfilePositionViewController {
+
+    @objc
+    func touchedNextButton() {
+        self.navigationController?.pushViewController(PortfolioViewController(), animated: true)
+    }
+}
+
+// MARK: Layout func
 private extension ProfilePositionViewController {
 
     func configureLayout() {

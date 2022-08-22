@@ -21,7 +21,7 @@ final class SignUpViewController: UIViewController {
     let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
 
-    //TODO: ID 중복확인, 이름 부분 추가 필요
+    // TODO: ID 중복확인, 이름 부분 추가 필요
     private var isNextButtonEnabled: [ValidConfirm: Bool] = [.idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
         willSet(newDictionary) {
             let trueValues = newDictionary.filter { $0.value == true }

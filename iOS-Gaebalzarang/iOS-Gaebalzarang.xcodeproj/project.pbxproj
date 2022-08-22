@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5630B9725B295D37A8793F6D /* Pods_iOS_Gaebalzarang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */; };
+		B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */; };
 		B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */; };
 		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
 		B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */; };
@@ -47,6 +48,7 @@
 		6D27D27DE034CE84AC5813C1 /* Pods-iOS-Gaebalzarang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Gaebalzarang.release.xcconfig"; path = "Target Support Files/Pods-iOS-Gaebalzarang/Pods-iOS-Gaebalzarang.release.xcconfig"; sourceTree = "<group>"; };
 		90BFA412332FBA27DA240888 /* Pods-iOS-Gaebalzarang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Gaebalzarang.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Gaebalzarang/Pods-iOS-Gaebalzarang.debug.xcconfig"; sourceTree = "<group>"; };
 		941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Gaebalzarang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
 		B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocationViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				B3CE848528A394D500F57038 /* ProfilePositionViewController.swift */,
 				B3CE848928A3A02F00F57038 /* PositionCell.swift */,
 				B3E524E628A4E99A00FBA21C /* LeftAlignedCollectionViewFlowLayout.swift */,
+				B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				D298819728ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift in Sources */,
 				D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */,
 				D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */,
+				B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */,
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E8928A0FF3C0001B2D3 /* CustomWideButton.swift in Sources */,
 				D298818828ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift in Sources */,
