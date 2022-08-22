@@ -31,9 +31,10 @@ final class SkillViewController: UIViewController {
     }()
 
     private var collectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
+        let flowLayout = LeftAlignedCollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
         flowLayout.minimumLineSpacing = 12
+        flowLayout.minimumInteritemSpacing = 10
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(SkillCell.self, forCellWithReuseIdentifier: SkillCell.reuseIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +61,9 @@ final class SkillViewController: UIViewController {
             .bind(to: collectionView.rx
                 .items(cellIdentifier: SkillCell.reuseIdentifier, cellType: SkillCell.self)) { [weak self] _, title, cell in
                     cell.set(text: title)
-                    let radius = DesignGuide.estimateWideViewCornerRadius(frame: self?.view.frame ?? CGRect.zero)
+
+                    let radius =
+                    DesignGuide.estimateNarrowViewCornerRadius(frame: self?.view.frame ?? CGRect.zero)
                     cell.layer.cornerRadius = radius
                 }
                 .disposed(by: disposebag)
@@ -100,15 +103,6 @@ private extension SkillViewController {
             textField.heightAnchor.constraint(equalToConstant: defaultHeight)
         ])
 
-        let collectionViewTopConstraint = DesignGuide.estimateYAxisLength(origin: 20, frame: view.frame)
-
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: collectionViewTopConstraint),
-            collectionView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: defaultHeight)
-        ])
-
         let nextBtnBottomConstraint = -(DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame))
 
         NSLayoutConstraint.activate([
@@ -118,11 +112,20 @@ private extension SkillViewController {
             nextButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor)
         ])
 
+        let collectionViewTopConstraint = DesignGuide.estimateYAxisLength(origin: 20, frame: view.frame)
+
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: collectionViewTopConstraint),
+            collectionView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
+//            collectionView.heightAnchor.constraint(equalToConstant: defaultHeight)
+            collectionView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -20)
+        ])
+
     }
 }
 
 // MARK: TextField Delegate
-
 extension SkillViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text else { return true  }
@@ -138,9 +141,9 @@ extension SkillViewController: UICollectionViewDelegateFlowLayout {
 
         let tempLabel: UILabel = UILabel()
 
-        let height = floor(DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame))
+        let height = floor(DesignGuide.estimateYAxisLength(origin: 30, frame: view.frame))
         // text 양쪽에 간격을 주기 위한 값
-        let padding = DesignGuide.estimateXAxisLength(origin: 25, frame: view.frame) * 2
+        let padding = DesignGuide.estimateXAxisLength(origin: 18, frame: view.frame) * 2
         tempLabel.text = userSkillObservable.value[indexPath.item]
         tempLabel.sizeToFit()
         return CGSize(width: (tempLabel.frame.width+padding), height: height) // 간격포함

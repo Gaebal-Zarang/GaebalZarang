@@ -14,7 +14,7 @@ class SkillCell: UICollectionViewCell {
     private var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.gzYellow
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
         return label
@@ -23,6 +23,7 @@ class SkillCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureLayout()
+        self.backgroundColor = .gzYellow
         self.prepareForReuse()
         self.clipsToBounds = true
     }
