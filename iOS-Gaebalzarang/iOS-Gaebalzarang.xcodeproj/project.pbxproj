@@ -11,6 +11,8 @@
 		B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */; };
 		B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6128B3696D00F7263F /* ScheduleViewController.swift */; };
 		B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6328B372FE00F7263F /* CustomSelectButton.swift */; };
+		B3324D6628B3AD5D00F7263F /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6528B3AD5D00F7263F /* SkillViewController.swift */; };
+		B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6728B3B6E000F7263F /* SkillCell.swift */; };
 		B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */; };
 		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
 		B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */; };
@@ -53,6 +55,8 @@
 		B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
 		B3324D6128B3696D00F7263F /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		B3324D6328B372FE00F7263F /* CustomSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectButton.swift; sourceTree = "<group>"; };
+		B3324D6528B3AD5D00F7263F /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillViewController.swift; sourceTree = "<group>"; };
+		B3324D6728B3B6E000F7263F /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
 		B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
 		B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocationViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				B3E524E628A4E99A00FBA21C /* LeftAlignedCollectionViewFlowLayout.swift */,
 				B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */,
 				B3324D6128B3696D00F7263F /* ScheduleViewController.swift */,
+				B3324D6528B3AD5D00F7263F /* SkillViewController.swift */,
+				B3324D6728B3B6E000F7263F /* SkillCell.swift */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */,
 				D298819028ACD35900F53FBF /* CheckValidityUsecase.swift in Sources */,
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
+				B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */,
 				D298819728ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift in Sources */,
 				D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */,
 				D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */,
@@ -480,6 +487,7 @@
 				B3CE848428A355A400F57038 /* InputTitleView.swift in Sources */,
 				D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */,
 				D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */,
+				B3324D6628B3AD5D00F7263F /* SkillViewController.swift in Sources */,
 				D2BDB97028A377BE00754B5A /* SignUpPasswordView.swift in Sources */,
 				D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
