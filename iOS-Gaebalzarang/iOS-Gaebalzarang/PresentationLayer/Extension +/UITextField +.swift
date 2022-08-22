@@ -15,6 +15,12 @@ extension UITextField {
         self.leftViewMode = ViewMode.always
     }
 
+    func addRightPadding(with width: CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: self.frame.height))
+        self.rightView = paddingView
+        self.rightViewMode = ViewMode.always
+    }
+
     func addRightImage(image: UIImage) {
 
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: image.size.height))

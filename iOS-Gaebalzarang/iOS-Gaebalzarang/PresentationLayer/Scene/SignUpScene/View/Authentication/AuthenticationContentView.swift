@@ -24,6 +24,7 @@ final class AuthenticationContentView: UIView {
     private lazy var phoneNumberTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "휴대폰 번호"
+        textField.addRightPadding(with: 123)
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
