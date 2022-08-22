@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxCocoa
 
 final class SignUpPasswordView: UIView {
 
@@ -14,6 +15,8 @@ final class SignUpPasswordView: UIView {
     private lazy var passwordTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "PW"
+        textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -22,6 +25,8 @@ final class SignUpPasswordView: UIView {
     private lazy var checkPasswordTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "PW 재확인"
+        textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -54,12 +59,37 @@ final class SignUpPasswordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func checkValid(with isValid: Bool) {
-        isValid ? configureValidText() : configureInvalidText()
+    func setCheckingPswValid() -> Driver<String?> {
+        return passwordTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
 
-    func resetVaildCheck() {
+    func setCheckingPswEqual() -> Driver<String?> {
+        return checkPasswordTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
+    }
+}
+
+extension SignUpPasswordView {
+
+    func checkValid(with isValid: Bool) {
+        passwordTextField.layer.borderColor = isValid ? UIColor.gzGreen?.cgColor : UIColor.red.cgColor
+    }
+
+    func checkEqual(with isEqual: Bool) {
+        isEqual ? configureValidText() : configureInvalidText()
+    }
+
+    func reset() {
+        passwordTextField.text = ""
+        checkPasswordTextField.text = ""
         validCheckLabel.text = ""
+        passwordTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+
+        self.subviews.forEach {
+            guard !$0.isFirstResponder else {
+                $0.resignFirstResponder()
+                return
+            }
+        }
     }
 }
 

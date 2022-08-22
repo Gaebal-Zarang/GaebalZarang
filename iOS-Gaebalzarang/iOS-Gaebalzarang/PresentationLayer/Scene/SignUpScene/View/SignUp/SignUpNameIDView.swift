@@ -24,6 +24,7 @@ final class SignUpNameIDView: UIView {
     private lazy var idTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "ID"
+        textField.autocapitalizationType = .none
         textField.addRightPadding(with: 123)
         textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -65,16 +66,37 @@ final class SignUpNameIDView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func checkValid(with isValid: Bool) {
-        isValid ? configureValidText() : configureInvalidText()
-    }
-
-    func resetVaildCheck() {
-        validCheckLabel.text = ""
+    func setCheckingIDValid() -> Driver<String?> {
+        return idTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
 
     func setOverlapButtonAction() -> Driver<Void> {
-        return overlapCheckButton.rx.tap.asDriver()
+        return overlapCheckButton.rx.tap.asDriver(onErrorJustReturn: ())
+    }
+}
+
+extension SignUpNameIDView {
+
+    func checkValid(with isValid: Bool) {
+        idTextField.layer.borderColor = isValid ? UIColor.gzGreen?.cgColor : UIColor.red.cgColor
+    }
+
+    func checkUseable(with isUseable: Bool) {
+        isUseable ? configureValidText() : configureInvalidText()
+    }
+
+    func reset() {
+        nameTextField.text = ""
+        idTextField.text = ""
+        validCheckLabel.text = ""
+        idTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+
+        self.subviews.forEach {
+            guard !$0.isFirstResponder else {
+                $0.resignFirstResponder()
+                return
+            }
+        }
     }
 }
 

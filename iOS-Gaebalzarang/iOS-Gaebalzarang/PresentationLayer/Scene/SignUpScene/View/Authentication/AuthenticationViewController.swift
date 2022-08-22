@@ -12,13 +12,14 @@ import RxCocoa
 // TODO: 인증 번호, 확인 버튼 isEnable false로 바꾸고 값 입력시 true로 변경
 final class AuthenticationViewController: UIViewController {
 
+    private var authenticViewModel: SignUpViewModel?
     let disposeBag = DisposeBag()
 
     private lazy var contentView = AuthenticationContentView(with: view.frame)
 
     private lazy var nextButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomWideButton(isEnabled: true)
+        let button = CustomWideButton(isEnabled: false)
         button.setTitle("다음", for: .normal)
         button.setCornerRound(value: btnRound)
         // TODO: 유효성 검사 구현 시, isEnabled false로 변경
@@ -27,11 +28,22 @@ final class AuthenticationViewController: UIViewController {
         return button
     }()
 
+    init(viewModel: SignUpViewModel) {
+        self.authenticViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureNavigationItem()
         configureLayouts()
+        configureVMBinding()
         configureInnerActionBinding()
     }
 }
@@ -73,11 +85,31 @@ private extension AuthenticationViewController {
         ])
     }
 
+    func configureVMBinding() {
+        let input = SignUpViewModel.AuthenticInput(phoneNumberCheckEvent: contentView.setPhoneNumberTexting(), authenticCodeCheckEvent: contentView.setAuthenticCode())
+        let output = authenticViewModel?.transform(input: input, disposeBag: disposeBag)
+
+        output?.phoneNumberSubject
+            .asDriver(onErrorJustReturn: false)
+            .drive { [weak self] bool in
+                self?.contentView.changeAuthenticButton(isEnabled: bool)
+            }
+            .disposed(by: disposeBag)
+
+        output?.authenticCodeValidationSubject
+            .asDriver(onErrorJustReturn: false)
+            .drive { [weak self] bool in
+                self?.contentView.changeAutenticCode(isValid: bool)
+                self?.nextButton.isEnabled = bool
+            }
+            .disposed(by: disposeBag)
+    }
+
     func configureInnerActionBinding() {
         contentView.setReceiveCodeButtonAction()
             .drive { [weak self] _ in
                 self?.contentView.tappedReceiveCodeButton()
-                self?.contentView.setCodeValidCheckToTrue()
+                // TODO: Usecase - Repository 인증번호 요청 API 호출
             }
             .disposed(by: disposeBag)
 

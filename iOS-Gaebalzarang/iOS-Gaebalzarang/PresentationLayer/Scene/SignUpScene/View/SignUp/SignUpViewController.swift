@@ -11,14 +11,31 @@ import RxCocoa
 
 final class SignUpViewController: UIViewController {
 
+    enum ValidConfirm {
+        case idValid
+        case idUseable
+        case pswValid
+        case pswEqual
+    }
+
+    let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
+
+    //TODO: ID 중복확인, 이름 부분 추가 필요
+    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
+        willSet(newDictionary) {
+            let trueValues = newDictionary.filter { $0.value == true }
+            guard trueValues.count == 4 else { return }
+            nextButton.isEnabled = true
+        }
+    }
 
     private lazy var nameIDView = SignUpNameIDView(with: view.frame)
     private lazy var passwordView = SignUpPasswordView(with: view.frame)
 
     private lazy var nextButton: CustomWideButton = {
         let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomWideButton(isEnabled: true)
+        let button = CustomWideButton(isEnabled: false)
         button.setTitle("다음", for: .normal)
         button.setCornerRound(value: btnRound)
         // TODO: 유효성 검사 구현 시, isEnabled false로 변경
@@ -32,13 +49,18 @@ final class SignUpViewController: UIViewController {
         view.backgroundColor = .white
         configureNavigationItem()
         configureLayouts()
+        configureVMBinding()
         configureInnerActionBinding()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        nameIDView.resetVaildCheck()
-        passwordView.resetVaildCheck()
+        isNextButtonEnabled.keys.forEach {
+            isNextButtonEnabled[$0] = false
+        }
+        nextButton.isEnabled = false
+        nameIDView.reset()
+        passwordView.reset()
     }
 }
 
@@ -89,19 +111,64 @@ private extension SignUpViewController {
         ])
     }
 
-    func configureInnerActionBinding() {
-        nameIDView.setOverlapButtonAction()
-            .drive { [weak self] _ in
-                self?.nameIDView.checkValid(with: true)
+    func configureVMBinding() {
+        let input = SignUpViewModel.SignUpInput(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
+        let output = signUpViewModel.transform(input: input, disposeBag: disposeBag)
+
+        output.idValidationSubject
+            .asDriver(onErrorJustReturn: .onError)
+            .drive { [weak self] validation in
+                switch validation.self {
+                case .valid:
+                    self?.isNextButtonEnabled[.idValid] = true
+                    self?.nameIDView.checkValid(with: true)
+                case .inValid:
+                    self?.isNextButtonEnabled[.idValid] = false
+                    self?.nameIDView.checkValid(with: false)
+                case .idOverraped:
+                    self?.isNextButtonEnabled[.idUseable] = false
+                    self?.nameIDView.checkUseable(with: false)
+                case .idUseable:
+                    self?.isNextButtonEnabled[.idUseable] = true
+                    self?.nameIDView.checkUseable(with: true)
+                default:
+                    break
+                }
             }
             .disposed(by: disposeBag)
 
+        output.pswValidationSubject
+            .asDriver(onErrorJustReturn: .onError)
+            .drive { [weak self] validation in
+                switch validation.self {
+                case .valid:
+                    self?.isNextButtonEnabled[.pswValid] = true
+                    self?.passwordView.checkValid(with: true)
+                case .inValid:
+                    self?.isNextButtonEnabled[.pswValid] = false
+                    self?.passwordView.checkValid(with: false)
+                case .pswEqual:
+                    self?.isNextButtonEnabled[.pswEqual] = true
+                    self?.passwordView.checkEqual(with: true)
+                case .pswNonEqual:
+                    self?.isNextButtonEnabled[.pswEqual] = false
+                    self?.passwordView.checkEqual(with: false)
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+
+    func configureInnerActionBinding() {
         nextButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
-                let nextVC = AuthenticationViewController()
-                self?.navigationController?.pushViewController(nextVC, animated: true)
+                guard let self = self else { return }
+                let nextVC = AuthenticationViewController(viewModel: self.signUpViewModel)
+                self.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)
+
     }
 }
