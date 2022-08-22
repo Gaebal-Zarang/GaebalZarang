@@ -16,6 +16,9 @@ class LoginViewController: UIViewController {
 
     private lazy var logoView: UIImageView = {
         let imageView = UIImageView()
+        let logoImage = UIImage(named: "logo")
+        imageView.image = logoImage
+        imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .gray
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -32,6 +35,7 @@ class LoginViewController: UIViewController {
 
     private lazy var pswTextField: CustomTextField = {
         let pswField = CustomTextField()
+        pswField.addRightPadding(with: 75)
         pswField.placeholder = "PW"
         pswField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -80,12 +84,9 @@ private extension LoginViewController {
 
         let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
 
-        let logoViewWidth = DesignGuide.estimateXAxisLength(origin: 140, frame: view.frame)
         let logoViewTopConstant = DesignGuide.estimateYAxisLength(origin: 45, frame: view.frame)
 
         NSLayoutConstraint.activate([
-            logoView.widthAnchor.constraint(equalToConstant: logoViewWidth),
-            logoView.heightAnchor.constraint(equalToConstant: logoViewWidth),
             logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: logoViewTopConstant)
         ])
@@ -143,8 +144,6 @@ private extension LoginViewController {
     func configureCornerRound() {
         let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
 
-        logoView.clipsToBounds = true
-        logoView.layer.cornerRadius = viewRound
         idTextField.setCornerRound(value: viewRound)
         pswTextField.setCornerRound(value: viewRound)
         loginButton.setCornerRound(value: viewRound)

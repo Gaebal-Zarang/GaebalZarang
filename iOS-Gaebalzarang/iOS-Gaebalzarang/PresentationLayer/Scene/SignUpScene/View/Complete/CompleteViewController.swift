@@ -15,6 +15,9 @@ final class CompleteViewController: UIViewController {
 
     private lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
+        let image = UIImage(named: "signUpImage")
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .gray
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -75,13 +78,10 @@ private extension CompleteViewController {
         view.addSubviews(titleImageView, titleLabel, descriptionLabel, confirmButton)
 
         let imageTopConstant = DesignGuide.estimateYAxisLength(origin: 85, frame: view.frame)
-        let imageRect = DesignGuide.estimateXAxisLength(origin: 180, frame: view.frame)
 
         NSLayoutConstraint.activate([
             titleImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: imageTopConstant),
-            titleImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleImageView.widthAnchor.constraint(equalToConstant: imageRect),
-            titleImageView.heightAnchor.constraint(equalToConstant: imageRect)
+            titleImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
         let titleLabelTopConstant = DesignGuide.estimateYAxisLength(origin: 32, frame: view.frame)
