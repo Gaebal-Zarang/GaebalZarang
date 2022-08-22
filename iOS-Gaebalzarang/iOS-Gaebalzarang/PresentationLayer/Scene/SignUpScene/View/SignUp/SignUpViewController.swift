@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 final class SignUpViewController: UIViewController {
 
@@ -48,6 +49,7 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configureKeyboardNotification()
         configureNavigationItem()
         configureLayouts()
         configureVMBinding()
@@ -110,6 +112,24 @@ private extension SignUpViewController {
             nextButton.widthAnchor.constraint(equalToConstant: viewWidth),
             nextButton.heightAnchor.constraint(equalToConstant: buttonHeight)
         ])
+    }
+
+    func configureKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchKeyboardHeight), name: Notification.Name("KeyboardHeight"), object: nil)
+        setKeyboardObserver()
+    }
+
+    @objc
+    func fetchKeyboardHeight(notification: Notification) {
+        guard let keyboardHeight = notification.userInfo?["KeyboardHeight"] as? CGFloat else { return }
+
+        nameIDView.subviews.forEach {
+            setViewBound(dueTo: keyboardHeight, with: $0)
+        }
+
+        passwordView.subviews.forEach {
+            setViewBound(dueTo: keyboardHeight, with: $0)
+        }
     }
 
     func configureVMBinding() {
@@ -185,5 +205,12 @@ private extension SignUpViewController {
             }
             .disposed(by: disposeBag)
 
+        view.rx.tapGesture()
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.nameIDView.findAndResignFirstResponder()
+                self?.passwordView.findAndResignFirstResponder()
+            }
+            .disposed(by: disposeBag)
     }
 }

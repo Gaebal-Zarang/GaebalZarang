@@ -93,18 +93,22 @@ extension SignUpNameIDView {
         overlapCheckButton.isEnabled = isEnabled
     }
 
-    func reset() {
-        nameTextField.text = ""
-        idTextField.text = ""
-        validCheckLabel.text = ""
-        idTextField.layer.borderColor = UIColor.gzGray1?.cgColor
-
+    func findAndResignFirstResponder() {
         self.subviews.forEach {
             guard !$0.isFirstResponder else {
                 $0.resignFirstResponder()
                 return
             }
         }
+    }
+
+    func reset() {
+        nameTextField.text = ""
+        idTextField.text = ""
+        validCheckLabel.text = ""
+        idTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+
+        findAndResignFirstResponder()
     }
 }
 

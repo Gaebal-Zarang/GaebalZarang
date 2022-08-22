@@ -16,6 +16,9 @@ final class SignUpPasswordView: UIView {
         let textField = CustomTextField()
         textField.placeholder = "PW"
         textField.isSecureTextEntry = true
+        if #available(iOS 12.0, *) {
+            textField.textContentType = .oneTimeCode
+        }
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -26,6 +29,9 @@ final class SignUpPasswordView: UIView {
         let textField = CustomTextField()
         textField.placeholder = "PW 재확인"
         textField.isSecureTextEntry = true
+        if #available(iOS 12.0, *) {
+            textField.textContentType = .oneTimeCode
+        }
         textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -78,18 +84,22 @@ extension SignUpPasswordView {
         isEqual ? configureValidText() : configureInvalidText()
     }
 
-    func reset() {
-        passwordTextField.text = ""
-        checkPasswordTextField.text = ""
-        validCheckLabel.text = ""
-        passwordTextField.layer.borderColor = UIColor.gzGray1?.cgColor
-
+    func findAndResignFirstResponder() {
         self.subviews.forEach {
             guard !$0.isFirstResponder else {
                 $0.resignFirstResponder()
                 return
             }
         }
+    }
+
+    func reset() {
+        passwordTextField.text = ""
+        checkPasswordTextField.text = ""
+        validCheckLabel.text = ""
+        passwordTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+
+        findAndResignFirstResponder()
     }
 }
 
