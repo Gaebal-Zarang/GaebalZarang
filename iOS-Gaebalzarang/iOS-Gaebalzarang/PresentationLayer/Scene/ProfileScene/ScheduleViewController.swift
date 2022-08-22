@@ -1,16 +1,20 @@
 //
-//  PortfolioViewController.swift
+//  ScheduleViewController.swift
 //  iOS-Gaebalzarang
 //
 //  Created by 최예주 on 2022/08/22.
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-final class PortfolioViewController: UIViewController {
+final class ScheduleViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
 
     private var inputTitleView: InputTitleView = {
-        let view = InputTitleView(text: "포트폴리오에 연결가능한\n링크를 작성해주세요", isRequire: false)
+        let view = InputTitleView(text: "현재 프로젝트에\n참가 가능하신 일정인가요?", isRequire: true)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -18,17 +22,27 @@ final class PortfolioViewController: UIViewController {
     private var stackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.distribution = .equalSpacing
-        stack.spacing = 10
+        stack.spacing = 12
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
         return stack
     }()
 
-    private var addButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
-        button.tintColor = .gzGreen
+    private lazy var yesButton: CustomSelectButton = {
+        let button = CustomSelectButton(isSelected: false)
+        let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: self.view.frame)
+        button.isEnabled = true
+        button.setCornerRound(value: viewRound)
+        button.setTitle("예", for: .normal)
+        return button
+    }()
+
+    private lazy var noButton: CustomSelectButton = {
+        let button = CustomSelectButton(isSelected: false)
+        let viewRound = DesignGuide.estimateWideViewCornerRadius(frame: self.view.frame)
+        button.setCornerRound(value: viewRound)
+        button.isEnabled = true
+        button.setTitle("아니오", for: .normal)
         return button
     }()
 
@@ -40,7 +54,7 @@ final class PortfolioViewController: UIViewController {
         button.setTitle("다음", for: .normal)
         // TODO: false로 변경해주어야 함
         button.isEnabled = true
-        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
 
         return button
     }()
@@ -48,29 +62,40 @@ final class PortfolioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        addLinkTextField()
         configureLayout()
+        configureInnerActionBinding()
     }
 
 }
 
-private extension PortfolioViewController {
+private extension ScheduleViewController {
 
-    func addLinkTextField() {
-        let textField = CustomTextField()
-        let cornerRadius = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        textField.setCornerRound(value: cornerRadius)
-        textField.placeholder = "링크 입력"
-        stackView.addArrangedSubviews(textField)
+    func configureInnerActionBinding() {
+        yesButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.yesButton.isSelected = true
+                self?.noButton.isSelected = false
+            }
+            .disposed(by: disposeBag)
+
+        noButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.noButton.isSelected = true
+                self?.yesButton.isSelected = false
+            }
+            .disposed(by: disposeBag)
     }
 
-    @objc
-    func touchedNextButton() {
-        self.navigationController?.pushViewController(ScheduleViewController(), animated: true)
-    }
+}
+
+// MARK: Layout
+private extension ScheduleViewController {
 
     func configureLayout() {
-        self.view.addSubviews(inputTitleView, stackView, addButton, nextButton)
+        stackView.addArrangedSubviews(yesButton, noButton)
+        self.view.addSubviews(inputTitleView, stackView, nextButton)
 
         let defaultHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
 
@@ -91,15 +116,6 @@ private extension PortfolioViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: stackViewLeadingConstraint),
             stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -stackViewLeadingConstraint),
             stackView.heightAnchor.constraint(equalToConstant: defaultHeight)
-        ])
-
-        let addButtonTopConstraint = DesignGuide.estimateYAxisLength(origin: 14, frame: view.frame)
-
-        NSLayoutConstraint.activate([
-            addButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: addButtonTopConstraint),
-            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            addButton.heightAnchor.constraint(equalToConstant: defaultHeight),
-            addButton.widthAnchor.constraint(equalToConstant: defaultHeight)
         ])
 
         let nextBtnBottomConstraint = -(DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame))

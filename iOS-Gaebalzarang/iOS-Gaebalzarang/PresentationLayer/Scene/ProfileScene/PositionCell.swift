@@ -32,7 +32,7 @@ class PositionCell: UICollectionViewCell {
         self.prepareForReuse()
         self.clipsToBounds = true
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.gzGreen?.cgColor
+        self.layer.borderColor = UIColor.gzGray1?.cgColor
     }
 
     @available (*, unavailable)
@@ -64,8 +64,9 @@ private extension PositionCell {
     }
 
     func configureDisabledSetting() {
+        self.layer.borderColor = UIColor.gzGray1?.cgColor
         backgroundColor = .white
         layer.borderWidth = 1
-        self.label.textColor = UIColor.gzGreen
+        self.label.textColor = UIColor.gzGray1
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5630B9725B295D37A8793F6D /* Pods_iOS_Gaebalzarang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */; };
 		B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */; };
+		B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6128B3696D00F7263F /* ScheduleViewController.swift */; };
+		B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6328B372FE00F7263F /* CustomSelectButton.swift */; };
 		B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */; };
 		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
 		B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */; };
@@ -49,6 +51,8 @@
 		90BFA412332FBA27DA240888 /* Pods-iOS-Gaebalzarang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Gaebalzarang.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Gaebalzarang/Pods-iOS-Gaebalzarang.debug.xcconfig"; sourceTree = "<group>"; };
 		941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Gaebalzarang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewController.swift; sourceTree = "<group>"; };
+		B3324D6128B3696D00F7263F /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		B3324D6328B372FE00F7263F /* CustomSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectButton.swift; sourceTree = "<group>"; };
 		B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
 		B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocationViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				B3CE848928A3A02F00F57038 /* PositionCell.swift */,
 				B3E524E628A4E99A00FBA21C /* LeftAlignedCollectionViewFlowLayout.swift */,
 				B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */,
+				B3324D6128B3696D00F7263F /* ScheduleViewController.swift */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */,
 				D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */,
 				B3CE848328A355A400F57038 /* InputTitleView.swift */,
+				B3324D6328B372FE00F7263F /* CustomSelectButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -445,8 +451,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2F66C3D28A354F6003AA52C /* SignUpNameIDView.swift in Sources */,
+				B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */,
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
 				D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */,
+				B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
 				B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */,
 				D298819028ACD35900F53FBF /* CheckValidityUsecase.swift in Sources */,
