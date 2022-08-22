@@ -14,7 +14,8 @@ final class SignUpPasswordView: UIView {
 
     private lazy var passwordTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = "PW"
+        textField.placeholder = "8~16자 영문 대소문자, 숫자, 특수문자(!,@,#,$,%) 전부"
+        textField.setPlaceHolder()
         textField.isSecureTextEntry = true
         if #available(iOS 12.0, *) {
             textField.textContentType = .oneTimeCode
@@ -28,6 +29,7 @@ final class SignUpPasswordView: UIView {
     private lazy var checkPasswordTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "PW 재확인"
+        textField.setPlaceHolder()
         textField.isSecureTextEntry = true
         if #available(iOS 12.0, *) {
             textField.textContentType = .oneTimeCode

@@ -24,7 +24,9 @@ final class AuthenticationContentView: UIView {
     private lazy var phoneNumberTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "휴대폰 번호"
+        textField.setPlaceHolder()
         textField.addRightPadding(with: 123)
+        textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -50,6 +52,8 @@ final class AuthenticationContentView: UIView {
     private lazy var authenticCodeTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "인증 번호 입력"
+        textField.setPlaceHolder()
+        textField.keyboardType = .numberPad
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -109,6 +113,15 @@ extension AuthenticationContentView {
         confirmMessageLabel.text = "인증번호가 발송됐습니다. (유효시간 1분)"
         confirmMessageLabel.textColor = .gzGreen
         configureExtraViewLayout()
+    }
+
+    func findAndResignFirstResponder() {
+        self.subviews.forEach {
+            guard !$0.isFirstResponder else {
+                $0.resignFirstResponder()
+                return
+            }
+        }
     }
 }
 

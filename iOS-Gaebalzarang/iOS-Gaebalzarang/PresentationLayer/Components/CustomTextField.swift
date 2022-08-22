@@ -20,6 +20,11 @@ final class CustomTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func setPlaceHolder() {
+        guard let text = placeholder else { return }
+        attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gzGray1 ?? UIColor.gray])
+    }
+
     func setCornerRound(value: CGFloat) {
         clipsToBounds = true
         layer.cornerRadius = value
@@ -31,7 +36,6 @@ private extension CustomTextField {
     func configureBasicSetting() {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.gzGray1?.cgColor
-        attributedPlaceholder = NSAttributedString(string: "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gzGray1 ?? UIColor.gray])
         textColor = .gzChacoal
         addLeftPadding()
     }

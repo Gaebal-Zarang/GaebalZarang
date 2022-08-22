@@ -15,7 +15,8 @@ final class SignUpNameIDView: UIView {
 
     private lazy var nameTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = "이름"
+        textField.placeholder = "이름은 2글자에서 3글자 한글"
+        textField.setPlaceHolder()
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -23,7 +24,8 @@ final class SignUpNameIDView: UIView {
 
     private lazy var idTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = "ID"
+        textField.placeholder = "5~20자의 영문 소문자, 숫자와 특수기호(_,-)"
+        textField.setPlaceHolder()
         textField.autocapitalizationType = .none
         textField.addRightPadding(with: 123)
         textField.translatesAutoresizingMaskIntoConstraints = false

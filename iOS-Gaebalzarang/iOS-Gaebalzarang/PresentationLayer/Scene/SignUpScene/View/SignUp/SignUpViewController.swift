@@ -49,15 +49,20 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureKeyboardNotification()
         configureNavigationItem()
         configureLayouts()
         configureVMBinding()
         configureInnerActionBinding()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureKeyboardNotification()
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
         isNextButtonEnabled.keys.forEach {
             isNextButtonEnabled[$0] = false
         }
