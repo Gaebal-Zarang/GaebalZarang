@@ -32,7 +32,7 @@ final class SignUpNameIDView: UIView {
     }()
 
     private lazy var overlapCheckButton: CustomNarrowButton = {
-        let button = CustomNarrowButton(isEnabled: true)
+        let button = CustomNarrowButton(isEnabled: false)
         button.setTitle("중복 확인", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -87,6 +87,10 @@ extension SignUpNameIDView {
 
     func checkUseable(with isUseable: Bool) {
         isUseable ? configureValidText() : configureInvalidText()
+    }
+
+    func changeOverlapButton(isEnabled: Bool) {
+        overlapCheckButton.isEnabled = isEnabled
     }
 
     func reset() {

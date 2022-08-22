@@ -22,7 +22,7 @@ final class SignUpViewController: UIViewController {
     let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
 
-    // TODO: ID 중복확인, 이름 부분 추가 필요
+    // TODO: ID 중복확인 추가 필요
     private var isNextButtonEnabled: [ValidConfirm: Bool] = [.nameValid: false, .idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
         willSet(newDictionary) {
             let trueValues = newDictionary.filter { $0.value == true }
@@ -135,9 +135,11 @@ private extension SignUpViewController {
                 case .valid:
                     self?.isNextButtonEnabled[.idValid] = true
                     self?.nameIDView.checkValid(with: true)
+                    self?.nameIDView.changeOverlapButton(isEnabled: true)
                 case .inValid:
                     self?.isNextButtonEnabled[.idValid] = false
                     self?.nameIDView.checkValid(with: false)
+                    self?.nameIDView.changeOverlapButton(isEnabled: false)
                 case .idOverraped:
                     self?.isNextButtonEnabled[.idUseable] = false
                     self?.nameIDView.checkUseable(with: false)
