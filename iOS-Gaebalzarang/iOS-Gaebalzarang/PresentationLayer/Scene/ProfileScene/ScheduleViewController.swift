@@ -54,7 +54,7 @@ final class ScheduleViewController: UIViewController {
         button.setTitle("다음", for: .normal)
         // TODO: false로 변경해주어야 함
         button.isEnabled = true
-//        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
 
         return button
     }()
@@ -86,6 +86,11 @@ private extension ScheduleViewController {
                 self?.yesButton.isSelected = false
             }
             .disposed(by: disposeBag)
+    }
+
+    @objc
+    func touchedNextButton() {
+        self.navigationController?.pushViewController(SkillViewController(), animated: true)
     }
 
 }
