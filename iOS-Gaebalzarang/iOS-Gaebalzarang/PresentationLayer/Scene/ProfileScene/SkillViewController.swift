@@ -11,7 +11,7 @@ import RxSwift
 
 final class SkillViewController: UIViewController {
 
-    let disposebag = DisposeBag()
+    let disposeBag = DisposeBag()
     let userSkillObservable = BehaviorRelay(value: [String]())
 
     private var inputTitleView: InputTitleView = {
@@ -48,15 +48,21 @@ final class SkillViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음", for: .normal)
         button.isEnabled = true
-//        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configureInnerActionBinding()
+        configureLayout()
+    }
+}
 
-        // MARK: 컬렉션 뷰 Datasource bind
+private extension SkillViewController {
+
+    func configureInnerActionBinding() {
+
         userSkillObservable
             .bind(to: collectionView.rx
                 .items(cellIdentifier: SkillCell.reuseIdentifier, cellType: SkillCell.self)) { [weak self] _, title, cell in
@@ -66,13 +72,18 @@ final class SkillViewController: UIViewController {
                     DesignGuide.estimateNarrowViewCornerRadius(frame: self?.view.frame ?? CGRect.zero)
                     cell.layer.cornerRadius = radius
                 }
-                .disposed(by: disposebag)
+                .disposed(by: disposeBag)
 
         collectionView.rx.setDelegate(self)
-            .disposed(by: disposebag)
+            .disposed(by: disposeBag)
 
-        configureLayout()
-
+        nextButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(UIViewController(), animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 
 }
@@ -118,7 +129,6 @@ private extension SkillViewController {
             collectionView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: collectionViewTopConstraint),
             collectionView.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-//            collectionView.heightAnchor.constraint(equalToConstant: defaultHeight)
             collectionView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -20)
         ])
 
@@ -142,11 +152,11 @@ extension SkillViewController: UICollectionViewDelegateFlowLayout {
         let tempLabel: UILabel = UILabel()
 
         let height = floor(DesignGuide.estimateYAxisLength(origin: 30, frame: view.frame))
-        // text 양쪽에 간격을 주기 위한 값
+
         let padding = DesignGuide.estimateXAxisLength(origin: 18, frame: view.frame) * 2
         tempLabel.text = userSkillObservable.value[indexPath.item]
         tempLabel.sizeToFit()
-        return CGSize(width: (tempLabel.frame.width+padding), height: height) // 간격포함
+        return CGSize(width: (tempLabel.frame.width+padding), height: height)
     }
 
 }

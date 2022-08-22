@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class ProfileLocationViewController: UIViewController {
+final class ProfileLocationViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
 
     private var inputTitleView: InputTitleView = {
         let view = InputTitleView(text: "주로 활동하시는\n지역은 어디신가요?", isRequire: true)
@@ -33,7 +37,6 @@ class ProfileLocationViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음", for: .normal)
         button.isEnabled = true
-        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
         return button
     }()
 
@@ -41,6 +44,19 @@ class ProfileLocationViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         configureLayout()
+        configureInnerActionBinding()
+    }
+}
+
+private extension ProfileLocationViewController {
+    func configureInnerActionBinding() {
+        nextButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(ProfilePositionViewController(), animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -80,10 +96,5 @@ private extension ProfileLocationViewController {
             nextButton.leadingAnchor.constraint(equalTo: locationTextField.leadingAnchor),
             nextButton.trailingAnchor.constraint(equalTo: locationTextField.trailingAnchor)
         ])
-    }
-
-    @objc
-    func touchedNextButton() {
-        self.navigationController?.pushViewController(ProfilePositionViewController(), animated: true)
     }
 }

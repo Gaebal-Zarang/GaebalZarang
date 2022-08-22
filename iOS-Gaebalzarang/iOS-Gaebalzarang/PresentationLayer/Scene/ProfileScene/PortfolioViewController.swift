@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class PortfolioViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
 
     private var inputTitleView: InputTitleView = {
         let view = InputTitleView(text: "포트폴리오에 연결가능한\n링크를 작성해주세요", isRequire: false)
@@ -40,8 +44,6 @@ final class PortfolioViewController: UIViewController {
         button.setTitle("다음", for: .normal)
         // TODO: false로 변경해주어야 함
         button.isEnabled = true
-        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
-
         return button
     }()
 
@@ -49,12 +51,22 @@ final class PortfolioViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         addLinkTextField()
+        configureInnerActionBinding()
         configureLayout()
     }
-
 }
 
 private extension PortfolioViewController {
+
+    func configureInnerActionBinding() {
+        nextButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(ScheduleViewController(), animated: true)
+            }
+            .disposed(by: disposeBag)
+    }
 
     func addLinkTextField() {
         let textField = CustomTextField()
@@ -62,11 +74,6 @@ private extension PortfolioViewController {
         textField.setCornerRound(value: cornerRadius)
         textField.placeholder = "링크 입력"
         stackView.addArrangedSubviews(textField)
-    }
-
-    @objc
-    func touchedNextButton() {
-        self.navigationController?.pushViewController(ScheduleViewController(), animated: true)
     }
 
     func configureLayout() {

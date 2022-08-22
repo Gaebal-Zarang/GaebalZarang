@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class IntroduceViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
 
     private var inputTitleView: InputTitleView = {
         let view = InputTitleView(text: "안녕하세요:) \n간단한 자기소개 부탁드려요", isRequire: true)
@@ -49,8 +53,6 @@ final class IntroduceViewController: UIViewController {
         button.setTitle("다음", for: .normal)
         // TODO: false로 변경해주어야 함
         button.isEnabled = true
-        button.addTarget(self, action: #selector(touchedNextButton), for: .touchUpInside)
-
         return button
     }()
 
@@ -59,7 +61,21 @@ final class IntroduceViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         introTextView.delegate = self
+        configureInnerActionBinding()
         configureLayout()
+    }
+}
+
+private extension IntroduceViewController {
+
+    func configureInnerActionBinding() {
+        nextButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(ProfileLocationViewController(), animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -111,11 +127,6 @@ private extension IntroduceViewController {
             nextButton.trailingAnchor.constraint(equalTo: introTextView.trailingAnchor),
             nextButton.topAnchor.constraint(greaterThanOrEqualTo: introTextView.bottomAnchor, constant: 50)
         ])
-    }
-
-    @objc
-    func touchedNextButton() {
-        self.navigationController?.pushViewController(ProfileLocationViewController(), animated: true)
     }
 }
 
