@@ -89,7 +89,7 @@ private extension MessengerViewController {
             .asDriver()
             .drive { [weak self] _ in
                 guard let self = self else { return }
-                self.navigationController?.pushViewController(SkillViewController(), animated: true)
+                self.navigationController?.pushViewController(ProfileCompleteViewController(), animated: true)
             }
             .disposed(by: disposeBag)
     }
