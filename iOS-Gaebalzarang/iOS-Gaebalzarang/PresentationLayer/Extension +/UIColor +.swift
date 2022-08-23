@@ -48,4 +48,6 @@ extension UIColor {
         TextField Color
      */
     class var gzChacoal: UIColor? { return UIColor(named: "gzChacoal")}
+
+    class var gzYellow: UIColor? { return UIColor(named: "gzYellow")}
 }
