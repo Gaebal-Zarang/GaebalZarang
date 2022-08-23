@@ -105,7 +105,7 @@ extension AuthenticationContentView {
         receiveCodeButton.isEnabled = isEnabled
     }
 
-    func changeAutenticCode(isValid: Bool) {
+    func changeAuthenticCode(isValid: Bool) {
         isCodeMatched = isValid
     }
 

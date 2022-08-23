@@ -15,7 +15,7 @@ final class AuthenticationViewController: UIViewController {
 
     enum ValidConfirm {
         case phoneNumValid
-        case athenticCodeValid
+        case authenticCodeValid
     }
 
     private var authenticViewModel: SignUpViewModel?
@@ -34,7 +34,7 @@ final class AuthenticationViewController: UIViewController {
         return button
     }()
 
-    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.phoneNumValid: false, .athenticCodeValid: false] {
+    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.phoneNumValid: false, .authenticCodeValid: false] {
         willSet(newDictionary) {
             let trueValues = newDictionary.filter { $0.value == true }
             guard trueValues.count == 2 else { return }
@@ -138,8 +138,8 @@ private extension AuthenticationViewController {
         output?.authenticCodeValidationSubject
             .asDriver(onErrorJustReturn: false)
             .drive { [weak self] bool in
-                self?.contentView.changeAutenticCode(isValid: bool)
-                self?.isNextButtonEnabled[.athenticCodeValid] = bool
+                self?.contentView.changeAuthenticCode(isValid: bool)
+                self?.isNextButtonEnabled[.authenticCodeValid] = bool
             }
             .disposed(by: disposeBag)
     }
