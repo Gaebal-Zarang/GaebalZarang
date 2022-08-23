@@ -11,7 +11,7 @@ import RxSwift
 
 class ProfilePositionViewController: UIViewController {
 
-    let disposebag = DisposeBag()
+    let disposeBag = DisposeBag()
     let mainPositionObservable = Observable.of(["기획", "디자인", "개발"])
     let subPositionObservable = PublishSubject<[String]>()
 
@@ -65,13 +65,21 @@ class ProfilePositionViewController: UIViewController {
         button.setCornerRound(value: cornerRadius)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음", for: .normal)
-        button.isEnabled = false
+        button.isEnabled = true
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configureInnerActionBinding()
+        configureLayout()
+    }
+}
+
+private extension ProfilePositionViewController {
+
+    func configureInnerActionBinding() {
 
         // MARK: 메인포지션 Datasource bind
         mainPositionObservable
@@ -81,7 +89,7 @@ class ProfilePositionViewController: UIViewController {
                     let radius = DesignGuide.estimateWideViewCornerRadius(frame: self?.view.frame ?? CGRect.zero)
                     cell.layer.cornerRadius = radius
                 }
-                .disposed(by: disposebag)
+                .disposed(by: disposeBag)
 
         // MARK: 메인포지션 Delegate bind
         mainCategoryCollectionView.rx.modelSelected(String.self)
@@ -93,10 +101,10 @@ class ProfilePositionViewController: UIViewController {
                 self?.isSelectMainPosition = true
                 self?.tempLabelText = data
 
-            }.disposed(by: disposebag)
+            }.disposed(by: disposeBag)
 
         mainCategoryCollectionView.rx.setDelegate(self)
-            .disposed(by: disposebag)
+            .disposed(by: disposeBag)
 
         // MARK: 서브포지션 Datasource bind
         subPositionObservable
@@ -106,16 +114,23 @@ class ProfilePositionViewController: UIViewController {
                     let radius = DesignGuide.estimateWideViewCornerRadius(frame: self?.view.frame ?? CGRect.zero)
                     cell.layer.cornerRadius = radius
                 }
-                .disposed(by: disposebag)
+                .disposed(by: disposeBag)
 
         subCategoryCollectionView.rx.setDelegate(self)
-            .disposed(by: disposebag)
+            .disposed(by: disposeBag)
 
-        configureLayout()
-
+        nextButton.rx.tap
+            .asDriver()
+            .drive { [weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.pushViewController(PortfolioViewController(), animated: true)
+            }
+            .disposed(by: disposeBag)
     }
+
 }
 
+// MARK: Layout func
 private extension ProfilePositionViewController {
 
     func configureLayout() {

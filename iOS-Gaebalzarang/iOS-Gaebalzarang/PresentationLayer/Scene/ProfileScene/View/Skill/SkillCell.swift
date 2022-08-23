@@ -1,27 +1,21 @@
 //
-//  PositionCell.swift
+//  SkillCell.swift
 //  iOS-Gaebalzarang
 //
-//  Created by 최예주 on 2022/08/10.
+//  Created by 최예주 on 2022/08/22.
 //
 
 import UIKit
 
-class PositionCell: UICollectionViewCell {
+class SkillCell: UICollectionViewCell {
 
-    override var isSelected: Bool {
-            didSet {
-                isSelected ? configureEnabledSetting() : configureDisabledSetting()
-            }
-    }
-
-    static let reuseIdentifier = "PositionCell"
+    static let reuseIdentifier = "SkillCell"
 
     private var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.gzGray2
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
         return label
     }()
@@ -29,10 +23,9 @@ class PositionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureLayout()
+        self.backgroundColor = .gzYellow
         self.prepareForReuse()
         self.clipsToBounds = true
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.gzGreen?.cgColor
     }
 
     @available (*, unavailable)
@@ -45,7 +38,7 @@ class PositionCell: UICollectionViewCell {
     }
 }
 
-private extension PositionCell {
+private extension SkillCell {
 
     func configureLayout() {
         self.addSubview(label)
@@ -55,17 +48,5 @@ private extension PositionCell {
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
 
-    }
-
-    func configureEnabledSetting() {
-        backgroundColor = .gzGreen
-        layer.borderWidth = 0
-        self.label.textColor = .white
-    }
-
-    func configureDisabledSetting() {
-        backgroundColor = .white
-        layer.borderWidth = 1
-        self.label.textColor = UIColor.gzGreen
     }
 }

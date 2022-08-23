@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5630B9725B295D37A8793F6D /* Pods_iOS_Gaebalzarang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */; };
+		B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */; };
+		B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6128B3696D00F7263F /* ScheduleViewController.swift */; };
+		B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6328B372FE00F7263F /* CustomSelectButton.swift */; };
+		B3324D6628B3AD5D00F7263F /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6528B3AD5D00F7263F /* SkillViewController.swift */; };
+		B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6728B3B6E000F7263F /* SkillCell.swift */; };
+		B3324D6A28B3D50F00F7263F /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6928B3D50F00F7263F /* MessengerViewController.swift */; };
+		B3324D6C28B3F07100F7263F /* ProfileCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6B28B3F07100F7263F /* ProfileCompleteViewController.swift */; };
 		B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */; };
 		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
 		B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */; };
@@ -47,6 +54,13 @@
 		6D27D27DE034CE84AC5813C1 /* Pods-iOS-Gaebalzarang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Gaebalzarang.release.xcconfig"; path = "Target Support Files/Pods-iOS-Gaebalzarang/Pods-iOS-Gaebalzarang.release.xcconfig"; sourceTree = "<group>"; };
 		90BFA412332FBA27DA240888 /* Pods-iOS-Gaebalzarang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Gaebalzarang.debug.xcconfig"; path = "Target Support Files/Pods-iOS-Gaebalzarang/Pods-iOS-Gaebalzarang.debug.xcconfig"; sourceTree = "<group>"; };
 		941AF86A3854837156196E51 /* Pods_iOS_Gaebalzarang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Gaebalzarang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PortfolioViewController.swift; path = "iOS-Gaebalzarang/PresentationLayer/Scene/ProfileScene/PortfolioViewController.swift"; sourceTree = SOURCE_ROOT; };
+		B3324D6128B3696D00F7263F /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		B3324D6328B372FE00F7263F /* CustomSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectButton.swift; sourceTree = "<group>"; };
+		B3324D6528B3AD5D00F7263F /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillViewController.swift; sourceTree = "<group>"; };
+		B3324D6728B3B6E000F7263F /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
+		B3324D6928B3D50F00F7263F /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
+		B3324D6B28B3F07100F7263F /* ProfileCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompleteViewController.swift; sourceTree = "<group>"; };
 		B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
 		B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocationViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +127,87 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B3324D6D28B4B32600F7263F /* Introduce */ = {
+			isa = PBXGroup;
+			children = (
+				B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */,
+			);
+			path = Introduce;
+			sourceTree = "<group>";
+		};
+		B3324D6E28B4B33E00F7263F /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		B3324D6F28B4B38500F7263F /* Position */ = {
+			isa = PBXGroup;
+			children = (
+				B3CE848528A394D500F57038 /* ProfilePositionViewController.swift */,
+				B3CE848928A3A02F00F57038 /* PositionCell.swift */,
+			);
+			path = Position;
+			sourceTree = "<group>";
+		};
+		B3324D7028B4B3A700F7263F /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				B3324D5F28B35A6500F7263F /* PortfolioViewController.swift */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		B3324D7128B4B3C100F7263F /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				B3324D6128B3696D00F7263F /* ScheduleViewController.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		B3324D7228B4B3D100F7263F /* Skill */ = {
+			isa = PBXGroup;
+			children = (
+				B3324D6528B3AD5D00F7263F /* SkillViewController.swift */,
+				B3324D6728B3B6E000F7263F /* SkillCell.swift */,
+			);
+			path = Skill;
+			sourceTree = "<group>";
+		};
+		B3324D7328B4B3E400F7263F /* Messenger */ = {
+			isa = PBXGroup;
+			children = (
+				B3324D6928B3D50F00F7263F /* MessengerViewController.swift */,
+			);
+			path = Messenger;
+			sourceTree = "<group>";
+		};
+		B3324D7428B4B3FB00F7263F /* Complete */ = {
+			isa = PBXGroup;
+			children = (
+				B3324D6B28B3F07100F7263F /* ProfileCompleteViewController.swift */,
+			);
+			path = Complete;
+			sourceTree = "<group>";
+		};
+		B3324D7528B4B4B600F7263F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3324D6D28B4B32600F7263F /* Introduce */,
+				B3324D6E28B4B33E00F7263F /* Location */,
+				B3324D6F28B4B38500F7263F /* Position */,
+				B3324D7028B4B3A700F7263F /* Portfolio */,
+				B3324D7128B4B3C100F7263F /* Schedule */,
+				B3324D7228B4B3D100F7263F /* Skill */,
+				B3324D7328B4B3E400F7263F /* Messenger */,
+				B3324D7428B4B3FB00F7263F /* Complete */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B3F571A728A24F090092B4D0 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,11 +247,7 @@
 		B3F571AB28A24F830092B4D0 /* ProfileScene */ = {
 			isa = PBXGroup;
 			children = (
-				B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */,
-				B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */,
-				B3CE848528A394D500F57038 /* ProfilePositionViewController.swift */,
-				B3CE848928A3A02F00F57038 /* PositionCell.swift */,
-				B3E524E628A4E99A00FBA21C /* LeftAlignedCollectionViewFlowLayout.swift */,
+				B3324D7528B4B4B600F7263F /* View */,
 			);
 			path = ProfileScene;
 			sourceTree = "<group>";
@@ -178,6 +269,8 @@
 				D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */,
 				D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */,
 				B3CE848328A355A400F57038 /* InputTitleView.swift */,
+				B3324D6328B372FE00F7263F /* CustomSelectButton.swift */,
+				B3E524E628A4E99A00FBA21C /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -442,15 +535,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2F66C3D28A354F6003AA52C /* SignUpNameIDView.swift in Sources */,
+				B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */,
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
 				D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */,
+				B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
+				B3324D6C28B3F07100F7263F /* ProfileCompleteViewController.swift in Sources */,
 				B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */,
 				D298819028ACD35900F53FBF /* CheckValidityUsecase.swift in Sources */,
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
+				B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */,
 				D298819728ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift in Sources */,
 				D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */,
+				B3324D6A28B3D50F00F7263F /* MessengerViewController.swift in Sources */,
 				D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */,
+				B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */,
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E8928A0FF3C0001B2D3 /* CustomWideButton.swift in Sources */,
 				D298818828ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift in Sources */,
@@ -468,6 +567,7 @@
 				B3CE848428A355A400F57038 /* InputTitleView.swift in Sources */,
 				D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */,
 				D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */,
+				B3324D6628B3AD5D00F7263F /* SkillViewController.swift in Sources */,
 				D2BDB97028A377BE00754B5A /* SignUpPasswordView.swift in Sources */,
 				D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
