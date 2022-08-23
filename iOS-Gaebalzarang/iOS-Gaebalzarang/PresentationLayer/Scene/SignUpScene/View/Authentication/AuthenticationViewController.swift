@@ -8,9 +8,15 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 // TODO: 인증 번호, 확인 버튼 isEnable false로 바꾸고 값 입력시 true로 변경
 final class AuthenticationViewController: UIViewController {
+
+    enum ValidConfirm {
+        case phoneNumValid
+        case authenticCodeValid
+    }
 
     private var authenticViewModel: SignUpViewModel?
     let disposeBag = DisposeBag()
@@ -27,6 +33,14 @@ final class AuthenticationViewController: UIViewController {
 
         return button
     }()
+
+    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.phoneNumValid: false, .authenticCodeValid: false] {
+        willSet(newDictionary) {
+            let trueValues = newDictionary.filter { $0.value == true }
+            guard trueValues.count == 2 else { return }
+            nextButton.isEnabled = true
+        }
+    }
 
     init(viewModel: SignUpViewModel) {
         self.authenticViewModel = viewModel
@@ -45,6 +59,16 @@ final class AuthenticationViewController: UIViewController {
         configureLayouts()
         configureVMBinding()
         configureInnerActionBinding()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureKeyboardNotification()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -85,6 +109,20 @@ private extension AuthenticationViewController {
         ])
     }
 
+    func configureKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchKeyboardHeight), name: Notification.Name("KeyboardHeight"), object: nil)
+        setKeyboardObserver()
+    }
+
+    @objc
+    func fetchKeyboardHeight(notification: Notification) {
+        guard let keyboardHeight = notification.userInfo?["KeyboardHeight"] as? CGFloat else { return }
+
+        contentView.subviews.forEach {
+            setViewBound(dueTo: keyboardHeight, with: $0)
+        }
+    }
+
     func configureVMBinding() {
         let input = SignUpViewModel.AuthenticInput(phoneNumberCheckEvent: contentView.setPhoneNumberTexting(), authenticCodeCheckEvent: contentView.setAuthenticCode())
         let output = authenticViewModel?.transform(input: input, disposeBag: disposeBag)
@@ -93,14 +131,15 @@ private extension AuthenticationViewController {
             .asDriver(onErrorJustReturn: false)
             .drive { [weak self] bool in
                 self?.contentView.changeAuthenticButton(isEnabled: bool)
+                self?.isNextButtonEnabled[.phoneNumValid] = bool
             }
             .disposed(by: disposeBag)
 
         output?.authenticCodeValidationSubject
             .asDriver(onErrorJustReturn: false)
             .drive { [weak self] bool in
-                self?.contentView.changeAutenticCode(isValid: bool)
-                self?.nextButton.isEnabled = bool
+                self?.contentView.changeAuthenticCode(isValid: bool)
+                self?.isNextButtonEnabled[.authenticCodeValid] = bool
             }
             .disposed(by: disposeBag)
     }
@@ -110,6 +149,13 @@ private extension AuthenticationViewController {
             .drive { [weak self] _ in
                 self?.contentView.tappedReceiveCodeButton()
                 // TODO: Usecase - Repository 인증번호 요청 API 호출
+            }
+            .disposed(by: disposeBag)
+
+        view.rx.tapGesture()
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.contentView.findAndResignFirstResponder()
             }
             .disposed(by: disposeBag)
 

@@ -15,7 +15,8 @@ final class SignUpNameIDView: UIView {
 
     private lazy var nameTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = "이름"
+        textField.placeholder = "이름은 2글자에서 3글자 한글"
+        textField.setPlaceHolder()
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -23,7 +24,8 @@ final class SignUpNameIDView: UIView {
 
     private lazy var idTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.placeholder = "ID"
+        textField.placeholder = "5~20자의 영문 소문자, 숫자와 특수기호(_,-)"
+        textField.setPlaceHolder()
         textField.autocapitalizationType = .none
         textField.addRightPadding(with: 123)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +34,7 @@ final class SignUpNameIDView: UIView {
     }()
 
     private lazy var overlapCheckButton: CustomNarrowButton = {
-        let button = CustomNarrowButton(isEnabled: true)
+        let button = CustomNarrowButton(isEnabled: false)
         button.setTitle("중복 확인", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
 
@@ -66,6 +68,10 @@ final class SignUpNameIDView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func setNameValid() -> Driver<String?> {
+        return nameTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
+    }
+
     func setCheckingIDValid() -> Driver<String?> {
         return idTextField.rx.text.distinctUntilChanged().asDriver(onErrorJustReturn: nil)
     }
@@ -85,18 +91,26 @@ extension SignUpNameIDView {
         isUseable ? configureValidText() : configureInvalidText()
     }
 
-    func reset() {
-        nameTextField.text = ""
-        idTextField.text = ""
-        validCheckLabel.text = ""
-        idTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+    func changeOverlapButton(isEnabled: Bool) {
+        overlapCheckButton.isEnabled = isEnabled
+    }
 
+    func findAndResignFirstResponder() {
         self.subviews.forEach {
             guard !$0.isFirstResponder else {
                 $0.resignFirstResponder()
                 return
             }
         }
+    }
+
+    func reset() {
+        nameTextField.text = ""
+        idTextField.text = ""
+        validCheckLabel.text = ""
+        idTextField.layer.borderColor = UIColor.gzGray1?.cgColor
+
+        findAndResignFirstResponder()
     }
 }
 

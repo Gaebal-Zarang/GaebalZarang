@@ -8,10 +8,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 final class SignUpViewController: UIViewController {
 
     enum ValidConfirm {
+        case nameValid
         case idValid
         case idUseable
         case pswValid
@@ -21,11 +23,13 @@ final class SignUpViewController: UIViewController {
     let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
 
-    // TODO: ID 중복확인, 이름 부분 추가 필요
-    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
+
+    // TODO: ID 중복확인 추가 필요
+    private var isNextButtonEnabled: [ValidConfirm: Bool] = [.nameValid: false, .idValid: false, .idUseable: false, .pswValid: false, .pswEqual: false] {
+
         willSet(newDictionary) {
             let trueValues = newDictionary.filter { $0.value == true }
-            guard trueValues.count == 4 else { return }
+            guard trueValues.count == 5 else { return }
             nextButton.isEnabled = true
         }
     }
@@ -53,8 +57,14 @@ final class SignUpViewController: UIViewController {
         configureInnerActionBinding()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureKeyboardNotification()
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
         isNextButtonEnabled.keys.forEach {
             isNextButtonEnabled[$0] = false
         }
@@ -111,9 +121,39 @@ private extension SignUpViewController {
         ])
     }
 
+    func configureKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchKeyboardHeight), name: Notification.Name("KeyboardHeight"), object: nil)
+        setKeyboardObserver()
+    }
+
+    @objc
+    func fetchKeyboardHeight(notification: Notification) {
+        guard let keyboardHeight = notification.userInfo?["KeyboardHeight"] as? CGFloat else { return }
+
+        nameIDView.subviews.forEach {
+            setViewBound(dueTo: keyboardHeight, with: $0)
+        }
+
+        passwordView.subviews.forEach {
+            setViewBound(dueTo: keyboardHeight, with: $0)
+        }
+    }
+
     func configureVMBinding() {
-        let input = SignUpViewModel.SignUpInput(idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
+        let input = SignUpViewModel.SignUpInput(nameValidationCheckEvent: nameIDView.setNameValid(), idValidationCheckEvent: nameIDView.setCheckingIDValid(), idUseableCheckEvent: nameIDView.setOverlapButtonAction(), pswValidationCheckEvent: passwordView.setCheckingPswValid(), pswEqualCheckEvent: passwordView.setCheckingPswEqual())
         let output = signUpViewModel.transform(input: input, disposeBag: disposeBag)
+
+        output.nameValidationSubject
+            .asDriver(onErrorJustReturn: .onError)
+            .drive { [weak self] validation in
+                switch validation.self {
+                case .valid:
+                    self?.isNextButtonEnabled[.nameValid] = true
+                default:
+                    self?.isNextButtonEnabled[.nameValid] = false
+                }
+            }
+            .disposed(by: disposeBag)
 
         output.idValidationSubject
             .asDriver(onErrorJustReturn: .onError)
@@ -122,9 +162,11 @@ private extension SignUpViewController {
                 case .valid:
                     self?.isNextButtonEnabled[.idValid] = true
                     self?.nameIDView.checkValid(with: true)
+                    self?.nameIDView.changeOverlapButton(isEnabled: true)
                 case .inValid:
                     self?.isNextButtonEnabled[.idValid] = false
                     self?.nameIDView.checkValid(with: false)
+                    self?.nameIDView.changeOverlapButton(isEnabled: false)
                 case .idOverraped:
                     self?.isNextButtonEnabled[.idUseable] = false
                     self?.nameIDView.checkUseable(with: false)
@@ -170,5 +212,12 @@ private extension SignUpViewController {
             }
             .disposed(by: disposeBag)
 
+        view.rx.tapGesture()
+            .asDriver()
+            .drive { [weak self] _ in
+                self?.nameIDView.findAndResignFirstResponder()
+                self?.passwordView.findAndResignFirstResponder()
+            }
+            .disposed(by: disposeBag)
     }
 }

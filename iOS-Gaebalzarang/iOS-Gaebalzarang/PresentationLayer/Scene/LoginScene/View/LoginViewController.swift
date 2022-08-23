@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
     private lazy var idTextField: CustomTextField = {
         let textField = CustomTextField()
         textField.placeholder = "ID"
+        textField.setPlaceHolder()
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
@@ -37,6 +38,7 @@ class LoginViewController: UIViewController {
         let pswField = CustomTextField()
         pswField.addRightPadding(with: 75)
         pswField.placeholder = "PW"
+        pswField.setPlaceHolder()
         pswField.translatesAutoresizingMaskIntoConstraints = false
 
         return pswField
