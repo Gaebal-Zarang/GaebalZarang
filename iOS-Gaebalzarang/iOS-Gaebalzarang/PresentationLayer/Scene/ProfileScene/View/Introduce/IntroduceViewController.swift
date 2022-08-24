@@ -40,7 +40,6 @@ final class IntroduceViewController: UIViewController {
         textView.text = "간단한 자기소개"
         textView.font = UIFont.systemFont(ofSize: 17)
         textView.sizeToFit()
-        textView.textContainerInset = .init(top: 15, left: 20, bottom: 15, right: 25)
         textView.isScrollEnabled = false
         return textView
     }()
@@ -63,6 +62,11 @@ final class IntroduceViewController: UIViewController {
         introTextView.delegate = self
         configureInnerActionBinding()
         configureLayout()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        adjustTextViewInset()
     }
 }
 
@@ -127,6 +131,12 @@ private extension IntroduceViewController {
             nextButton.trailingAnchor.constraint(equalTo: introTextView.trailingAnchor),
             nextButton.topAnchor.constraint(greaterThanOrEqualTo: introTextView.bottomAnchor, constant: 50)
         ])
+    }
+
+    func adjustTextViewInset() {
+        let fontSize: CGFloat = 17
+        let axisYPadding: CGFloat = (introTextView.frame.height - fontSize) / 2
+        introTextView.textContainerInset = .init(top: axisYPadding, left: 20, bottom: axisYPadding, right: 25)
     }
 }
 
