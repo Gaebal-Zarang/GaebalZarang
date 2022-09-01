@@ -13,7 +13,6 @@
 		B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6328B372FE00F7263F /* CustomSelectButton.swift */; };
 		B3324D6628B3AD5D00F7263F /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6528B3AD5D00F7263F /* SkillViewController.swift */; };
 		B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6728B3B6E000F7263F /* SkillCell.swift */; };
-		B3324D6A28B3D50F00F7263F /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6928B3D50F00F7263F /* MessengerViewController.swift */; };
 		B3324D6C28B3F07100F7263F /* ProfileCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6B28B3F07100F7263F /* ProfileCompleteViewController.swift */; };
 		B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */; };
 		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
@@ -60,7 +59,6 @@
 		B3324D6328B372FE00F7263F /* CustomSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectButton.swift; sourceTree = "<group>"; };
 		B3324D6528B3AD5D00F7263F /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillViewController.swift; sourceTree = "<group>"; };
 		B3324D6728B3B6E000F7263F /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
-		B3324D6928B3D50F00F7263F /* MessengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerViewController.swift; sourceTree = "<group>"; };
 		B3324D6B28B3F07100F7263F /* ProfileCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompleteViewController.swift; sourceTree = "<group>"; };
 		B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
@@ -179,14 +177,6 @@
 			path = Skill;
 			sourceTree = "<group>";
 		};
-		B3324D7328B4B3E400F7263F /* Messenger */ = {
-			isa = PBXGroup;
-			children = (
-				B3324D6928B3D50F00F7263F /* MessengerViewController.swift */,
-			);
-			path = Messenger;
-			sourceTree = "<group>";
-		};
 		B3324D7428B4B3FB00F7263F /* Complete */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,10 +191,9 @@
 				B3324D6D28B4B32600F7263F /* Introduce */,
 				B3324D6E28B4B33E00F7263F /* Location */,
 				B3324D6F28B4B38500F7263F /* Position */,
-				B3324D7028B4B3A700F7263F /* Portfolio */,
 				B3324D7128B4B3C100F7263F /* Schedule */,
+				B3324D7028B4B3A700F7263F /* Portfolio */,
 				B3324D7228B4B3D100F7263F /* Skill */,
-				B3324D7328B4B3E400F7263F /* Messenger */,
 				B3324D7428B4B3FB00F7263F /* Complete */,
 			);
 			path = View;
@@ -551,7 +540,6 @@
 				B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */,
 				D298819728ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift in Sources */,
 				D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */,
-				B3324D6A28B3D50F00F7263F /* MessengerViewController.swift in Sources */,
 				D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */,
 				B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */,
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,

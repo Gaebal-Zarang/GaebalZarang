@@ -69,7 +69,7 @@ private extension PortfolioViewController {
             .asDriver()
             .drive { [weak self] _ in
                 guard let self = self else { return }
-                self.navigationController?.pushViewController(ScheduleViewController(), animated: true)
+                self.navigationController?.pushViewController(SkillViewController(), animated: true)
             }
             .disposed(by: disposeBag)
     }

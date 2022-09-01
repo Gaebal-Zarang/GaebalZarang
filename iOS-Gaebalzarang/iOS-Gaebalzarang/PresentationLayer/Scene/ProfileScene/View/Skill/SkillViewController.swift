@@ -57,7 +57,7 @@ final class SkillViewController: UIViewController {
         configureInnerActionBinding()
         configureLayout()
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -81,13 +81,6 @@ private extension SkillViewController {
         collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
 
-        nextButton.rx.tap
-            .asDriver()
-            .drive { [weak self] _ in
-                guard let self = self else { return }
-                self.navigationController?.pushViewController(MessengerViewController(), animated: true)
-            }
-            .disposed(by: disposeBag)
     }
 
 }
