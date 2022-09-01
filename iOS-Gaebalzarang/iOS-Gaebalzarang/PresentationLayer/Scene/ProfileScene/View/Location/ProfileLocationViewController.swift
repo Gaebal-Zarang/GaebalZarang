@@ -40,11 +40,16 @@ final class ProfileLocationViewController: UIViewController {
         return button
     }()
 
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         configureLayout()
         configureInnerActionBinding()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 
