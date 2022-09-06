@@ -64,9 +64,15 @@ final class IntroduceViewController: UIViewController {
         configureLayout()
     }
 
+    // MARK: viewDidLoad
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         adjustTextViewInset()
+        configureKeyboardNotification()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 
@@ -81,6 +87,11 @@ private extension IntroduceViewController {
             }
             .disposed(by: disposeBag)
     }
+
+    func configureKeyboardNotification() {
+        setKeyboardObserver()
+    }
+
 }
 
 private extension IntroduceViewController {

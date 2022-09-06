@@ -123,7 +123,7 @@ private extension ProfilePositionViewController {
             .asDriver()
             .drive { [weak self] _ in
                 guard let self = self else { return }
-                self.navigationController?.pushViewController(PortfolioViewController(), animated: true)
+                self.navigationController?.pushViewController(ScheduleViewController(), animated: true)
             }
             .disposed(by: disposeBag)
     }
