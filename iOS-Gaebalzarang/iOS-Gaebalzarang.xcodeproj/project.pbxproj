@@ -14,6 +14,12 @@
 		B3324D6628B3AD5D00F7263F /* SkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6528B3AD5D00F7263F /* SkillViewController.swift */; };
 		B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6728B3B6E000F7263F /* SkillCell.swift */; };
 		B3324D6C28B3F07100F7263F /* ProfileCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3324D6B28B3F07100F7263F /* ProfileCompleteViewController.swift */; };
+		B361CECF28CF012500F1490A /* CollaboratorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361CEC928CF012400F1490A /* CollaboratorHeaderView.swift */; };
+		B361CED028CF012500F1490A /* CollaboratorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361CECA28CF012400F1490A /* CollaboratorCell.swift */; };
+		B361CED128CF012500F1490A /* RecommandProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361CECB28CF012400F1490A /* RecommandProjectCell.swift */; };
+		B361CED228CF012500F1490A /* ProjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361CECC28CF012400F1490A /* ProjectHeaderView.swift */; };
+		B361CED328CF012500F1490A /* MainHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361CECD28CF012500F1490A /* MainHeaderCell.swift */; };
+		B361CED428CF012500F1490A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B361CECE28CF012500F1490A /* MainViewController.swift */; };
 		B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */; };
 		B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE847F28A2685800F57038 /* DesignGuide.swift */; };
 		B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */; };
@@ -60,6 +66,12 @@
 		B3324D6528B3AD5D00F7263F /* SkillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillViewController.swift; sourceTree = "<group>"; };
 		B3324D6728B3B6E000F7263F /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
 		B3324D6B28B3F07100F7263F /* ProfileCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCompleteViewController.swift; sourceTree = "<group>"; };
+		B361CEC928CF012400F1490A /* CollaboratorHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorHeaderView.swift; sourceTree = "<group>"; };
+		B361CECA28CF012400F1490A /* CollaboratorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollaboratorCell.swift; sourceTree = "<group>"; };
+		B361CECB28CF012400F1490A /* RecommandProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandProjectCell.swift; sourceTree = "<group>"; };
+		B361CECC28CF012400F1490A /* ProjectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectHeaderView.swift; sourceTree = "<group>"; };
+		B361CECD28CF012500F1490A /* MainHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHeaderCell.swift; sourceTree = "<group>"; };
+		B361CECE28CF012500F1490A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B3A95F8F28A0EFCB00B6E48C /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		B3CE847F28A2685800F57038 /* DesignGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignGuide.swift; sourceTree = "<group>"; };
 		B3CE848128A3552D00F57038 /* ProfileLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocationViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +211,27 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B361CEBB28CF001F00F1490A /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				B361CEBC28CF008400F1490A /* View */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		B361CEBC28CF008400F1490A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B361CECE28CF012500F1490A /* MainViewController.swift */,
+				B361CECD28CF012500F1490A /* MainHeaderCell.swift */,
+				B361CECC28CF012400F1490A /* ProjectHeaderView.swift */,
+				B361CECB28CF012400F1490A /* RecommandProjectCell.swift */,
+				B361CEC928CF012400F1490A /* CollaboratorHeaderView.swift */,
+				B361CECA28CF012400F1490A /* CollaboratorCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B3F571A728A24F090092B4D0 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +318,7 @@
 				B3F571A728A24F090092B4D0 /* LoginScene */,
 				B3F571A928A24F610092B4D0 /* SignUpScene */,
 				B3F571AB28A24F830092B4D0 /* ProfileScene */,
+				B361CEBB28CF001F00F1490A /* MainScene */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -529,7 +563,9 @@
 				D2F66C3D28A354F6003AA52C /* SignUpNameIDView.swift in Sources */,
 				D298819D28B3685500F53FBF /* UIViewController +.swift in Sources */,
 				B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */,
+				B361CECF28CF012500F1490A /* CollaboratorHeaderView.swift in Sources */,
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
+				B361CED028CF012500F1490A /* CollaboratorCell.swift in Sources */,
 				D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */,
 				B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
@@ -537,6 +573,7 @@
 				B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */,
 				D298819028ACD35900F53FBF /* CheckValidityUsecase.swift in Sources */,
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
+				B361CED228CF012500F1490A /* ProjectHeaderView.swift in Sources */,
 				B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */,
 				D298819728ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift in Sources */,
 				D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */,
@@ -545,6 +582,7 @@
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E8928A0FF3C0001B2D3 /* CustomWideButton.swift in Sources */,
 				D298818828ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift in Sources */,
+				B361CED428CF012500F1490A /* MainViewController.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
 				D298819B28B2555B00F53FBF /* CheckAuthenticValidityUsecase.swift in Sources */,
 				B3CE848628A394D500F57038 /* ProfilePositionViewController.swift in Sources */,
@@ -554,8 +592,10 @@
 				B3E524E728A4E99A00FBA21C /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */,
 				D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */,
+				B361CED128CF012500F1490A /* RecommandProjectCell.swift in Sources */,
 				D20D2E6528A027DD0001B2D3 /* SceneDelegate.swift in Sources */,
 				D298819328ACD53100F53FBF /* ValidationCheckCase.swift in Sources */,
+				B361CED328CF012500F1490A /* MainHeaderCell.swift in Sources */,
 				B3CE848428A355A400F57038 /* InputTitleView.swift in Sources */,
 				D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */,
 				D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */,

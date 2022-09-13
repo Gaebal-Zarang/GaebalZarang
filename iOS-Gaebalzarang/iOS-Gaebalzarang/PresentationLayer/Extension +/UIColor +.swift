@@ -50,4 +50,6 @@ extension UIColor {
     class var gzChacoal: UIColor? { return UIColor(named: "gzChacoal")}
 
     class var gzYellow: UIColor? { return UIColor(named: "gzYellow")}
+
+    class var gzGray03: UIColor? { return UIColor(named: "gzGray03") }
 }
