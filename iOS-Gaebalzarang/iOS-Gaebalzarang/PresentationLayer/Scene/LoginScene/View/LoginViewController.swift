@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
 
         view.backgroundColor = .white
         configureLayouts()
-        configureInnerActionBinding()
+        configureActionBinding()
     }
 
     override func viewWillLayoutSubviews() {
@@ -159,7 +159,9 @@ private extension LoginViewController {
         loginButton.setCornerRound(value: (loginButton.frame.height / 2))
     }
 
-    func configureInnerActionBinding() {
-
+    func configureActionBinding() {
+        guard let idText = idPwTextFields[safe: 0], let pwText = idPwTextFields[safe: 1], let search = searchButtons[safe: 0], let signUp = searchButtons[safe: 1] else { return }
+        
+        // TODO: 액션 바인딩
     }
 }
