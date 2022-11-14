@@ -14,4 +14,13 @@ target 'iOS-Gaebalzarang' do
   pod 'RxCocoa', '6.5.0'
   pod 'RxGesture'
 
+  # SnapKit
+  pod 'SnapKit'
+
+  # Then
+  pod 'Then'
+
+  # Moya/RxsSwift
+  pod 'Moya/RxSwift'
+  
 end
