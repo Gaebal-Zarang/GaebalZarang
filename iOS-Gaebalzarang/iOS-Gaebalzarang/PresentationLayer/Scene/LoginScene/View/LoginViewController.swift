@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 import Then
 import SnapKit
 
@@ -82,7 +83,6 @@ private extension LoginViewController {
 
     func setContentView() {
         self.view.backgroundColor = .white
-        self.view.endEditing(true)
     }
 
     func bindWithViewModel() {
@@ -101,14 +101,30 @@ private extension LoginViewController {
     func bindWithInnerAction() {
         guard let search = searchButtons[safe: 0], let signUp = searchButtons[safe: 1] else { return }
 
+        self.view.rx.tapGesture()
+            .when(.recognized)
+            .bind { [weak self] _ in
+                self?.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+
+        // PW show 버튼 클릭 시, 값을 보여줄 지 안 보여줄 지 토글
+        self.showButton.rx.tap
+            .bind { [weak self] _ in
+                if let pwText = self?.idPwTextFields[safe: 1] {
+                    pwText.isSecureTextEntry.toggle()
+                }
+            }
+            .disposed(by: disposeBag)
+
         search.rx.tap
-            .subscribe { [weak self] _ in
+            .bind { [weak self] _ in
                 // TODO: 아이디 비밀번호 찾기 Scene 이동
             }
             .disposed(by: disposeBag)
 
         signUp.rx.tap
-            .subscribe { [weak self] _ in
+            .bind { [weak self] _ in
                 // TODO: 회원가입 Scene 이동
                 let signUpVC = SignUpViewController()
                 signUpVC.modalPresentationStyle = .fullScreen
@@ -169,6 +185,7 @@ private extension LoginViewController {
 
                 } else {
                     $0.placeholder = "PW"
+                    $0.isSecureTextEntry = true
                     $0.addRightPadding(with: 75)
                 }
 
