@@ -41,6 +41,8 @@
 		D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8C28A2567200CEBB80 /* UIColor +.swift */; };
 		D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */; };
 		D2377EBE29222BD700EBEB5A /* Array +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2377EBD29222BD700EBEB5A /* Array +.swift */; };
+		D2377EC129234B2100EBEB5A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2377EC029234B2100EBEB5A /* LoginViewModel.swift */; };
+		D2377EC329235A2B00EBEB5A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2377EC229235A2B00EBEB5A /* ViewModel.swift */; };
 		D298818828ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818728ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift */; };
 		D298818E28ACD2AA00F53FBF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */; };
 		D298819028ACD35900F53FBF /* CheckValidityUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818F28ACD35900F53FBF /* CheckValidityUsecase.swift */; };
@@ -95,6 +97,8 @@
 		D2360C8C28A2567200CEBB80 /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
 		D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D2377EBD29222BD700EBEB5A /* Array +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array +.swift"; sourceTree = "<group>"; };
+		D2377EC029234B2100EBEB5A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D2377EC229235A2B00EBEB5A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D298818728ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserIdValidityUsecase.swift; sourceTree = "<group>"; };
 		D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D298818F28ACD35900F53FBF /* CheckValidityUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidityUsecase.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 		B3F571A728A24F090092B4D0 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
+				D2377EBF29234B1000EBEB5A /* ViewModel */,
 				B3F571A828A24F140092B4D0 /* View */,
 			);
 			path = LoginScene;
@@ -355,6 +360,15 @@
 				D20D2E7028A027DD0001B2D3 /* Info.plist */,
 			);
 			path = "iOS-Gaebalzarang";
+			sourceTree = "<group>";
+		};
+		D2377EBF29234B1000EBEB5A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D2377EC029234B2100EBEB5A /* LoginViewModel.swift */,
+				D2377EC229235A2B00EBEB5A /* ViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D298818428ACCBA500F53FBF /* Domain Layer */ = {
@@ -568,6 +582,7 @@
 				B361CED028CF012500F1490A /* CollaboratorCell.swift in Sources */,
 				D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */,
 				B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */,
+				D2377EC329235A2B00EBEB5A /* ViewModel.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
 				B3324D6C28B3F07100F7263F /* ProfileCompleteViewController.swift in Sources */,
 				B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */,
@@ -584,6 +599,7 @@
 				D298818828ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift in Sources */,
 				B361CED428CF012500F1490A /* MainViewController.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
+				D2377EC129234B2100EBEB5A /* LoginViewModel.swift in Sources */,
 				D298819B28B2555B00F53FBF /* CheckAuthenticValidityUsecase.swift in Sources */,
 				B3CE848628A394D500F57038 /* ProfilePositionViewController.swift in Sources */,
 				D298818E28ACD2AA00F53FBF /* SignUpViewModel.swift in Sources */,

@@ -11,7 +11,7 @@ import RxCocoa
 import Then
 import SnapKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     let disposeBag = DisposeBag()
 
@@ -47,13 +47,26 @@ class LoginViewController: UIViewController {
     private var idPwTextFields = [CustomTextField]()
     private var searchButtons = [UIButton]()
 
+    private let loginVM: LoginViewModel
+
+    init(with viewModel: LoginViewModel) {
+        self.loginVM = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setContentView()
         configureLayouts()
-        bindTextFieldsAction()
-        bindButtonsAction()
+        bindWithViewModel()
+        bindWithInnerAction()
     }
 
     // Auto layout 사용 시, cornerRadius 해결 가능한 생명 주기 메서드
@@ -66,22 +79,39 @@ class LoginViewController: UIViewController {
 
 // MARK: Set view attributes and Bind Action
 private extension LoginViewController {
-    
+
     func setContentView() {
         self.view.backgroundColor = .white
         self.view.endEditing(true)
     }
-    
-    func bindTextFieldsAction() {
+
+    func bindWithViewModel() {
         guard let idText = idPwTextFields[safe: 0], let pwText = idPwTextFields[safe: 1] else { return }
+
+        let input = LoginViewModel.Input(typedIdValue: idText.rx.value.asObservable(), typedPswValue: pwText.rx.value.asObservable(), tappedLoginButton: loginButton.rx.tap.asObservable())
+        let output = loginVM.transform(input: input)
         
-        
+        output.canLoginRelay
+            .subscribe { [weak self] canLogin in
+                // TODO: canLogin 값에 따라 toastLabel or 홈화면 이동
+            }
+            .disposed(by: disposeBag)
     }
-    
-    func bindButtonsAction() {
+
+    func bindWithInnerAction() {
         guard let search = searchButtons[safe: 0], let signUp = searchButtons[safe: 1] else { return }
+
+        search.rx.tap
+            .subscribe { [weak self] _ in
+                // TODO: 아이디 비밀번호 찾기 Scene 이동
+            }
+            .disposed(by: disposeBag)
         
-        // TODO: 아이디/비밀번호 찾기 버튼 - 뷰, loginButton - MainVC
+        signUp.rx.tap
+            .subscribe { [weak self] _ in
+                // TODO: 회원가입 Scene 이동
+            }
+            .disposed(by: disposeBag)
     }
 }
 
