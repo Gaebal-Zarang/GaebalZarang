@@ -51,15 +51,15 @@ final class LoginViewController: UIViewController {
 
     init(with viewModel: LoginViewModel) {
         self.loginVM = viewModel
-        
+
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,9 +90,9 @@ private extension LoginViewController {
 
         let input = LoginViewModel.Input(typedIdValue: idText.rx.value.asObservable(), typedPswValue: pwText.rx.value.asObservable(), tappedLoginButton: loginButton.rx.tap.asObservable())
         let output = loginVM.transform(input: input)
-        
+
         output.canLoginRelay
-            .subscribe { [weak self] canLogin in
+            .subscribe { [weak self] _ in
                 // TODO: canLogin 값에 따라 toastLabel or 홈화면 이동
             }
             .disposed(by: disposeBag)
@@ -106,10 +106,13 @@ private extension LoginViewController {
                 // TODO: 아이디 비밀번호 찾기 Scene 이동
             }
             .disposed(by: disposeBag)
-        
+
         signUp.rx.tap
             .subscribe { [weak self] _ in
                 // TODO: 회원가입 Scene 이동
+                let signUpVC = SignUpViewController()
+                signUpVC.modalPresentationStyle = .fullScreen
+                self?.present(signUpVC, animated: true)
             }
             .disposed(by: disposeBag)
     }

@@ -53,7 +53,7 @@ final class LoginViewModel: ViewModel {
 }
 
 private extension LoginViewModel {
-    
+
     func bindWithUsecase() {
         // TODO: Login 가능 여부 Usecase에서 받아오면 해당 값과 canLoginRelay bind
         self.output.canLoginRelay
