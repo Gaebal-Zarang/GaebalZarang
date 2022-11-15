@@ -11,7 +11,6 @@ import RxCocoa
 import Then
 import SnapKit
 
-// TODO: 텍스트 필드를 가진 모든 VC에서 키보드 올라오면 뷰도 같이 올라가고, 바깥을 터치하면 키보드 해제되는 기능 구현 필요
 class LoginViewController: UIViewController {
 
     let disposeBag = DisposeBag()
@@ -51,11 +50,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        setContentView()
         configureLayouts()
-        configureActionBinding()
+        bindTextFieldsAction()
+        bindButtonsAction()
     }
 
+    // Auto layout 사용 시, cornerRadius 해결 가능한 생명 주기 메서드
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
@@ -63,6 +64,28 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: Set view attributes and Bind Action
+private extension LoginViewController {
+    
+    func setContentView() {
+        self.view.backgroundColor = .white
+        self.view.endEditing(true)
+    }
+    
+    func bindTextFieldsAction() {
+        guard let idText = idPwTextFields[safe: 0], let pwText = idPwTextFields[safe: 1] else { return }
+        
+        
+    }
+    
+    func bindButtonsAction() {
+        guard let search = searchButtons[safe: 0], let signUp = searchButtons[safe: 1] else { return }
+        
+        // TODO: 아이디/비밀번호 찾기 버튼 - 뷰, loginButton - MainVC
+    }
+}
+
+// MARK: Configure layout
 private extension LoginViewController {
 
     func configureLayouts() {
@@ -104,6 +127,7 @@ private extension LoginViewController {
         }
     }
 
+    // 중복 뷰 할당으로 인한 코드 낭비 방지를 위한 함수
     func configureStackSubViews() {
         for num in 0...1 {
             let textField = CustomTextField().then {
@@ -129,7 +153,6 @@ private extension LoginViewController {
 
                 $0.titleLabel?.textAlignment = .center
                 $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
-                $0.sizeToFit()
                 $0.setTitleColor(.gzGray3, for: .normal)
             }
 
@@ -151,17 +174,12 @@ private extension LoginViewController {
         searchStackView.insertArrangedSubview(label, at: 1)
     }
 
+    // 높이 절반 값의 라운드 (둥근 모서리 뷰)
     func configureCornerRound() {
         idPwTextFields.forEach {
             $0.setCornerRound(value: ($0.frame.height / 2))
         }
 
         loginButton.setCornerRound(value: (loginButton.frame.height / 2))
-    }
-
-    func configureActionBinding() {
-        guard let idText = idPwTextFields[safe: 0], let pwText = idPwTextFields[safe: 1], let search = searchButtons[safe: 0], let signUp = searchButtons[safe: 1] else { return }
-        
-        // TODO: 액션 바인딩
     }
 }
