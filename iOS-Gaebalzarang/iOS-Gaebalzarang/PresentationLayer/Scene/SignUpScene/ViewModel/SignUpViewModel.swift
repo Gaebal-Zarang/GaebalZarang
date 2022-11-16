@@ -35,6 +35,8 @@ final class SignUpViewModel: ViewModel {
     
     private let output = Output()
     private let disposeBag = DisposeBag()
+    
+    private var typedPswString = ""
 
     init() {
         
