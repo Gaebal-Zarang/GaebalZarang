@@ -51,7 +51,16 @@ final class SignUpViewModel: ViewModel {
     }
 }
 
-// MARK: Binding Input and Usecase's Output
+// MARK: Binding Usecase's observer and Output accept/onNext
+private extension SignUpViewModel {
+    
+    // TODO: 차후 API Usecase의 Observer 값 바인딩 진행
+    func bindToUsecase() {
+        
+    }
+}
+
+// MARK: Binding Input (with Output accept/onNext)
 private extension SignUpViewModel {
     
     // 유효성 관련 바인딩

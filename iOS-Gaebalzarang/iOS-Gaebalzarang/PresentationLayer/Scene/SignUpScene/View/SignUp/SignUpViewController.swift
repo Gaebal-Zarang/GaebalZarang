@@ -78,6 +78,7 @@ private extension SignUpViewController {
         self.bindButton(with: output)
     }
     
+    // 유효성 검사 관련 경고 라벨 isHidden 바인딩
     func bindValidationTextField(with output: SignUpViewModel.Output) {
         output.validNameRelay
             .subscribe { [weak self] validate in
@@ -112,6 +113,7 @@ private extension SignUpViewController {
             .disposed(by: disposeBag)
     }
     
+    // 버튼 활성화 및 액션 바인딩
     func bindButton(with output: SignUpViewModel.Output) {
         output.isEnableNextButtonRelay
             .subscribe { [weak self] isEnable in

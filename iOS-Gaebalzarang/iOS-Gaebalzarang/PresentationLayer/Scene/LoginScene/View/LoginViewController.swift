@@ -124,8 +124,10 @@ private extension LoginViewController {
 
         signUp.rx.tap
             .bind { [weak self] _ in
-                // TODO: 회원가입 Scene 이동
-                let signUpVC = SignUpViewController()
+                // TODO: 회원가입 Scene 이동 (Coordinator)
+                let validateUsecase: CheckUsecase = CheckValidityUsecase()
+                let signUpVM = SignUpViewModel(validateUsecase: validateUsecase)
+                let signUpVC = SignUpViewController(with: signUpVM)
                 signUpVC.modalPresentationStyle = .fullScreen
                 self?.present(signUpVC, animated: true)
             }
