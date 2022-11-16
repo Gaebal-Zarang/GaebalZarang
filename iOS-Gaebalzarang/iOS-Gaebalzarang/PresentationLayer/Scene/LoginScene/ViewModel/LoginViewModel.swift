@@ -36,6 +36,7 @@ final class LoginViewModel: ViewModel {
 
             return (id, psw)
         }
+        .retry(3)
         .subscribe { [weak self] tuple in
             self?.typedIdPw["ID"] = tuple.0
             self?.typedIdPw["PW"] = tuple.1
@@ -43,6 +44,7 @@ final class LoginViewModel: ViewModel {
         .disposed(by: disposeBag)
 
         input.tappedLoginButton
+            .retry(3)
             .subscribe { [weak self] _ in
                 // TODO: Usecase를 통해서 로그인 가능 여부 받아오기 (typeIdPw 값 전달)
             }
