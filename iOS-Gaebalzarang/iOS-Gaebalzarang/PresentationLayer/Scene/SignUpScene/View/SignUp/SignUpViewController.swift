@@ -34,8 +34,8 @@ final class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
 
+        self.setContentView()
         self.configureLayouts()
     }
 
@@ -43,6 +43,14 @@ final class SignUpViewController: UIViewController {
         super.viewWillLayoutSubviews()
 
         self.configureCornerRadius()
+    }
+}
+
+// MARK: Set view attributes and Bind Action
+private extension SignUpViewController {
+ 
+    func setContentView() {
+        view.backgroundColor = .white
     }
 }
 
