@@ -23,10 +23,10 @@ final class SignUpViewModel: ViewModel {
     }
     
     struct Output {
-        let validNameRelay = BehaviorRelay<Bool>(value: false)
-        let validIdRelay = BehaviorRelay<Bool>(value: false)
-        let validPwRelay = BehaviorRelay<Bool>(value: false)
-        let validConfirmPwRelay = BehaviorRelay<Bool>(value: false)
+        let validNameRelay = BehaviorRelay<Bool>(value: true)
+        let validIdRelay = BehaviorRelay<Bool>(value: true)
+        let validPwRelay = BehaviorRelay<Bool>(value: true)
+        let validConfirmPwRelay = BehaviorRelay<Bool>(value: true)
         
         let isEnableNextButtonRelay = PublishRelay<Bool>()
         let isActiveNextButtonRelay = PublishRelay<Bool>()
@@ -113,13 +113,13 @@ private extension SignUpViewModel {
             .bind(to: output.isEnableNextButtonRelay)
             .disposed(by: disposeBag)
         
-        output.isActiveConfirmIdButtonRelay
+        input.tappedConfirmIdButton
             .subscribe { [weak self] _ in
                 // TODO: 아이디 중복 검사 로직 추가
             }
             .disposed(by: disposeBag)
         
-        output.isActiveNextButtonRelay
+        input.tappedNextButton
             .subscribe { [weak self] _ in
                 // TODO: 회원가입 진행 결과 로직 추가
             }

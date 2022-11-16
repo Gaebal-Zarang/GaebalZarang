@@ -14,8 +14,6 @@ import SnapKit
 
 final class LoginViewController: UIViewController {
 
-    let disposeBag = DisposeBag()
-
     private let logoView = UIImageView().then {
         $0.image = UIImage(named: "logo")
         $0.contentMode = .scaleAspectFit
@@ -49,6 +47,7 @@ final class LoginViewController: UIViewController {
     private var searchButtons = [UIButton]()
 
     private let loginVM: LoginViewModel
+    private let disposeBag = DisposeBag()
 
     init(with viewModel: LoginViewModel) {
         self.loginVM = viewModel

@@ -31,12 +31,27 @@ final class SignUpViewController: UIViewController {
 
     private var signUpTextFields = [CustomTextField]()
     private var validationLabels = [UILabel]()
+    
+    private let signUpVM: SignUpViewModel
+    private let disposeBag = DisposeBag()
 
+    init(with viewModel: SignUpViewModel) {
+        self.signUpVM = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setContentView()
         self.configureLayouts()
+        self.setViewModelOutput()
     }
 
     override func viewWillLayoutSubviews() {
@@ -51,6 +66,70 @@ private extension SignUpViewController {
  
     func setContentView() {
         view.backgroundColor = .white
+    }
+    
+    func setViewModelOutput() {
+        guard let nameText = signUpTextFields[safe: 0], let idText = signUpTextFields[safe: 1], let pswText = signUpTextFields[safe: 2], let confirmText = signUpTextFields[safe: 3] else { return }
+        
+        let input = SignUpViewModel.Input(typedNameValue: nameText.rx.value.distinctUntilChanged(), typedIdValue: idText.rx.value.distinctUntilChanged(), typedPwValue: pswText.rx.value.distinctUntilChanged(), typedConfirmPwValue: confirmText.rx.value.distinctUntilChanged(), tappedConfirmIdButton: idConfirmButton.rx.tap.asObservable(), tappedNextButton: nextButton.rx.tap.asObservable())
+        let output = signUpVM.transform(input: input)
+        
+        self.bindValidationTextField(with: output)
+        self.bindButton(with: output)
+    }
+    
+    func bindValidationTextField(with output: SignUpViewModel.Output) {
+        output.validNameRelay
+            .subscribe { [weak self] validate in
+                guard let self = self, let nameLabel = self.validationLabels[safe: 0] else { return }
+                
+                nameLabel.isHidden = validate
+            }
+            .disposed(by: disposeBag)
+        
+        output.validIdRelay
+            .subscribe { [weak self] validate in
+                guard let self = self, let idLabel = self.validationLabels[safe: 1] else { return }
+                
+                idLabel.isHidden = validate
+            }
+            .disposed(by: disposeBag)
+        
+        output.validPwRelay
+            .subscribe { [weak self] validate in
+                guard let self = self, let pwLabel = self.validationLabels[safe: 2] else { return }
+                
+                pwLabel.isHidden = validate
+            }
+            .disposed(by: disposeBag)
+        
+        output.validConfirmPwRelay
+            .subscribe { [weak self] validate in
+                guard let self = self, let confirmLabel = self.validationLabels[safe: 3] else { return }
+                
+                confirmLabel.isHidden = validate
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func bindButton(with output: SignUpViewModel.Output) {
+        output.isEnableNextButtonRelay
+            .subscribe { [weak self] isEnable in
+                self?.nextButton.isEnabled = isEnable
+            }
+            .disposed(by: disposeBag)
+        
+        output.isActiveConfirmIdButtonRelay
+            .subscribe { [weak self] isActive in
+                // TODO: isActive 값에 따라 Toast 내용 변경?
+            }
+            .disposed(by: disposeBag)
+        
+        output.isActiveNextButtonRelay
+            .subscribe { [weak self] isActive in
+                // TODO: isActive 값에 따라 오류 팝업 or 다음 화면 이동
+            }
+            .disposed(by: disposeBag)
     }
 }
 
