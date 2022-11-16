@@ -8,6 +8,6 @@
 import RxSwift
 
 protocol BasicUsecase {
-    
+
     func execute(with disposeBag: DisposeBag)
 }

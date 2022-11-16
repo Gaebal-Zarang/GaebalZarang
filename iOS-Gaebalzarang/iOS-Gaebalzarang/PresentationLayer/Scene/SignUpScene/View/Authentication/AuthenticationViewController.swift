@@ -124,24 +124,7 @@ private extension AuthenticationViewController {
     }
 
     func configureVMBinding() {
-        let input = SignUpViewModel.AuthenticInput(phoneNumberCheckEvent: contentView.setPhoneNumberTexting(), authenticCodeCheckEvent: contentView.setAuthenticCode())
-        let output = authenticViewModel?.transform(input: input, disposeBag: disposeBag)
 
-        output?.phoneNumberSubject
-            .asDriver(onErrorJustReturn: false)
-            .drive { [weak self] bool in
-                self?.contentView.changeAuthenticButton(isEnabled: bool)
-                self?.isNextButtonEnabled[.phoneNumValid] = bool
-            }
-            .disposed(by: disposeBag)
-
-        output?.authenticCodeValidationSubject
-            .asDriver(onErrorJustReturn: false)
-            .drive { [weak self] bool in
-                self?.contentView.changeAuthenticCode(isValid: bool)
-                self?.isNextButtonEnabled[.authenticCodeValid] = bool
-            }
-            .disposed(by: disposeBag)
     }
 
     func configureInnerActionBinding() {

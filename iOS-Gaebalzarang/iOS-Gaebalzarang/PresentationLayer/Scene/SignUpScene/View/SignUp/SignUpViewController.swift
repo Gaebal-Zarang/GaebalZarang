@@ -31,7 +31,7 @@ final class SignUpViewController: UIViewController {
 
     private var signUpTextFields = [CustomTextField]()
     private var validationLabels = [UILabel]()
-    
+
     private let signUpVM: SignUpViewModel
     private let disposeBag = DisposeBag()
 
@@ -40,12 +40,12 @@ final class SignUpViewController: UIViewController {
 
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,56 +63,57 @@ final class SignUpViewController: UIViewController {
 
 // MARK: Set view attributes and Bind Action
 private extension SignUpViewController {
- 
+
     func setContentView() {
         view.backgroundColor = .white
     }
-    
+
     func setViewModelOutput() {
         guard let nameText = signUpTextFields[safe: 0], let idText = signUpTextFields[safe: 1], let pswText = signUpTextFields[safe: 2], let confirmText = signUpTextFields[safe: 3] else { return }
-        
+
         let input = SignUpViewModel.Input(typedNameValue: nameText.rx.value.distinctUntilChanged(), typedIdValue: idText.rx.value.distinctUntilChanged(), typedPwValue: pswText.rx.value.distinctUntilChanged(), typedConfirmPwValue: confirmText.rx.value.distinctUntilChanged(), tappedConfirmIdButton: idConfirmButton.rx.tap.asObservable(), tappedNextButton: nextButton.rx.tap.asObservable())
         let output = signUpVM.transform(input: input)
-        
+
         self.bindValidationTextField(with: output)
         self.bindButton(with: output)
+        self.bindWithInnerAction()
     }
-    
+
     // 유효성 검사 관련 경고 라벨 isHidden 바인딩
     func bindValidationTextField(with output: SignUpViewModel.Output) {
         output.validNameRelay
             .subscribe { [weak self] validate in
                 guard let self = self, let nameLabel = self.validationLabels[safe: 0] else { return }
-                
+
                 nameLabel.isHidden = validate
             }
             .disposed(by: disposeBag)
-        
+
         output.validIdRelay
             .subscribe { [weak self] validate in
                 guard let self = self, let idLabel = self.validationLabels[safe: 1] else { return }
-                
+
                 idLabel.isHidden = validate
             }
             .disposed(by: disposeBag)
-        
+
         output.validPwRelay
             .subscribe { [weak self] validate in
                 guard let self = self, let pwLabel = self.validationLabels[safe: 2] else { return }
-                
+
                 pwLabel.isHidden = validate
             }
             .disposed(by: disposeBag)
-        
+
         output.validConfirmPwRelay
             .subscribe { [weak self] validate in
                 guard let self = self, let confirmLabel = self.validationLabels[safe: 3] else { return }
-                
+
                 confirmLabel.isHidden = validate
             }
             .disposed(by: disposeBag)
     }
-    
+
     // 버튼 활성화 및 액션 바인딩
     func bindButton(with output: SignUpViewModel.Output) {
         output.isEnableNextButtonRelay
@@ -120,16 +121,25 @@ private extension SignUpViewController {
                 self?.nextButton.isEnabled = isEnable
             }
             .disposed(by: disposeBag)
-        
+
         output.isActiveConfirmIdButtonRelay
-            .subscribe { [weak self] isActive in
+            .subscribe { [weak self] _ in
                 // TODO: isActive 값에 따라 Toast 내용 변경?
             }
             .disposed(by: disposeBag)
-        
+
         output.isActiveNextButtonRelay
-            .subscribe { [weak self] isActive in
+            .subscribe { [weak self] _ in
                 // TODO: isActive 값에 따라 오류 팝업 or 다음 화면 이동
+            }
+            .disposed(by: disposeBag)
+    }
+
+    func bindWithInnerAction() {
+        self.view.rx.tapGesture()
+            .when(.recognized)
+            .bind { [weak self] _ in
+                self?.view.endEditing(true)
             }
             .disposed(by: disposeBag)
     }
@@ -178,7 +188,7 @@ private extension SignUpViewController {
 
 // MARK: Configure subViews layout of MainStackView
 private extension SignUpViewController {
-    
+
     func configureStackSubviews(index: Int) {
         let verticlaStack = UIStackView().then {
             $0.spacing = 7
