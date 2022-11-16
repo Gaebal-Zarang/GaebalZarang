@@ -55,7 +55,6 @@
 		D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */; };
 		D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97828A3A6C100754B5A /* CompleteViewController.swift */; };
 		D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */; };
-		D2F66C3D28A354F6003AA52C /* SignUpSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F66C3C28A354F6003AA52C /* SignUpSectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,7 +110,6 @@
 		D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationContentView.swift; sourceTree = "<group>"; };
 		D2BDB97828A3A6C100754B5A /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNarrowButton.swift; sourceTree = "<group>"; };
-		D2F66C3C28A354F6003AA52C /* SignUpSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,7 +417,6 @@
 			isa = PBXGroup;
 			children = (
 				D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */,
-				D2F66C3C28A354F6003AA52C /* SignUpSectionView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -574,7 +571,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F66C3D28A354F6003AA52C /* SignUpSectionView.swift in Sources */,
 				D298819D28B3685500F53FBF /* UIViewController +.swift in Sources */,
 				B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */,
 				B361CECF28CF012500F1490A /* CollaboratorHeaderView.swift in Sources */,

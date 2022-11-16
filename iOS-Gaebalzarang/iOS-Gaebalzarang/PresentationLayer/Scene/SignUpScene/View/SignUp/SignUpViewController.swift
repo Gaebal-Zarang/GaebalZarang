@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxGesture
+import Then
+import SnapKit
 
 final class SignUpViewController: UIViewController {
 
@@ -44,6 +46,7 @@ final class SignUpViewController: UIViewController {
     }
 }
 
+// MARK: Configure layout
 private extension SignUpViewController {
 
     func configureLayouts() {
@@ -82,7 +85,11 @@ private extension SignUpViewController {
             $0.setCornerRound(value: ($0.frame.height / 2))
         }
     }
+}
 
+// MARK: Configure subViews layout of MainStackView
+private extension SignUpViewController {
+    
     func configureStackSubviews(index: Int) {
         let verticlaStack = UIStackView().then {
             $0.spacing = 7
