@@ -12,4 +12,5 @@ enum ValidationCheckCase {
     case name
     case id
     case psw
+    case confirm
 }

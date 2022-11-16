@@ -21,6 +21,9 @@ final class CheckValidityUsecase: CheckUsecase {
 
         case .psw:
             return checkPswValidation(of: text)
+
+        case .confirm:
+            return false
         }
     }
 }

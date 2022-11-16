@@ -65,66 +65,57 @@ private extension SignUpViewModel {
 
     // 유효성 관련 바인딩
     func bindValidateObserver(with input: Input) {
-        input.typedNameValue
-            .map { return ($0 != nil) ? $0! : "" }
-            .subscribe { [weak self] value in
-                guard let self = self else { return }
+        let inputDictionary: [ValidationCheckCase: Observable<String?>] = [.name: input.typedNameValue, .id: input.typedIdValue, .psw: input.typedPwValue, .confirm: input.typedConfirmPwValue]
+        self.operateObserver(with: inputDictionary)
+    }
 
-                if value == "" {
-                    self.output.validNameRelay.accept(true)
+    // 유효성 바인딩 중복 코드 방지를 위한 로직
+    func operateObserver(with inputDictionary: [ValidationCheckCase: Observable<String?>]) {
+        var outputRelay: BehaviorRelay<Bool> = .init(value: false)
 
-                } else {
-                    let validation = self.validateUsecase.execute(with: value, classify: .name)
-                    self.output.validNameRelay.accept(validation)
+        inputDictionary.forEach { dic in
+            dic.value
+                .map { return ($0 != nil) ? $0! : "" }
+                .subscribe { [weak self] value in
+                    guard let self = self else { return }
+
+                    switch dic.key {
+                    case .name:
+                        outputRelay = self.output.validNameRelay
+
+                    case .id:
+                        outputRelay = self.output.validIdRelay
+
+                    case .psw:
+                        outputRelay = self.output.validPwRelay
+                        self.typedPswString = value
+
+                    case .confirm:
+                        outputRelay = self.output.validConfirmPwRelay
+                    }
+
+                    if dic.key == .confirm {
+                        let validation = (value == self.typedPswString)
+                        outputRelay.accept(validation)
+
+                    } else {
+                        guard value != "" else {
+                            outputRelay.accept(true)
+
+                            return
+                        }
+
+                        let validation = self.validateUsecase.execute(with: value, classify: dic.key)
+                        outputRelay.accept(validation)
+                    }
                 }
-            }
-            .disposed(by: disposeBag)
-
-        input.typedIdValue
-            .map { return ($0 != nil) ? $0! : "" }
-            .subscribe { [weak self] value in
-                guard let self = self else { return }
-
-                if value == "" {
-                    self.output.validIdRelay.accept(true)
-
-                } else {
-                    let validation = self.validateUsecase.execute(with: value, classify: .id)
-                    self.output.validIdRelay.accept(validation)
-                }
-            }
-            .disposed(by: disposeBag)
-
-        input.typedPwValue
-            .map { return ($0 != nil) ? $0! : "" }
-            .subscribe { [weak self] value in
-                guard let self = self else { return }
-
-                self.typedPswString = value
-
-                if value == "" {
-                    self.output.validPwRelay.accept(true)
-
-                } else {
-                    let validation = self.validateUsecase.execute(with: value, classify: .psw)
-                    self.output.validPwRelay.accept(validation)
-                }
-            }
-            .disposed(by: disposeBag)
-
-        input.typedConfirmPwValue
-            .map { return ($0 != nil) ? $0! : "" }
-            .subscribe { [weak self] value in
-                guard let self = self else { return }
-
-                let validation = (value == self.typedPswString)
-                self.output.validConfirmPwRelay.accept(validation)
-            }
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
+        }
     }
 
     // 버튼과 관련된 바인딩
     func bindButtonObserver(with input: Input) {
+        // 유효성 검사 외에 값 자체가 빈 값("")인지도 같이 확인해서 Bool 방출
         Observable
             .combineLatest(input.typedNameValue.distinctUntilChanged(), input.typedIdValue.distinctUntilChanged(), input.typedPwValue.distinctUntilChanged(), input.typedConfirmPwValue.distinctUntilChanged(), output.validNameRelay.distinctUntilChanged(), output.validIdRelay.distinctUntilChanged(), output.validPwRelay.distinctUntilChanged(), output.validConfirmPwRelay.distinctUntilChanged(), resultSelector: { (nameString, idString, pswString, confirmString, name, id, psw, confirm) in
                 let stringValues = [nameString, idString, pswString, confirmString]

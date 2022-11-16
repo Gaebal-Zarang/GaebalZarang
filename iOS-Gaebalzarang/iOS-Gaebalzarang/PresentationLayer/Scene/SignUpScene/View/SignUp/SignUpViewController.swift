@@ -216,11 +216,13 @@ private extension SignUpViewController {
 
         case 2:
             textField.placeholder = "PW"
+            textField.isSecureTextEntry = true
             label.numberOfLines = 2
             label.text = "8-16자 영문 대소문자, 숫자, 특수기호(!,@,#,$,%)를 모두 입력해주세요"
 
         case 3:
             textField.placeholder = "PW 재확인"
+            textField.isSecureTextEntry = true
             label.text = "패스워드가 일치하지 않습니다"
 
         default:
