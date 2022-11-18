@@ -51,7 +51,6 @@
 		D298819328ACD53100F53FBF /* ValidationCheckCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819228ACD53100F53FBF /* ValidationCheckCase.swift */; };
 		D298819D28B3685500F53FBF /* UIViewController +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819C28B3685500F53FBF /* UIViewController +.swift */; };
 		D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */; };
-		D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */; };
 		D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97828A3A6C100754B5A /* CompleteViewController.swift */; };
 		D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */; };
 /* End PBXBuildFile section */
@@ -105,7 +104,6 @@
 		D298819228ACD53100F53FBF /* ValidationCheckCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationCheckCase.swift; sourceTree = "<group>"; };
 		D298819C28B3685500F53FBF /* UIViewController +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController +.swift"; sourceTree = "<group>"; };
 		D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationContentView.swift; sourceTree = "<group>"; };
 		D2BDB97828A3A6C100754B5A /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNarrowButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -422,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */,
-				D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -573,7 +570,6 @@
 				B361CECF28CF012500F1490A /* CollaboratorHeaderView.swift in Sources */,
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
 				B361CED028CF012500F1490A /* CollaboratorCell.swift in Sources */,
-				D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */,
 				B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */,
 				D2377EC329235A2B00EBEB5A /* ViewModel.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,

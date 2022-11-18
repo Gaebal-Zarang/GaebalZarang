@@ -37,6 +37,7 @@ private extension CustomTextField {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.gzGray1?.cgColor
         textColor = .gzChacoal
+        font = .systemFont(ofSize: 14)
         addLeftPadding()
     }
 }

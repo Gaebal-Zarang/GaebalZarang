@@ -124,12 +124,13 @@ private extension LoginViewController {
 
         signUp.rx.tap
             .bind { [weak self] _ in
-                // TODO: 회원가입 Scene 이동 (Coordinator)
+                // TODO: 회원가입 Scene 이동 (Coordinator)_ 현재 임시 코드
                 let validateUsecase: CheckUsecase = CheckValidityUsecase()
                 let signUpVM = SignUpViewModel(validateUsecase: validateUsecase)
                 let signUpVC = SignUpViewController(with: signUpVM)
-                signUpVC.modalPresentationStyle = .fullScreen
-                self?.present(signUpVC, animated: true)
+                let navi = UINavigationController(rootViewController: signUpVC)
+                navi.modalPresentationStyle = .fullScreen
+                self?.present(navi, animated: true)
             }
             .disposed(by: disposeBag)
     }

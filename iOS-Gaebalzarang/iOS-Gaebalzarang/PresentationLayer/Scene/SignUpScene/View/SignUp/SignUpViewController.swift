@@ -14,18 +14,18 @@ import SnapKit
 
 final class SignUpViewController: UIViewController {
 
-    private var verticalStackView = UIStackView().then {
+    private let verticalStackView = UIStackView().then {
         $0.spacing = 14
         $0.axis = .vertical
         $0.distribution = .fill
     }
 
-    private var idConfirmButton = CustomNarrowButton(isEnabled: true).then {
+    private let idConfirmButton = CustomNarrowButton(isEnabled: true).then {
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.setTitle("중복 확인", for: .normal)
     }
 
-    private var nextButton = CustomWideButton(isEnabled: false).then {
+    private let nextButton = CustomWideButton(isEnabled: false).then {
         $0.setTitle("다음", for: .normal)
     }
 
@@ -52,6 +52,16 @@ final class SignUpViewController: UIViewController {
         self.setContentView()
         self.configureLayouts()
         self.setViewModelOutput()
+
+        // 임시로 뷰 넘어가게끔 코드 작성
+        nextButton.isEnabled = true
+        nextButton.addTarget(self, action: #selector(justTest), for: .touchDown)
+    }
+
+    @objc
+    func justTest() {
+        let view = AuthenticationViewController()
+        self.navigationController?.pushViewController(view, animated: true)
     }
 
     override func viewWillLayoutSubviews() {
