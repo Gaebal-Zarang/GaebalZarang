@@ -5,10 +5,8 @@
 //  Created by juntaek.oh on 2022/08/17.
 //
 
-import Foundation
 import RxSwift
 import RxRelay
-import RxCocoa
 
 final class SignUpViewModel: ViewModel {
 
@@ -54,7 +52,7 @@ final class SignUpViewModel: ViewModel {
 // MARK: Binding Usecase's observer and Output accept/onNext
 private extension SignUpViewModel {
 
-    // TODO: 차후 API Usecase의 Observer 값 바인딩 진행
+    // TODO: 차후 API Usecase의 Observer 값과 Output 바인딩 진행
     func bindToUsecase() {
 
     }
@@ -130,13 +128,13 @@ private extension SignUpViewModel {
 
         input.tappedConfirmIdButton
             .subscribe { [weak self] _ in
-                // TODO: 아이디 중복 검사 로직 추가
+                // TODO: 아이디 중복 검사 로직 추가 (Usecase 실행)
             }
             .disposed(by: disposeBag)
 
         input.tappedNextButton
             .subscribe { [weak self] _ in
-                // TODO: 회원가입 진행 결과 로직 추가
+                // TODO: 회원가입 진행 결과 로직 추가 (Usecase 실행)
             }
             .disposed(by: disposeBag)
     }

@@ -53,7 +53,7 @@ final class SignUpViewController: UIViewController {
         self.configureLayouts()
         self.setViewModelOutput()
 
-        // 임시로 뷰 넘어가게끔 코드 작성
+        // MARK: 임시로 뷰 넘어가게끔 코드 작성
         nextButton.isEnabled = true
         nextButton.addTarget(self, action: #selector(justTest), for: .touchDown)
     }
