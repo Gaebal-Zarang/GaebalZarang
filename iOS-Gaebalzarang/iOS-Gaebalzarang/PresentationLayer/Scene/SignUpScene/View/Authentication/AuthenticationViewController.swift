@@ -53,7 +53,12 @@ final class AuthenticationViewController: UIViewController {
         $0.setTitle("다음", for: .normal)
     }
 
-    init() {
+    private let authenticationVM: AuthenticationViewModel
+    private let disposeBag = DisposeBag()
+
+    init(with viewModel: AuthenticationViewModel) {
+        self.authenticationVM = viewModel
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -67,12 +72,50 @@ final class AuthenticationViewController: UIViewController {
         view.backgroundColor = .white
 
         self.configureLayouts()
+        self.setViewModelOutput()
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
         self.configureCornerRadius()
+    }
+}
+
+private extension AuthenticationViewController {
+
+    func setViewModelOutput() {
+        let input = AuthenticationViewModel.Input(typedPhoneValue: phoneTextField.rx.value.distinctUntilChanged().asDriver(onErrorJustReturn: nil), tapRequestAuthenticButton: confirmPhoneButton.rx.tap.asDriver(), typedAuthenticValue: authenticTextField.rx.value.distinctUntilChanged().asDriver(onErrorJustReturn: nil), tapConfirmAuthenticButton: confirmAuthenticButton.rx.tap.asDriver(), tapNextButton: nextButton.rx.tap.asDriver())
+
+        let output = authenticationVM.transform(input: input)
+
+        output.isPushedPhoneNumberRelay
+            .subscribe { [weak self] isPushed in
+                self?.notifyLabel.isHidden = !isPushed
+                self?.authenticTextField.isHidden = !isPushed
+                self?.confirmAuthenticButton.isHidden = !isPushed
+            }
+            .disposed(by: disposeBag)
+
+        output.isPushedPhoneNumberRelay
+            .subscribe { [weak self] isCorrect in
+                self?.nextButton.isEnabled = isCorrect
+
+                if isCorrect {
+                    // TODO: 인증번호 맞다는 라벨이나 색상 변경 등 필요
+                } else {
+                    // TODO: 인증번호 틀렸다는 토스트 라벨 구현 필요
+                }
+            }
+            .disposed(by: disposeBag)
+
+        output.canMoveToNextRelay
+            .subscribe { [weak self] canMove in
+                guard canMove else { return }
+
+                // TODO: 다음 뷰로 이동하는 로직 구현 필요
+            }
+            .disposed(by: disposeBag)
     }
 }
 
