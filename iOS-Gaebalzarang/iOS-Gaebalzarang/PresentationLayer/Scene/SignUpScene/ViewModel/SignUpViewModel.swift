@@ -64,12 +64,13 @@ private extension SignUpViewModel {
     // 유효성 관련 바인딩
     func bindValidateObserver(with input: Input) {
         let inputDictionary: [ValidationCheckCase: Observable<String?>] = [.name: input.typedNameValue, .id: input.typedIdValue, .psw: input.typedPwValue, .confirm: input.typedConfirmPwValue]
-        self.operateObserver(with: inputDictionary)
+        let outputDictionary: [ValidationCheckCase: BehaviorRelay<Bool>]  = [.name: output.validNameRelay, .id: output.validIdRelay, .psw: output.validPwRelay, .confirm: output.validConfirmPwRelay]
+
+        self.operateObserver(with: inputDictionary, to: outputDictionary)
     }
 
     // 유효성 바인딩 중복 코드 방지를 위한 로직
-    func operateObserver(with inputDictionary: [ValidationCheckCase: Observable<String?>]) {
-        var outputRelay: BehaviorRelay<Bool> = .init(value: false)
+    func operateObserver(with inputDictionary: [ValidationCheckCase: Observable<String?>], to outputDictionary: [ValidationCheckCase: BehaviorRelay<Bool>]) {
 
         inputDictionary.forEach { dic in
             dic.value
@@ -78,33 +79,26 @@ private extension SignUpViewModel {
                     guard let self = self else { return }
 
                     switch dic.key {
-                    case .name:
-                        outputRelay = self.output.validNameRelay
-
-                    case .id:
-                        outputRelay = self.output.validIdRelay
-
                     case .psw:
-                        outputRelay = self.output.validPwRelay
                         self.typedPswString = value
 
-                    case .confirm:
-                        outputRelay = self.output.validConfirmPwRelay
+                    default:
+                        break
                     }
 
                     if dic.key == .confirm {
                         let validation = (value == self.typedPswString)
-                        outputRelay.accept(validation)
+                        outputDictionary[dic.key]?.accept(validation)
 
                     } else {
                         guard value != "" else {
-                            outputRelay.accept(true)
+                            outputDictionary[dic.key]?.accept(true)
 
                             return
                         }
 
                         let validation = self.validateUsecase.execute(with: value, classify: dic.key)
-                        outputRelay.accept(validation)
+                        outputDictionary[dic.key]?.accept(validation)
                     }
                 }
                 .disposed(by: disposeBag)

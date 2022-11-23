@@ -60,7 +60,8 @@ final class SignUpViewController: UIViewController {
 
     @objc
     func justTest() {
-        let view = AuthenticationViewController()
+        let viewModel = AuthenticationViewModel()
+        let view = AuthenticationViewController(with: viewModel)
         self.navigationController?.pushViewController(view, animated: true)
     }
 
