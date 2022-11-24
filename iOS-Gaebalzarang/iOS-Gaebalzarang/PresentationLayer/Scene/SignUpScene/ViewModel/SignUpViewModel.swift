@@ -123,12 +123,16 @@ private extension SignUpViewModel {
         input.tappedConfirmIdButton
             .subscribe { [weak self] _ in
                 // TODO: 아이디 중복 검사 로직 추가 (Usecase 실행)
+                // 임시 코드
+                self?.output.isActiveConfirmIdButtonRelay.accept(true)
             }
             .disposed(by: disposeBag)
 
         input.tappedNextButton
             .subscribe { [weak self] _ in
                 // TODO: 회원가입 진행 결과 로직 추가 (Usecase 실행)
+                // 임시 코드
+                self?.output.isActiveNextButtonRelay.accept(true)
             }
             .disposed(by: disposeBag)
     }

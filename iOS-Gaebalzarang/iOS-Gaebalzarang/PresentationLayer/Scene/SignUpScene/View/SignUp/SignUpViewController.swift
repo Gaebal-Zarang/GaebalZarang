@@ -55,14 +55,6 @@ final class SignUpViewController: UIViewController {
 
         // MARK: 임시로 뷰 넘어가게끔 코드 작성
         nextButton.isEnabled = true
-        nextButton.addTarget(self, action: #selector(justTest), for: .touchDown)
-    }
-
-    @objc
-    func justTest() {
-        let viewModel = AuthenticationViewModel()
-        let view = AuthenticationViewController(with: viewModel)
-        self.navigationController?.pushViewController(view, animated: true)
     }
 
     override func viewWillLayoutSubviews() {
@@ -134,14 +126,26 @@ private extension SignUpViewController {
             .disposed(by: disposeBag)
 
         output.isActiveConfirmIdButtonRelay
-            .subscribe { [weak self] _ in
+            .subscribe { [weak self] isActive in
                 // TODO: isActive 값에 따라 Toast 내용 변경?
+                // 임시코드
+                if isActive {
+                    print("isTapped = true")
+                } else {
+                    print("isTapped = false")
+                }
             }
             .disposed(by: disposeBag)
 
         output.isActiveNextButtonRelay
-            .subscribe { [weak self] _ in
+            .subscribe { [weak self] isActive in
                 // TODO: isActive 값에 따라 오류 팝업 or 다음 화면 이동
+                // 임시 코드
+                if isActive {
+                    let viewModel = AuthenticationViewModel()
+                    let view = AuthenticationViewController(with: viewModel)
+                    self?.navigationController?.pushViewController(view, animated: true)
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -223,6 +227,7 @@ private extension SignUpViewController {
 
         case 1:
             textField.placeholder = "E-mail"
+            textField.addRightPadding(with: 40)
             label.text = "올바른 이메일 형식으로 입력해주세요"
 
         case 2:

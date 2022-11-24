@@ -25,7 +25,7 @@ final class AuthenticationViewController: UIViewController {
         $0.setPlaceHolder()
     }
 
-    private let confirmPhoneButton = CustomNarrowButton(isEnabled: false).then {
+    private let confirmPhoneButton = CustomNarrowButton(isEnabled: true).then {
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.setTitle("인증 번호", for: .normal)
     }
@@ -39,11 +39,13 @@ final class AuthenticationViewController: UIViewController {
     }
 
     private let authenticTextField = CustomTextField().then {
+        $0.isHidden = true
         $0.placeholder = "인증 번호 입력"
         $0.setPlaceHolder()
     }
 
-    private let confirmAuthenticButton = CustomNarrowButton(isEnabled: false).then {
+    private let confirmAuthenticButton = CustomNarrowButton(isEnabled: true).then {
+        $0.isHidden = true
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.setTitle("인증 확인", for: .normal)
     }
@@ -79,6 +81,7 @@ final class AuthenticationViewController: UIViewController {
         super.viewWillLayoutSubviews()
 
         self.configureCornerRadius()
+        self.configureTextFieldsRightPadding()
     }
 }
 
@@ -97,7 +100,7 @@ private extension AuthenticationViewController {
             }
             .disposed(by: disposeBag)
 
-        output.isPushedPhoneNumberRelay
+        output.isCorrectAuthenticRelay
             .subscribe { [weak self] isCorrect in
                 self?.nextButton.isEnabled = isCorrect
 
@@ -167,6 +170,11 @@ private extension AuthenticationViewController {
         confirmPhoneButton.setCornerRound(value: (confirmPhoneButton.frame.height / 2))
         confirmAuthenticButton.setCornerRound(value: (confirmAuthenticButton.frame.height / 2))
         nextButton.setCornerRound(value: (nextButton.frame.height / 2))
+    }
+
+    func configureTextFieldsRightPadding() {
+        phoneTextField.addRightPadding(with: phoneTextField.frame.width / 3)
+        authenticTextField.addRightPadding(with: authenticTextField.frame.width / 3)
     }
 }
 
