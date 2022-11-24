@@ -117,6 +117,8 @@ private extension AuthenticationViewController {
                 guard canMove else { return }
 
                 // TODO: 다음 뷰로 이동하는 로직 구현 필요
+                let nextVC = CompleteViewController()
+                self?.navigationController?.pushViewController(nextVC, animated: true)
             }
             .disposed(by: disposeBag)
     }
