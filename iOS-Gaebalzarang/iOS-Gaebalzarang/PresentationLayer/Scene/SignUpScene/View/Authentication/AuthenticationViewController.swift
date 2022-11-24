@@ -75,6 +75,7 @@ final class AuthenticationViewController: UIViewController {
 
         self.configureLayouts()
         self.setViewModelOutput()
+        self.bindWithInnerAction()
     }
 
     override func viewWillLayoutSubviews() {
@@ -88,7 +89,7 @@ final class AuthenticationViewController: UIViewController {
 private extension AuthenticationViewController {
 
     func setViewModelOutput() {
-        let input = AuthenticationViewModel.Input(typedPhoneValue: phoneTextField.rx.value.distinctUntilChanged().asDriver(onErrorJustReturn: nil), tapRequestAuthenticButton: confirmPhoneButton.rx.tap.asDriver(), typedAuthenticValue: authenticTextField.rx.value.distinctUntilChanged().asDriver(onErrorJustReturn: nil), tapConfirmAuthenticButton: confirmAuthenticButton.rx.tap.asDriver(), tapNextButton: nextButton.rx.tap.asDriver())
+        let input = AuthenticationViewModel.Input(typedPhoneValue: phoneTextField.rx.value.distinctUntilChanged().asDriver(onErrorJustReturn: nil), tapRequestAuthenticButton: confirmPhoneButton.rx.tap.asDriver(), typedAuthenticValue: authenticTextField.rx.value.distinctUntilChanged().asDriver(onErrorJustReturn: nil), tapConfirmAuthenticButton: confirmAuthenticButton.rx.tap.asDriver())
 
         let output = authenticationVM.transform(input: input)
 
@@ -111,12 +112,13 @@ private extension AuthenticationViewController {
                 }
             }
             .disposed(by: disposeBag)
-
-        output.canMoveToNextRelay
-            .subscribe { [weak self] canMove in
-                guard canMove else { return }
-
-                // TODO: 다음 뷰로 이동하는 로직 구현 필요
+    }
+    
+    func bindWithInnerAction() {
+        self.nextButton.rx.tap
+            .bind { [weak self] _ in
+                guard let isEnable = self?.nextButton.isEnabled, isEnable else { return }
+                
                 let nextVC = CompleteViewController()
                 self?.navigationController?.pushViewController(nextVC, animated: true)
             }

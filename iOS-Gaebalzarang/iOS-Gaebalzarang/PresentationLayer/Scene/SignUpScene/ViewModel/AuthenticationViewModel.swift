@@ -16,14 +16,11 @@ final class AuthenticationViewModel: ViewModel {
 
         let typedAuthenticValue: Driver<String?>
         let tapConfirmAuthenticButton: Driver<Void>
-
-        let tapNextButton: Driver<Void>
     }
 
     struct Output {
         let isPushedPhoneNumberRelay = PublishRelay<Bool>()
         let isCorrectAuthenticRelay = PublishRelay<Bool>()
-        let canMoveToNextRelay = PublishRelay<Bool>()
     }
 
     private let output = Output()
@@ -61,7 +58,6 @@ final class AuthenticationViewModel: ViewModel {
                 // TODO: 입력 인증번호 서버에 넘겨주는 통신 구현 관련 Usecase
                 // 서버 response 값에 따라 Bool 값 변경하여 전달
                 self?.output.isCorrectAuthenticRelay.accept(true)
-                self?.output.canMoveToNextRelay.accept(true)
             }
             .disposed(by: disposeBag)
 
