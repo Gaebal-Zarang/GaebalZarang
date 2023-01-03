@@ -113,12 +113,12 @@ private extension AuthenticationViewController {
             }
             .disposed(by: disposeBag)
     }
-    
+
     func bindWithInnerAction() {
         self.nextButton.rx.tap
             .bind { [weak self] _ in
                 guard let isEnable = self?.nextButton.isEnabled, isEnable else { return }
-                
+
                 let nextVC = CompleteViewController()
                 self?.navigationController?.pushViewController(nextVC, animated: true)
             }
@@ -134,9 +134,8 @@ private extension AuthenticationViewController {
         self.configureStackSubviewsLayout()
 
         verticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(31)
-            make.leading.equalToSuperview().offset(26)
-            make.trailing.equalToSuperview().offset(-26)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(31)
+            make.leading.trailing.equalToSuperview().inset(26)
         }
 
         confirmPhoneButton.snp.makeConstraints { make in
@@ -161,7 +160,7 @@ private extension AuthenticationViewController {
         }
 
         nextButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
             make.leading.equalTo(verticalStackView.snp.leading)
             make.trailing.equalTo(verticalStackView.snp.trailing)
             make.height.equalTo(50)

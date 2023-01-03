@@ -48,10 +48,10 @@ final class CompleteViewController: UIViewController {
         configureLayouts()
         configureInnerActionBinding()
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
+
         self.configureCornerRadius()
     }
 }
@@ -66,7 +66,7 @@ private extension CompleteViewController {
         view.addSubviews(titleImageView, titleLabel, descriptionLabel, confirmButton)
 
         titleImageView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(85)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(85)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(180)
         }
@@ -82,20 +82,19 @@ private extension CompleteViewController {
         }
 
         confirmButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-            make.leading.equalToSuperview().offset(26)
-            make.trailing.equalToSuperview().offset(-26)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
+            make.leading.trailing.equalToSuperview().inset(26)
             make.height.equalTo(50)
         }
     }
-    
+
     func configureCornerRadius() {
         confirmButton.setCornerRound(value: (confirmButton.frame.height / 2))
     }
 }
 
 private extension CompleteViewController {
- 
+
     func configureInnerActionBinding() {
         confirmButton.rx.tap
             .asDriver()

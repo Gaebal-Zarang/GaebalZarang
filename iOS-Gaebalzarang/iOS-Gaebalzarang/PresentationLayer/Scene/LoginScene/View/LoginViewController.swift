@@ -146,7 +146,7 @@ private extension LoginViewController {
         self.configureStackSubViews()
 
         logoView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(111)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(111)
             make.width.equalTo(150)
             make.height.equalTo(68)
             make.centerX.equalToSuperview()
@@ -154,8 +154,7 @@ private extension LoginViewController {
 
         idPwStackView.snp.makeConstraints { make in
             make.top.equalTo(logoView.snp.bottom).offset(74)
-            make.leading.equalToSuperview().offset(26)
-            make.trailing.equalToSuperview().offset(-26)
+            make.leading.trailing.equalToSuperview().inset(26)
             make.height.equalTo(112)
         }
 
@@ -173,7 +172,7 @@ private extension LoginViewController {
         }
 
         loginButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-29)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(29)
             make.width.equalTo(idPwStackView.snp.width)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
