@@ -8,13 +8,25 @@
 import UIKit
 
 // MARK: For use label which can apply left padding
-class CustomLabel: UILabel {
+class CustomPaddingLabel: UILabel {
 
-    private var padding = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 0)
+    private var padding: UIEdgeInsets
 
+    override init(frame: CGRect) {
+        self.padding = .init(top: 0, left: 25, bottom: 0, right: 0)
+        
+        super.init(frame: frame)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This initializer does not use")
+    }
+    
     // 기본 값은 좌측 25 패딩이나, 생성 시 커스텀 패딩 값을 줘서 구현 가능
     convenience init(padding: UIEdgeInsets) {
         self.init()
+        
         self.padding = padding
     }
 

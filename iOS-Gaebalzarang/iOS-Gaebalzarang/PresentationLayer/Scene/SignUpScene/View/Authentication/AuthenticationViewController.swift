@@ -30,7 +30,7 @@ final class AuthenticationViewController: UIViewController {
         $0.setTitle("인증 번호", for: .normal)
     }
 
-    private let notifyLabel = CustomLabel().then {
+    private let notifyLabel = CustomPaddingLabel().then {
         $0.isHidden = true
         $0.font = .systemFont(ofSize: 14)
         $0.textColor = .gzGreen

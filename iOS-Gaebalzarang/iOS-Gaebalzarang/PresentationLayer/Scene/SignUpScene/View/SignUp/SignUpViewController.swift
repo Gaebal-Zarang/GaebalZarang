@@ -212,7 +212,7 @@ private extension SignUpViewController {
             $0.axis = .vertical
         }
         let textField = CustomTextField()
-        let label = CustomLabel().then {
+        let label = CustomPaddingLabel().then {
             $0.isHidden = true
             $0.font = .systemFont(ofSize: 14)
             $0.numberOfLines = 1
