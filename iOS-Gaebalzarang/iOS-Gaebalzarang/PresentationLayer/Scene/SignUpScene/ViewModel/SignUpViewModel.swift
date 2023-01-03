@@ -81,25 +81,25 @@ private extension SignUpViewModel {
                     switch dic.key {
                     case .psw:
                         self.typedPswString = value
+                        
+                    case .confirm:
+                        let validation = (value == self.typedPswString)
+                        outputDictionary[dic.key]?.accept(validation)
+                        
+                        return
 
                     default:
                         break
                     }
 
-                    if dic.key == .confirm {
-                        let validation = (value == self.typedPswString)
-                        outputDictionary[dic.key]?.accept(validation)
+                    guard value != "" else {
+                        outputDictionary[dic.key]?.accept(true)
 
-                    } else {
-                        guard value != "" else {
-                            outputDictionary[dic.key]?.accept(true)
-
-                            return
-                        }
-
-                        let validation = self.validateUsecase.execute(with: value, classify: dic.key)
-                        outputDictionary[dic.key]?.accept(validation)
+                        return
                     }
+
+                    let validation = self.validateUsecase.execute(with: value, classify: dic.key)
+                    outputDictionary[dic.key]?.accept(validation)
                 }
                 .disposed(by: disposeBag)
         }
