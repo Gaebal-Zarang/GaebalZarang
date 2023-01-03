@@ -14,18 +14,18 @@ import SnapKit
 
 final class SignUpViewController: UIViewController {
 
-    private let verticalStackView = UIStackView().then {
+    private let verticalStackView: UIStackView = .init().then {
         $0.spacing = 14
         $0.axis = .vertical
         $0.distribution = .fill
     }
 
-    private let idConfirmButton = CustomNarrowButton(isEnabled: true).then {
+    private let idConfirmButton: CustomNarrowButton = .init(isEnabled: true).then {
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.setTitle("중복 확인", for: .normal)
     }
 
-    private let nextButton = CustomWideButton(isEnabled: false).then {
+    private let nextButton: CustomWideButton = .init(isEnabled: false).then {
         $0.setTitle("다음", for: .normal)
     }
 

@@ -14,25 +14,25 @@ import SnapKit
 
 final class LoginViewController: UIViewController {
 
-    private let logoView = UIImageView().then {
+    private let logoView: UIImageView = .init().then {
         $0.image = UIImage(named: "logo")
         $0.contentMode = .scaleAspectFit
         $0.backgroundColor = .gray
     }
 
-    private let idPwStackView = UIStackView().then {
+    private let idPwStackView: UIStackView = .init().then {
         $0.spacing = 12
         $0.axis = .vertical
         $0.distribution = .fillEqually
     }
 
-    private let showButton = UIButton().then {
+    private let showButton: UIButton = .init().then {
         $0.setTitle("Show", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
         $0.setTitleColor(.gzGreen, for: .normal)
     }
 
-    private let searchStackView = UIStackView().then {
+    private let searchStackView: UIStackView = .init().then {
         $0.spacing = 10
         $0.axis = .horizontal
         $0.alignment = .center

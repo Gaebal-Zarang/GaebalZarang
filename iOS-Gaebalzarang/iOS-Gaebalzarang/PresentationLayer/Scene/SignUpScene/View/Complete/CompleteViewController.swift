@@ -13,21 +13,20 @@ import RxCocoa
 
 final class CompleteViewController: UIViewController {
 
-    private var titleImageView = UIImageView().then {
+    private var titleImageView: UIImageView = .init().then {
         $0.image = UIImage(named: "signUpImage")
         $0.contentMode = .scaleAspectFit
         $0.backgroundColor = .gray
     }
 
-    private var titleLabel = UILabel().then {
+    private var titleLabel: UILabel = .init().then {
         $0.text = "가입되셨습니다."
         $0.textAlignment = .center
         $0.textColor = .black
-        $0.numberOfLines = 1
         $0.sizeToFit()
     }
 
-    private var descriptionLabel = UILabel().then {
+    private var descriptionLabel: UILabel = .init().then {
         $0.text = "가입해주셔서 감사합니다.\n로그인 후 서비스를 이용 해주시면 됩니다."
         $0.textAlignment = .center
         $0.textColor = .gzChacoal
@@ -35,7 +34,7 @@ final class CompleteViewController: UIViewController {
         $0.sizeToFit()
     }
 
-    private var confirmButton = CustomWideButton(isEnabled: true).then {
+    private var confirmButton: CustomWideButton = .init(isEnabled: true).then {
         $0.setTitle("확인", for: .normal)
     }
 

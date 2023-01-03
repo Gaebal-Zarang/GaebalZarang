@@ -14,23 +14,23 @@ import SnapKit
 
 final class AuthenticationViewController: UIViewController {
 
-    private let verticalStackView = UIStackView().then {
+    private let verticalStackView: UIStackView = .init().then {
         $0.spacing = 7
         $0.axis = .vertical
         $0.distribution = .fill
     }
 
-    private let phoneTextField = CustomTextField().then {
+    private let phoneTextField: CustomTextField = .init().then {
         $0.placeholder = "휴대폰 번호"
         $0.setPlaceHolder()
     }
 
-    private let confirmPhoneButton = CustomNarrowButton(isEnabled: true).then {
+    private let confirmPhoneButton: CustomNarrowButton = .init(isEnabled: true).then {
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.setTitle("인증 번호", for: .normal)
     }
 
-    private let notifyLabel = CustomPaddingLabel().then {
+    private let notifyLabel: CustomPaddingLabel = .init().then {
         $0.isHidden = true
         $0.font = .systemFont(ofSize: 14)
         $0.textColor = .gzGreen
@@ -38,19 +38,19 @@ final class AuthenticationViewController: UIViewController {
         $0.sizeToFit()
     }
 
-    private let authenticTextField = CustomTextField().then {
+    private let authenticTextField: CustomTextField = .init().then {
         $0.isHidden = true
         $0.placeholder = "인증 번호 입력"
         $0.setPlaceHolder()
     }
 
-    private let confirmAuthenticButton = CustomNarrowButton(isEnabled: true).then {
+    private let confirmAuthenticButton: CustomNarrowButton = .init(isEnabled: true).then {
         $0.isHidden = true
         $0.titleLabel?.font = .systemFont(ofSize: 14)
         $0.setTitle("인증 확인", for: .normal)
     }
 
-    private let nextButton = CustomWideButton(isEnabled: false).then {
+    private let nextButton: CustomWideButton = .init(isEnabled: false).then {
         $0.titleLabel?.font = .systemFont(ofSize: 16)
         $0.setTitle("다음", for: .normal)
     }
