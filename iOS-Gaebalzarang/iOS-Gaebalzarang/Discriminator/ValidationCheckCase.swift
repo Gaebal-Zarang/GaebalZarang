@@ -9,11 +9,8 @@ import Foundation
 
 enum ValidationCheckCase {
 
-    case valid
-    case inValid
-    case idOverraped
-    case idUseable
-    case pswNonEqual
-    case pswEqual
-    case onError
+    case name
+    case id
+    case psw
+    case confirm
 }

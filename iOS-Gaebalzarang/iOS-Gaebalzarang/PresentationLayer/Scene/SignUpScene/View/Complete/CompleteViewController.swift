@@ -6,119 +6,100 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 import RxSwift
 import RxCocoa
 
 final class CompleteViewController: UIViewController {
 
-    let disposeBag = DisposeBag()
+    private var titleImageView: UIImageView = .init().then {
+        $0.image = UIImage(named: "signUpImage")
+        $0.contentMode = .scaleAspectFit
+        $0.backgroundColor = .gray
+    }
 
-    private lazy var titleImageView: UIImageView = {
-        let imageView = UIImageView()
-        let image = UIImage(named: "signUpImage")
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .gray
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    private var titleLabel: UILabel = .init().then {
+        $0.text = "가입되셨습니다."
+        $0.textAlignment = .center
+        $0.textColor = .black
+        $0.sizeToFit()
+    }
 
-        return imageView
-    }()
+    private var descriptionLabel: UILabel = .init().then {
+        $0.text = "가입해주셔서 감사합니다.\n로그인 후 서비스를 이용 해주시면 됩니다."
+        $0.textAlignment = .center
+        $0.textColor = .gzChacoal
+        $0.numberOfLines = 2
+        $0.sizeToFit()
+    }
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "가입되셨습니다."
-        label.textAlignment = .center
-        label.textColor = .black
-        label.numberOfLines = 1
-        label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private var confirmButton: CustomWideButton = .init(isEnabled: true).then {
+        $0.setTitle("확인", for: .normal)
+    }
 
-        return label
-    }()
-
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "가입해주셔서 감사합니다.\n로그인 후 서비스를 이용 해주시면 됩니다."
-        label.textAlignment = .center
-        label.textColor = .gzChacoal
-        label.numberOfLines = 2
-        label.sizeToFit()
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        return label
-    }()
-
-    private lazy var confirmButton: CustomWideButton = {
-        let btnRound = DesignGuide.estimateWideViewCornerRadius(frame: view.frame)
-        let button = CustomWideButton(isEnabled: true)
-        button.setTitle("확인", for: .normal)
-        button.setCornerRound(value: btnRound)
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        return button
-    }()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden =  true
         configureNavigationItem()
         configureLayouts()
         configureInnerActionBinding()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        self.configureCornerRadius()
     }
 }
 
 private extension CompleteViewController {
 
     func configureNavigationItem() {
-        navigationItem.hidesBackButton = true
+        navigationController?.navigationBar.isHidden = true
     }
 
     func configureLayouts() {
         view.addSubviews(titleImageView, titleLabel, descriptionLabel, confirmButton)
 
-        let imageTopConstant = DesignGuide.estimateYAxisLength(origin: 85, frame: view.frame)
+        titleImageView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).inset(85)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(180)
+        }
 
-        NSLayoutConstraint.activate([
-            titleImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: imageTopConstant),
-            titleImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleImageView.snp.bottom).offset(32)
+            make.centerX.equalToSuperview()
+        }
 
-        let titleLabelTopConstant = DesignGuide.estimateYAxisLength(origin: 32, frame: view.frame)
-        let titleLabelHeight = DesignGuide.estimateYAxisLength(origin: 25, frame: view.frame)
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(26)
+            make.centerX.equalToSuperview()
+        }
 
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: titleImageView.bottomAnchor, constant: titleLabelTopConstant),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: titleLabelHeight)
-        ])
-
-        let descriptionLabelTopConstant = DesignGuide.estimateYAxisLength(origin: 26, frame: view.frame)
-        let descriptionLabelHeight = DesignGuide.estimateYAxisLength(origin: 40, frame: view.frame)
-
-        NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: descriptionLabelTopConstant),
-            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: descriptionLabelHeight)
-        ])
-
-        let buttonBottomConstant = DesignGuide.estimateYAxisLength(origin: 24, frame: view.frame)
-        let buttonWidth = DesignGuide.estimateXAxisLength(origin: 322, frame: view.frame)
-        let buttonHeight = DesignGuide.estimateYAxisLength(origin: 50, frame: view.frame)
-
-        NSLayoutConstraint.activate([
-            confirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(buttonBottomConstant)),
-            confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            confirmButton.widthAnchor.constraint(equalToConstant: buttonWidth),
-            confirmButton.heightAnchor.constraint(equalToConstant: buttonHeight)
-        ])
+        confirmButton.snp.makeConstraints { make in
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(24)
+            make.leading.trailing.equalToSuperview().inset(26)
+            make.height.equalTo(50)
+        }
     }
+
+    func configureCornerRadius() {
+        confirmButton.setCornerRound(value: (confirmButton.frame.height / 2))
+    }
+}
+
+private extension CompleteViewController {
 
     func configureInnerActionBinding() {
         confirmButton.rx.tap
             .asDriver()
             .drive { [weak self] _ in
-                self?.dismiss(animated: true)
+                self?.navigationController?.dismiss(animated: true)
             }
             .disposed(by: disposeBag)
     }

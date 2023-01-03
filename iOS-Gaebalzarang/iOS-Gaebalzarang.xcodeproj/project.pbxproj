@@ -37,23 +37,22 @@
 		D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */; };
 		D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */; };
 		D20D2E8928A0FF3C0001B2D3 /* CustomWideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8828A0FF3C0001B2D3 /* CustomWideButton.swift */; };
-		D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */; };
 		D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D2E8C28A108260001B2D3 /* StackView +.swift */; };
 		D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8C28A2567200CEBB80 /* UIColor +.swift */; };
 		D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */; };
-		D298818828ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818728ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift */; };
+		D2377EBE29222BD700EBEB5A /* Array +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2377EBD29222BD700EBEB5A /* Array +.swift */; };
+		D2377EC129234B2100EBEB5A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2377EC029234B2100EBEB5A /* LoginViewModel.swift */; };
+		D2377EC329235A2B00EBEB5A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2377EC229235A2B00EBEB5A /* ViewModel.swift */; };
+		D2377EC72924753C00EBEB5A /* CustomPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2377EC62924753C00EBEB5A /* CustomPaddingLabel.swift */; };
+		D298818828ACCCF200F53FBF /* CheckValidityUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818728ACCCF200F53FBF /* CheckValidityUsecase.swift */; };
 		D298818E28ACD2AA00F53FBF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */; };
-		D298819028ACD35900F53FBF /* CheckValidityUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818F28ACD35900F53FBF /* CheckValidityUsecase.swift */; };
+		D298819028ACD35900F53FBF /* CheckUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298818F28ACD35900F53FBF /* CheckUsecase.swift */; };
 		D298819328ACD53100F53FBF /* ValidationCheckCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819228ACD53100F53FBF /* ValidationCheckCase.swift */; };
-		D298819728ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819628ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift */; };
-		D298819B28B2555B00F53FBF /* CheckAuthenticValidityUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819A28B2555B00F53FBF /* CheckAuthenticValidityUsecase.swift */; };
 		D298819D28B3685500F53FBF /* UIViewController +.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298819C28B3685500F53FBF /* UIViewController +.swift */; };
-		D2BDB97028A377BE00754B5A /* SignUpPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB96F28A377BE00754B5A /* SignUpPasswordView.swift */; };
 		D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */; };
-		D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */; };
 		D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97828A3A6C100754B5A /* CompleteViewController.swift */; };
 		D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */; };
-		D2F66C3D28A354F6003AA52C /* SignUpNameIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F66C3C28A354F6003AA52C /* SignUpNameIDView.swift */; };
+		D2D95FE1292707F000643364 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D95FE0292707F000643364 /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,23 +90,22 @@
 		D20D2E8428A0F4A70001B2D3 /* UITextField +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField +.swift"; sourceTree = "<group>"; };
 		D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D20D2E8828A0FF3C0001B2D3 /* CustomWideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWideButton.swift; sourceTree = "<group>"; };
-		D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSearchSignView.swift; sourceTree = "<group>"; };
 		D20D2E8C28A108260001B2D3 /* StackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView +.swift"; sourceTree = "<group>"; };
 		D2360C8C28A2567200CEBB80 /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
 		D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		D298818728ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserIdValidityUsecase.swift; sourceTree = "<group>"; };
+		D2377EBD29222BD700EBEB5A /* Array +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array +.swift"; sourceTree = "<group>"; };
+		D2377EC029234B2100EBEB5A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D2377EC229235A2B00EBEB5A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		D2377EC62924753C00EBEB5A /* CustomPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaddingLabel.swift; sourceTree = "<group>"; };
+		D298818728ACCCF200F53FBF /* CheckValidityUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidityUsecase.swift; sourceTree = "<group>"; };
 		D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		D298818F28ACD35900F53FBF /* CheckValidityUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckValidityUsecase.swift; sourceTree = "<group>"; };
+		D298818F28ACD35900F53FBF /* CheckUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsecase.swift; sourceTree = "<group>"; };
 		D298819228ACD53100F53FBF /* ValidationCheckCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationCheckCase.swift; sourceTree = "<group>"; };
-		D298819628ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUserPswValidityUsecase.swift; sourceTree = "<group>"; };
-		D298819A28B2555B00F53FBF /* CheckAuthenticValidityUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAuthenticValidityUsecase.swift; sourceTree = "<group>"; };
 		D298819C28B3685500F53FBF /* UIViewController +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController +.swift"; sourceTree = "<group>"; };
-		D2BDB96F28A377BE00754B5A /* SignUpPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordView.swift; sourceTree = "<group>"; };
 		D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationContentView.swift; sourceTree = "<group>"; };
 		D2BDB97828A3A6C100754B5A /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNarrowButton.swift; sourceTree = "<group>"; };
-		D2F66C3C28A354F6003AA52C /* SignUpNameIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameIDView.swift; sourceTree = "<group>"; };
+		D2D95FE0292707F000643364 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +233,7 @@
 		B3F571A728A24F090092B4D0 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
+				D2377EBF29234B1000EBEB5A /* ViewModel */,
 				B3F571A828A24F140092B4D0 /* View */,
 			);
 			path = LoginScene;
@@ -244,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				D20D2E8028A0EBBA0001B2D3 /* LoginViewController.swift */,
-				D20D2E8A28A102160001B2D3 /* LoginSearchSignView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +289,7 @@
 			children = (
 				D20D2E8828A0FF3C0001B2D3 /* CustomWideButton.swift */,
 				D2BDB97A28A5EFE300754B5A /* CustomNarrowButton.swift */,
+				D2377EC62924753C00EBEB5A /* CustomPaddingLabel.swift */,
 				D20D2E8628A0F8FF0001B2D3 /* CustomTextField.swift */,
 				B3CE848328A355A400F57038 /* InputTitleView.swift */,
 				B3324D6328B372FE00F7263F /* CustomSelectButton.swift */,
@@ -307,7 +306,7 @@
 				D20D2E8C28A108260001B2D3 /* StackView +.swift */,
 				D20D2E8228A0F0740001B2D3 /* UIView +.swift */,
 				D2360C8C28A2567200CEBB80 /* UIColor +.swift */,
-				B3CE847F28A2685800F57038 /* DesignGuide.swift */,
+				D2377EBD29222BD700EBEB5A /* Array +.swift */,
 			);
 			path = "Extension +";
 			sourceTree = "<group>";
@@ -357,6 +356,15 @@
 			path = "iOS-Gaebalzarang";
 			sourceTree = "<group>";
 		};
+		D2377EBF29234B1000EBEB5A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D2377EC029234B2100EBEB5A /* LoginViewModel.swift */,
+				D2377EC229235A2B00EBEB5A /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D298818428ACCBA500F53FBF /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,7 +377,7 @@
 		D298818528ACCC0900F53FBF /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				D298818F28ACD35900F53FBF /* CheckValidityUsecase.swift */,
+				D298818F28ACD35900F53FBF /* CheckUsecase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -377,9 +385,7 @@
 		D298818628ACCC1300F53FBF /* SignUpUsecase */ = {
 			isa = PBXGroup;
 			children = (
-				D298818728ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift */,
-				D298819628ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift */,
-				D298819A28B2555B00F53FBF /* CheckAuthenticValidityUsecase.swift */,
+				D298818728ACCCF200F53FBF /* CheckValidityUsecase.swift */,
 			);
 			path = SignUpUsecase;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				D298818D28ACD2AA00F53FBF /* SignUpViewModel.swift */,
+				D2D95FE0292707F000643364 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -396,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				D298819228ACD53100F53FBF /* ValidationCheckCase.swift */,
+				B3CE847F28A2685800F57038 /* DesignGuide.swift */,
 			);
 			path = Discriminator;
 			sourceTree = "<group>";
@@ -404,8 +412,6 @@
 			isa = PBXGroup;
 			children = (
 				D2360C8E28A34B3A00CEBB80 /* SignUpViewController.swift */,
-				D2F66C3C28A354F6003AA52C /* SignUpNameIDView.swift */,
-				D2BDB96F28A377BE00754B5A /* SignUpPasswordView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -414,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				D2BDB97128A38CBB00754B5A /* AuthenticationViewController.swift */,
-				D2BDB97328A3A03500754B5A /* AuthenticationContentView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -560,35 +565,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F66C3D28A354F6003AA52C /* SignUpNameIDView.swift in Sources */,
 				D298819D28B3685500F53FBF /* UIViewController +.swift in Sources */,
 				B3324D6428B372FE00F7263F /* CustomSelectButton.swift in Sources */,
 				B361CECF28CF012500F1490A /* CollaboratorHeaderView.swift in Sources */,
 				B3A95F9028A0EFCB00B6E48C /* IntroduceViewController.swift in Sources */,
 				B361CED028CF012500F1490A /* CollaboratorCell.swift in Sources */,
-				D2BDB97428A3A03500754B5A /* AuthenticationContentView.swift in Sources */,
+				D2D95FE1292707F000643364 /* AuthenticationViewModel.swift in Sources */,
 				B3324D6228B3696D00F7263F /* ScheduleViewController.swift in Sources */,
+				D2377EC329235A2B00EBEB5A /* ViewModel.swift in Sources */,
 				D20D2E8728A0F8FF0001B2D3 /* CustomTextField.swift in Sources */,
 				B3324D6C28B3F07100F7263F /* ProfileCompleteViewController.swift in Sources */,
 				B3CE848A28A3A02F00F57038 /* PositionCell.swift in Sources */,
-				D298819028ACD35900F53FBF /* CheckValidityUsecase.swift in Sources */,
+				D298819028ACD35900F53FBF /* CheckUsecase.swift in Sources */,
 				D20D2E8128A0EBBA0001B2D3 /* LoginViewController.swift in Sources */,
 				B361CED228CF012500F1490A /* ProjectHeaderView.swift in Sources */,
 				B3324D6828B3B6E000F7263F /* SkillCell.swift in Sources */,
-				D298819728ACECBB00F53FBF /* CheckUserPswValidityUsecase.swift in Sources */,
 				D2BDB97928A3A6C100754B5A /* CompleteViewController.swift in Sources */,
 				D20D2E8D28A108260001B2D3 /* StackView +.swift in Sources */,
 				B3324D6028B35A6500F7263F /* PortfolioViewController.swift in Sources */,
 				D20D2E8528A0F4A70001B2D3 /* UITextField +.swift in Sources */,
 				D20D2E8928A0FF3C0001B2D3 /* CustomWideButton.swift in Sources */,
-				D298818828ACCCF200F53FBF /* CheckUserIdValidityUsecase.swift in Sources */,
+				D298818828ACCCF200F53FBF /* CheckValidityUsecase.swift in Sources */,
 				B361CED428CF012500F1490A /* MainViewController.swift in Sources */,
 				D20D2E6328A027DD0001B2D3 /* AppDelegate.swift in Sources */,
-				D298819B28B2555B00F53FBF /* CheckAuthenticValidityUsecase.swift in Sources */,
+				D2377EC129234B2100EBEB5A /* LoginViewModel.swift in Sources */,
 				B3CE848628A394D500F57038 /* ProfilePositionViewController.swift in Sources */,
 				D298818E28ACD2AA00F53FBF /* SignUpViewModel.swift in Sources */,
 				B3CE848228A3552D00F57038 /* ProfileLocationViewController.swift in Sources */,
-				D20D2E8B28A102160001B2D3 /* LoginSearchSignView.swift in Sources */,
 				B3E524E728A4E99A00FBA21C /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				B3CE848028A2685800F57038 /* DesignGuide.swift in Sources */,
 				D2360C8D28A2567200CEBB80 /* UIColor +.swift in Sources */,
@@ -597,12 +600,13 @@
 				D298819328ACD53100F53FBF /* ValidationCheckCase.swift in Sources */,
 				B361CED328CF012500F1490A /* MainHeaderCell.swift in Sources */,
 				B3CE848428A355A400F57038 /* InputTitleView.swift in Sources */,
+				D2377EC72924753C00EBEB5A /* CustomPaddingLabel.swift in Sources */,
 				D2BDB97B28A5EFE300754B5A /* CustomNarrowButton.swift in Sources */,
 				D2BDB97228A38CBB00754B5A /* AuthenticationViewController.swift in Sources */,
 				B3324D6628B3AD5D00F7263F /* SkillViewController.swift in Sources */,
-				D2BDB97028A377BE00754B5A /* SignUpPasswordView.swift in Sources */,
 				D2360C8F28A34B3A00CEBB80 /* SignUpViewController.swift in Sources */,
 				D20D2E8328A0F0740001B2D3 /* UIView +.swift in Sources */,
+				D2377EBE29222BD700EBEB5A /* Array +.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +746,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9FL2F2U32R;
+				DEVELOPMENT_TEAM = 22777777KX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-Gaebalzarang/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -771,7 +775,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9FL2F2U32R;
+				DEVELOPMENT_TEAM = 22777777KX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-Gaebalzarang/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
