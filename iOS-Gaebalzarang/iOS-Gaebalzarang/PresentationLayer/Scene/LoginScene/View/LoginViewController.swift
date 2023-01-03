@@ -87,7 +87,9 @@ private extension LoginViewController {
     func bindWithViewModel() {
         guard let idText = idPwTextFields[safe: 0], let pwText = idPwTextFields[safe: 1] else { return }
 
-        let input = LoginViewModel.Input(typedIdValue: idText.rx.value.asObservable(), typedPswValue: pwText.rx.value.asObservable(), tappedLoginButton: loginButton.rx.tap.asObservable())
+        let input = LoginViewModel.Input(typedIdValue: idText.rx.value.asDriver(),
+                                         typedPswValue: pwText.rx.value.asDriver(),
+                                         tappedLoginButton: loginButton.rx.tap.asDriver())
         let output = loginVM.transform(input: input)
 
         output.canLoginRelay

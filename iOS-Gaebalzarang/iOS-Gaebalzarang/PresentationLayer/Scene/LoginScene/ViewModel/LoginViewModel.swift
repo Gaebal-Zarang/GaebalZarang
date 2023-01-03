@@ -11,9 +11,9 @@ import RxCocoa
 final class LoginViewModel: ViewModel {
 
     struct Input {
-        let typedIdValue: Observable<String?>
-        let typedPswValue: Observable<String?>
-        let tappedLoginButton: Observable<Void>
+        let typedIdValue: Driver<String?>
+        let typedPswValue: Driver<String?>
+        let tappedLoginButton: Driver<Void>
     }
 
     struct Output {
@@ -30,13 +30,12 @@ final class LoginViewModel: ViewModel {
     }
 
     func transform(input: Input) -> Output {
-        Observable.combineLatest(input.typedIdValue, input.typedPswValue) { idValue, pswValue in
+        Observable.combineLatest(input.typedIdValue.asObservable(), input.typedPswValue.asObservable()) { idValue, pswValue in
             let id = (idValue != nil) ? idValue : ""
             let psw = (pswValue != nil) ? pswValue : ""
 
             return (id, psw)
         }
-        .retry(3)
         .subscribe { [weak self] tuple in
             self?.typedIdPw["ID"] = tuple.0
             self?.typedIdPw["PW"] = tuple.1
@@ -44,8 +43,7 @@ final class LoginViewModel: ViewModel {
         .disposed(by: disposeBag)
 
         input.tappedLoginButton
-            .retry(3)
-            .subscribe { [weak self] _ in
+            .drive { [weak self] _ in
                 // TODO: Usecase를 통해서 로그인 가능 여부 받아오기 (typeIdPw 값 전달)
             }
             .disposed(by: disposeBag)
